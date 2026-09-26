@@ -15,6 +15,7 @@ public class PlatformerController : MonoBehaviour
     private float _time;
     private bool _grounded;
     private bool _cachedQueriesStartInColliders;
+    private bool _jumpToConsume = true;
 
     // A bundle for all of the inputs taken this frame.
     private struct FrameInput
@@ -45,11 +46,16 @@ public class PlatformerController : MonoBehaviour
           JumpHeld = Input.GetButton("Jump"),
           Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
         };
+        if (_input.JumpDown)
+        {
+            _jumpToConsume = true;
+        }
     }
 
     private void FixedUpdate()
     {
         CheckCollisions();
+        HandleJump();
         HandleDirection();
         HandleGravity();
         ApplyMovement();
@@ -70,7 +76,18 @@ public class PlatformerController : MonoBehaviour
             _grounded = false;
         }
         Physics2D.queriesStartInColliders = _cachedQueriesStartInColliders;
+    }
 
+    private void HandleJump()
+    {
+        if (!_jumpToConsume) return;
+        if (_grounded) ExecuteJump();
+        _jumpToConsume = false;
+    }
+
+    private void ExecuteJump()
+    {
+        _velocity.y = _stats.JumpPower;
     }
 
     private void HandleDirection()
