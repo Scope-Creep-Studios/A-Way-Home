@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
@@ -40,7 +41,7 @@ public class PlatformerController : MonoBehaviour
         {
           JumpDown = Input.GetButtonDown("Jump"),
           JumpHeld = Input.GetButton("Jump"),
-          Move = new Vector2(Input.GetAxisRaw("horizontal"), Input.GetAxisRaw("Vertical"))
+          Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
         };
     }
 
@@ -52,11 +53,18 @@ public class PlatformerController : MonoBehaviour
 
     private void HandleDirection()
     {
-        
+        if (_input.Move.x == 0f)
+        {
+            float decel = _grounded
+            ? _stats.GroundDeceleration : _stats.AirDeceleration;
+            _velocity.x = Mathf.MoveTowards(_velocity.x, 0f, decel * Time.fixedDeltaTime);
+        }
+        else
+        {
+            float targetSpeed = _input.Move.x * _stats.MaxSpeed;
+            _velocity.x = Mathf.MoveTowards(_velocity.x, targetSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+        }
     }
 
-    private void ApplyMovement()
-    {
-        
-    }
+    private void ApplyMovement() => _rb.velocity = _velocity;
 }
