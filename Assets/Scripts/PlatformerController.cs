@@ -64,9 +64,16 @@ public class PlatformerController : MonoBehaviour
     private void CheckCollisions()
     {
         Physics2D.queriesStartInColliders = false; // onlyreport what the raycast travels into, not what we already touch.
+
+        // ground and ceiling checks.
         bool groundHit = Physics2D.CapsuleCast(
             _col.bounds.center, _col.size, _col.direction, 0f, 
             Vector2.down, _stats.GroundColDistance, _stats.GroundLayers);
+        bool ceilingHit = Physics2D.CapsuleCast(
+            _col.bounds.center, _col.size, _col.direction, 0f,
+            Vector2.up, _stats.GroundColDistance, _stats.GroundLayers);
+
+        if (ceilingHit) _velocity.y = Mathf.Min(0f, _velocity.y);
         if (!_grounded && groundHit)
         {
             _grounded = true;
