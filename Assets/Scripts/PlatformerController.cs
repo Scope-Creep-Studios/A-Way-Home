@@ -14,6 +14,7 @@ public class PlatformerController : MonoBehaviour
     private Vector2 _velocity;
     private float _time;
     private bool _grounded;
+    private bool _cachedQueriesStartInColliders;
 
     // A bundle for all of the inputs taken this frame.
     private struct FrameInput
@@ -27,11 +28,12 @@ public class PlatformerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _col = GetComponent<CapsuleCollider2D>();
+        _cachedQueriesStartInColliders = Physics2D.queriesStartInColliders; // Found online; should help fix the walls counting as grounded issue.
     }
 
     private void Update()
     {
-        _time = Time.deltaTime;
+        _time += Time.deltaTime;
         ReadInput();
     }
 
@@ -47,8 +49,28 @@ public class PlatformerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CheckCollisions();
         HandleDirection();
+        HandleGravity();
         ApplyMovement();
+    }
+
+    private void CheckCollisions()
+    {
+        Physics2D.queriesStartInColliders = false; // onlyreport what the raycast travels into, not what we already touch.
+        bool groundHit = Physics2D.CapsuleCast(
+            _col.bounds.center, _col.size, _col.direction, 0f, 
+            Vector2.down, _stats.GroundColDistance, _stats.GroundLayers);
+        if (!_grounded && groundHit)
+        {
+            _grounded = true;
+        }
+        else if (_grounded && !groundHit)
+        {
+            _grounded = false;
+        }
+        Physics2D.queriesStartInColliders = _cachedQueriesStartInColliders;
+
     }
 
     private void HandleDirection()
@@ -63,6 +85,19 @@ public class PlatformerController : MonoBehaviour
         {
             float targetSpeed = _input.Move.x * _stats.MaxSpeed;
             _velocity.x = Mathf.MoveTowards(_velocity.x, targetSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+        }
+    }
+
+    private void HandleGravity()
+    {
+        if (_grounded && _velocity.y <= 0f)
+        {
+            _velocity.y = _stats.GroundingForce;
+        }
+        else
+        {
+            float gravity = _stats.FallAcceleration;
+            _velocity.y = Mathf.MoveTowards(_velocity.y, -(_stats.MaxFallSpeed), gravity * Time.fixedDeltaTime);
         }
     }
 
