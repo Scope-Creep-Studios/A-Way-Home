@@ -13,9 +13,13 @@ public class PlatformerController : MonoBehaviour
     private FrameInput _input;
     private Vector2 _velocity;
     private float _time;
+    private float _timeLeftGround = float.MinValue;
+    private float _timeJumpPressed = float.MinValue;
     private bool _grounded;
     private bool _cachedQueriesStartInColliders;
     private bool _jumpToConsume = true;
+    private bool _endedJumpEarly;
+    private bool _coyoteUsable;
 
     // A bundle for all of the inputs taken this frame.
     private struct FrameInput
@@ -49,6 +53,7 @@ public class PlatformerController : MonoBehaviour
         if (_input.JumpDown)
         {
             _jumpToConsume = true;
+            _timeLeftGround = _time;
         }
     }
 
@@ -74,26 +79,39 @@ public class PlatformerController : MonoBehaviour
             Vector2.up, _stats.GroundColDistance, _stats.GroundLayers);
 
         if (ceilingHit) _velocity.y = Mathf.Min(0f, _velocity.y);
-        if (!_grounded && groundHit)
+        if (!_grounded && groundHit) // landed on this tick?
         {
             _grounded = true;
+            _endedJumpEarly = false;
+            _coyoteUsable = true;
         }
-        else if (_grounded && !groundHit)
+        else if (_grounded && !groundHit) // left the ground on this tick?
         {
             _grounded = false;
+            _timeLeftGround = _time;
         }
         Physics2D.queriesStartInColliders = _cachedQueriesStartInColliders;
     }
 
+    private bool HasBufferedJump => _time < _timeJumpPressed + _stats.JumpBuffer;
+    private bool CanUseCoyote => _coyoteUsable && !_grounded && _time < _timeLeftGround + _stats.CoyoteTime;
+
     private void HandleJump()
     {
-        if (!_jumpToConsume) return;
-        if (_grounded) ExecuteJump();
+        if (!_endedJumpEarly && !_grounded && !_input.JumpHeld && _velocity.y > 0f)
+        {
+            _endedJumpEarly = true;
+        }
+        if (!_jumpToConsume && !HasBufferedJump) return;
+        if (_grounded || CanUseCoyote) ExecuteJump();
         _jumpToConsume = false;
     }
 
     private void ExecuteJump()
     {
+        _endedJumpEarly = false;
+        _timeJumpPressed = float.MinValue;
+        _coyoteUsable = false;
         _velocity.y = _stats.JumpPower;
     }
 
@@ -121,6 +139,10 @@ public class PlatformerController : MonoBehaviour
         else
         {
             float gravity = _stats.FallAcceleration;
+            if (_endedJumpEarly && _velocity.y > 0f)
+            {
+                gravity *= _stats.EndJumpEarlyGravityModifier;
+            }
             _velocity.y = Mathf.MoveTowards(_velocity.y, -(_stats.MaxFallSpeed), gravity * Time.fixedDeltaTime);
         }
     }
