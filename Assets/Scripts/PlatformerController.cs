@@ -1,5 +1,6 @@
 using System;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
@@ -15,6 +16,7 @@ public class PlatformerController : MonoBehaviour
     private float _time;
     private float _timeLeftGround = float.MinValue;
     private float _timeJumpPressed = float.MinValue;
+    public bool HasControl = true;
     private bool _grounded;
     private bool _cachedQueriesStartInColliders;
     private bool _jumpToConsume = true;
@@ -44,6 +46,12 @@ public class PlatformerController : MonoBehaviour
 
     private void ReadInput()
     {
+        if (!HasControl)
+        {
+            _input = default;
+            _jumpToConsume = false;
+            return;
+        }
         _input = new FrameInput
         {
           JumpDown = Input.GetButtonDown("Jump"),
@@ -55,6 +63,16 @@ public class PlatformerController : MonoBehaviour
             _jumpToConsume = true;
             _timeLeftGround = _time;
         }
+    }
+
+    // Reset the values that were stored before we swapped.
+    private void OnEnable()
+    {
+        _velocity = _rb.velocity;
+        _grounded = false;
+        _coyoteUsable = false;
+        _jumpToConsume = false;
+        _endedJumpEarly = false;
     }
 
     private void FixedUpdate()
