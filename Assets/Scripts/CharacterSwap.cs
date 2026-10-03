@@ -1,47 +1,93 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterSwap : MonoBehaviour
 {
-    [SerializeField] private Character _a;
-    [SerializeField] private Character _b;
-    [SerializeField] private KeyCode _swapKey = KeyCode.Tab;
+    [SerializeField] private Character _girl;
+    [SerializeField] private Character _ghost;
+    [SerializeField] private PlatformerController _girlController;
+    [SerializeField] private CompanionFollow _ghostFollow;
     [SerializeField] private CameraFollow _cam;
+    [SerializeField] private Keybinds _keys;
 
-    [Header("Respawn B after platform disappears")]
-    [SerializeField] private float _respawnDelay = 1f;
-    [SerializeField] private Vector2 _respawnOffset = new Vector2(-1.2f, 1.2f);
+    [Header("Ghost swap flight from shoulder")]
+    [SerializeField] private float _deployTime = 0.25f;
+    [SerializeField] private Vector2 _deployOffset = new Vector2(1.4f, 0f);
+
+    [Header("Cooldown after platform expiry")]
+    [SerializeField] private float _swapCooldown = 1f;
 
     private Character _active;
+    private CharState _ghostPrev = CharState.Following;
 
-    private void OnEnable() => _b.StateChanged += OnBStateChanged;
-    private void OnDisable() => _b.StateChanged -= OnBStateChanged;
+    private bool _deploying;
+    private float _deployLeft; // nnednto count down while ghost is deploying from shoulder area.
+    private Vector2 _deployFrom;
+    private Vector2 _deployTo;
+    
+    private float _cooldownLeft; // counmt down after the platform expires.
+
+    private void OnEnable() => _ghost.StateChanged += OnGhostStateChanged;
+    private void OnDisable() => _ghost.StateChanged -= OnGhostStateChanged;
 
     private void Start()
     {
-        _b.Enter(CharState.Following);
-        GiveControlTo(_a);
+        _ghost.Enter(CharState.Following);
+        GiveControlTo(_girl);
     }
 
     private void Update()
     {
-        if (!Input.GetKeyDown(_swapKey)) return;
+        if (_cooldownLeft > 0f) _cooldownLeft -= Time.deltaTime;
 
-        if (_active == _a)
+        if (_deploying)
         {
-            // B cant take over while platform
-            bool bBusy = _b.State == CharState.Platform
-                      || _b.State == CharState.Despawned;
-            if (bBusy) return;
-            _a.Enter(CharState.Idle);
-            GiveControlTo(_b);
+            TickDeploy();
+            return;
         }
-        else
+
+        if (!Input.GetKeyDown(_keys.Swap)) return;
+
+        if (_active == _girl) TryStartDeploy();
+        else SwapBackToGirl();
+    }
+
+    private void TryStartDeploy()
+    {
+        if (_cooldownLeft > 0f) return;
+        if(_ghost.State == CharState.Platform) return;
+
+        _girl.Enter(CharState.Idle);
+        _ghost.Enter(CharState.Deploying);
+
+        _deployFrom = _ghost.transform.position;
+        Vector2 offset = _deployOffset;
+        offset.x *= _girlController.Facing;
+        _deployTo = (Vector2)_girl.transform.position + offset;
+
+        _deployLeft = _deployTime;
+        _deploying = true;
+        if (_cam != null) _cam.SetTarget(_ghost.transform);
+    }
+
+    private void TickDeploy()
+    {
+        _deployLeft -= Time.deltaTime;
+
+        float t = _deployTime <= 0f ? 1f : (1f - Mathf.Max(_deployLeft, 0f) / _deployTime);
+        _ghost.transform.position = Vector2.Lerp(_deployFrom, _deployTo, t);
+
+        if (_deployLeft <= 0f)
         {
-            _b.Enter(CharState.Following);
-            GiveControlTo(_a);
+            _deploying = false;
+            GiveControlTo(_ghost);
         }
+    }
+
+    private void SwapBackToGirl()
+    {
+        _ghost.Enter(CharState.Following);
+        GiveControlTo(_girl);
     }
 
     private void GiveControlTo(Character c)
@@ -51,19 +97,18 @@ public class CharacterSwap : MonoBehaviour
         if (_cam != null) _cam.SetTarget(c.transform);
     }
 
-    private void OnBStateChanged(Character b, CharState s)
+    private void OnGhostStateChanged(Character ghost, CharState s)
     {
-        // B just froze into a platform: the player needs a body that can move
-        if (s == CharState.Platform && _active == _b) GiveControlTo(_a);
+        // When ghost freezes, pass back to girl to control.
+        if (s == CharState.Platform &&  _active == _ghost) GiveControlTo(_girl);
 
-        if (s == CharState.Despawned) StartCoroutine(RespawnB());
-    }
-
-    private IEnumerator RespawnB()
-    {
-        yield return new WaitForSeconds(_respawnDelay);
-
-        _b.transform.position = (Vector2)_a.transform.position + _respawnOffset;
-        _b.Enter(CharState.Following);
+        // Platform expired snap back to girl and begin the cooldown.
+        if (_ghostPrev == CharState.Platform && s == CharState.Following)
+        {
+            _ghostFollow.Snap();
+            _cooldownLeft = _swapCooldown;
+        }
+        _ghostPrev = s;
     }
 }
+    

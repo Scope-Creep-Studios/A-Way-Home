@@ -41,7 +41,6 @@ public class Character : MonoBehaviour
         bool isPlatform = s == CharState.Platform;
         bool runsMotor = s == CharState.Controlled || s == CharState.Idle;
         bool inWorld = runsMotor || isPlatform;
-        bool isVisible = s != CharState.Despawned;
 
         // physics body
         _rb.bodyType = isPlatform ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
@@ -49,22 +48,17 @@ public class Character : MonoBehaviour
         _rb.simulated = inWorld;
         gameObject.layer = isPlatform ? _platformLayer : _homeLayer;
 
-        // collider live
+        // live collider
         _bodyCollider.enabled = !isPlatform;
         if (_platformCollider != null) _platformCollider.enabled = isPlatform;
 
         // shown visual
-        if (_bodyVisual != null) _bodyVisual.SetActive(isVisible && !isPlatform);
+        if (_bodyVisual != null) _bodyVisual.SetActive(!isPlatform);
         if (_platformVisual != null) _platformVisual.SetActive(isPlatform);
 
-        // movement and abilities
+        // movement
         _controller.enabled = runsMotor;
         _controller.HasControl = s == CharState.Controlled;
-        foreach (MonoBehaviour ability in _abilities) 
-            if (ability != null) 
-            {
-                ability.enabled = s == CharState.Controlled;
-            }
         
         // tell any listeners that the state has changed
         StateChanged?.Invoke(this, s);

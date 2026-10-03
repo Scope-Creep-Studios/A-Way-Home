@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09ea7f3d73c51bc4e88459f16ce9eef9, type: 3}
-  m_Name: Keybinds
+  m_Name: Keys
   m_EditorClassIdentifier: 
   MoveLeft: 97
   MoveRight: 100
