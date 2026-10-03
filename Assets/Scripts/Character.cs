@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public enum CharState {Controlled, Idle, Following, Platform, Despawned}
+public enum CharState {Controlled, Idle, Following, Platform, Deploying}
 
 [RequireComponent(typeof(PlatformerController))]
 
@@ -16,11 +14,7 @@ public class Character : MonoBehaviour
     [Header("Platform form (Ghost only.)")]
     [SerializeField] private BoxCollider2D _platformCollider;
     [SerializeField] private string _platformLayerName = "Ground";
-
-    [Header("Abilities")]
-    [SerializeField] private MonoBehaviour[] _abilities;
     
-
     public CharState State {get; private set;}
     public BoxCollider2D PlatformCollider => _platformCollider;
     public event Action<Character, CharState> StateChanged;
