@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 880117467}
   - component: {fileID: 880117470}
   - component: {fileID: 880117468}
+  - component: {fileID: 880117471}
   m_Layer: 8
   m_Name: Ghost
   m_TagString: Untagged
@@ -836,6 +837,29 @@ MonoBehaviour:
   _blockedby:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &880117471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880117461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c40f999f06c3c47abf4ec28c98ab5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultAnimationCycle: []
+  Framerate: 12
+  SpriteRenderer: {fileID: 35810999}
+  character: {fileID: 880117467}
+  controller: {fileID: 880117463}
+  girlController: {fileID: 1895894738}
+  artFacesLeft: 1
+  ShoulderCycle: []
+  ShoulderFps: 8
+  ActiveCycle: []
+  ActiveFps: 10
 --- !u!1 &1257535604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1431,7 @@ GameObject:
   - component: {fileID: 1895894735}
   - component: {fileID: 1895894738}
   - component: {fileID: 1895894740}
+  - component: {fileID: 1895894741}
   m_Layer: 7
   m_Name: Girl
   m_TagString: Untagged
@@ -1523,6 +1548,43 @@ MonoBehaviour:
   _platformVisual: {fileID: 0}
   _platformCollider: {fileID: 0}
   _platformLayerName: Ground
+--- !u!114 &1895894741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895894734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138967e0221a12f429d3806d0da78abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultAnimationCycle: []
+  Framerate: 12
+  SpriteRenderer: {fileID: 1257535606}
+  controller: {fileID: 1895894738}
+  artFacesLeft: 1
+  IdleCycle:
+  - {fileID: -1506568864, guid: 0d97a8dce71845d49b8409e56c210b32, type: 3}
+  - {fileID: 1825548218, guid: f7700193e0b51344699fc53c908755e5, type: 3}
+  IdleFps: 8
+  RunCycle:
+  - {fileID: -2056918716, guid: f7700193e0b51344699fc53c908755e5, type: 3}
+  - {fileID: -1825429345, guid: f7700193e0b51344699fc53c908755e5, type: 3}
+  - {fileID: 908062199, guid: f7700193e0b51344699fc53c908755e5, type: 3}
+  - {fileID: 1311458223, guid: f7700193e0b51344699fc53c908755e5, type: 3}
+  - {fileID: 1562217453, guid: f7700193e0b51344699fc53c908755e5, type: 3}
+  - {fileID: -1755851290, guid: f7700193e0b51344699fc53c908755e5, type: 3}
+  RunFps: 12
+  AirborneCycle: []
+  AirborneFps: 8
+  JumpyJump:
+  - {fileID: -1688835610, guid: 0d97a8dce71845d49b8409e56c210b32, type: 3}
+  - {fileID: 1414449493, guid: 0d97a8dce71845d49b8409e56c210b32, type: 3}
+  - {fileID: -245512292, guid: 0d97a8dce71845d49b8409e56c210b32, type: 3}
+  - {fileID: 995316295, guid: 0d97a8dce71845d49b8409e56c210b32, type: 3}
+  - {fileID: 1285329436, guid: 0d97a8dce71845d49b8409e56c210b32, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

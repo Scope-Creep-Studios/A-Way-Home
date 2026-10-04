@@ -15,5 +15,5 @@ MonoBehaviour:
   MoveLeft: 97
   MoveRight: 100
   Jump: 32
-  Swap: 9
+  Swap: 324
   BecomePlatform: 323
