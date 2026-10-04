@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 
@@ -24,7 +23,7 @@ public class MovementStats : ScriptableObject
     [Tooltip("How fast we stop on the ground with no input")]
     public float GroundDeceleration = 60f;
     [Tooltip("How fast we stop in the air with no input")]
-    public float AirDeceleration = 3;
+    public float AirDeceleration = 30;
 
     [Header("Grounding and floor detection")]
     [Tooltip("Small constant downward force, solution to slopes")]

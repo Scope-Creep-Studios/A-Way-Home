@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ea7f3d73c51bc4e88459f16ce9eef9, type: 3}
+  m_Name: Keys
+  m_EditorClassIdentifier: 
+  MoveLeft: 97
+  MoveRight: 100
+  Jump: 32
+  Swap: 324
+  BecomePlatform: 323
