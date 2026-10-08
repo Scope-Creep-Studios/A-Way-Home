@@ -60,6 +60,8 @@ public class CharacterSwap : MonoBehaviour
         _girl.Enter(CharState.Idle);
         _ghost.Enter(CharState.Deploying);
 
+        //PLAY SFX 
+        AudioController.Instance.ForcePlay(SoundCategory.Ghost,0);
         _deployFrom = _ghost.transform.position;
         Vector2 offset = _deployOffset;
         offset.x *= _girlController.Facing;
