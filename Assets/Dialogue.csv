@@ -1,0 +1,21 @@
+Type,Name,State,Speaker,Dialogue
+Item,Collectible1,Intro,Girl,A tie? It's completely soaked!
+Item,Collectible1,Intro,Girl,Dad had one like this...I think.
+Item,Collectible1,Intro,Ghost,......
+Item,Collectible1,Intro,Ghost,That knot's wrong.
+Item,Collectible1,Intro,Girl,What?
+Item,Collectible1,Intro,Ghost,The knot.
+Item,Collectible1,Intro,Ghost,This part should go underneath.
+Item,Collectible1,Intro,Girl,Wait...You know how to tie one?
+Item,Collectible1,Intro,Ghost,Apparently.
+Item,Collectible1,Intro,Girl,Huh?
+Item,Collectible1,Intro,Girl,Since when do cats know how to tie a tie?!
+Item,Collectible1,Intro,Ghost,I don't.
+Item,Collectible1,Intro,Ghost,I just do.
+Item,Collectible1,Intro,Girl,...Weirdo.
+
+
+Item,Collectible2,Level1,Girl,Do you remember this?
+Item,Collectible2,Level1,Ghost,Yes
+Door,Door1,MissingKey,Girl,I must've missed something.
+Door,Door1,MissingKey,Girl,Maybe I should look around again.
