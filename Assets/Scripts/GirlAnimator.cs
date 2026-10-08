@@ -35,8 +35,15 @@ public class GirlAnimator : AnimatedEntity
         }
         else if (grounded)
         {
-            if (controller.MoveX != 0f) SetCycle(RunCycle, RunFps);
-            else SetCycle(IdleCycle, IdleFps);
+            if (controller.MoveX != 0f)
+            { 
+                SetCycle(RunCycle, RunFps);
+                if (index == 1 || index == 4)
+                {
+                    AudioController.Instance.PlayRandom(SoundCategory.Footsteps);
+                }
+            }
+            else{ SetCycle(IdleCycle, IdleFps);}
         }
         else
         {

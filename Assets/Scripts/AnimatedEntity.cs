@@ -11,7 +11,7 @@ public class AnimatedEntity : MonoBehaviour
 
     private float animationTimer;
     private float animationTimerMax;
-    private int index;
+    public int index;
 
 
     private bool interruptFlag;
