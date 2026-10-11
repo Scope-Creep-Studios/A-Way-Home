@@ -17,6 +17,12 @@ public class CharacterSwap : MonoBehaviour
     [Header("Cooldown after platform expiry")]
     [SerializeField] private float _swapCooldown = 1f;
 
+    [Header("UI Objects")]
+    [SerializeField] private GameObject _girlUI;
+    [SerializeField] private GameObject _ghostUI;
+
+
+
     private Character _active;
     private CharState _ghostPrev = CharState.Following;
 
@@ -34,10 +40,20 @@ public class CharacterSwap : MonoBehaviour
     {
         _ghost.Enter(CharState.Following);
         GiveControlTo(_girl);
+        _ghostUI.SetActive(false);
     }
 
     private void Update()
     {
+        if (_active == _girl) {
+            _girlUI.SetActive(true);
+            _ghostUI.SetActive(false);
+        }
+        else {
+            _girlUI.SetActive(false);
+            _ghostUI.SetActive(true);
+        }
+        
         if (_cooldownLeft > 0f) _cooldownLeft -= Time.deltaTime;
 
         if (_deploying)
@@ -50,6 +66,7 @@ public class CharacterSwap : MonoBehaviour
 
         if (_active == _girl) TryStartDeploy();
         else SwapBackToGirl();
+
     }
 
     private void TryStartDeploy()

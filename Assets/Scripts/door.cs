@@ -29,7 +29,7 @@ public class door : MonoBehaviour
             {
                 doorCollider.enabled = false;
 
-                SceneManager.LoadScene(nextSceneName);
+                SceneManager.LoadScene("Level2");
             }
             else
             {

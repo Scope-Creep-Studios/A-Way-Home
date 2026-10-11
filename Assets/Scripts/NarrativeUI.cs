@@ -14,6 +14,11 @@ public class NarrativeUI : MonoBehaviour
     private DialogueSystem.DialogueEntry[] lines;
     private int currentLine;
 
+    [SerializeField]
+    private TMP_FontAsset GirlFont;
+    [SerializeField]
+    private TMP_FontAsset GhostFont;
+
     void Start()
     {
         narrativeBox.SetActive(false);
@@ -41,10 +46,13 @@ public class NarrativeUI : MonoBehaviour
         if (lines[currentLine].Speaker == "Girl")
         {
             girlDialogueBox.SetActive(true);
+            dialogueText.font = GirlFont;
+            
         }
         else if (lines[currentLine].Speaker == "Ghost")
         {
             spiritDialogueBox.SetActive(true);
+            dialogueText.font = GhostFont;
         }
     }
 
