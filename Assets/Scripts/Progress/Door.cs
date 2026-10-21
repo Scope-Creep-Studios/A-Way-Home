@@ -12,32 +12,66 @@ public class Door : MonoBehaviour
     public DialogueSystem dialogueSystem;
     public NarrativeUI narrativeUI;
 
-    private Collider2D doorCollider;
+    public GameObject interactText;
 
-    void Start()
+    private bool playerNearby = false;
+
+    private void Start()
     {
-        doorCollider = GetComponent<Collider2D>();
+        if (interactText != null)
+        {
+            interactText.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager gameManager = FindFirstObjectByType<GameManager>();
+            playerNearby = true;
 
-            if (gameManager.hasCollectible)
+            if (interactText != null)
             {
-                doorCollider.enabled = false;
+                interactText.SetActive(true);
+            }
+        }
+    }
 
-                SceneManager.LoadScene("Level2");
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerNearby = false;
+
+            if (interactText != null)
+            {
+                interactText.SetActive(false);
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (playerNearby && Input.GetKeyDown(KeyCode.E))
+        {
+            if (narrativeUI != null &&
+                narrativeUI.narrativeBox.activeSelf)
+            {
+                return;
+            }
+
+            GameManager gameManager =
+                FindFirstObjectByType<GameManager>();
+
+            if (gameManager != null && gameManager.hasCollectible)
+            {
+                SceneManager.LoadScene(nextSceneName);
             }
             else
             {
-                DialogueSystem.DialogueEntry[] dialogue = dialogueSystem.GetDialogue(
-                    "Door",
-                    doorName,
-                    gameState
-                );
+                DialogueSystem.DialogueEntry[] dialogue =
+                    dialogueSystem.GetDialogue(
+                        "Door", doorName, gameState);
 
                 narrativeUI.ShowNarrative(dialogue);
             }

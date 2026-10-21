@@ -22,6 +22,7 @@ public class CharacterSwap : MonoBehaviour
     [SerializeField] private GameObject _ghostUI;
 
     [SerializeField] private Respawn _girlRespawn;
+    [SerializeField] private NarrativeUI narrativeUI;
 
 
 
@@ -82,7 +83,8 @@ public class CharacterSwap : MonoBehaviour
             return;
         }
 
-        if (InputBlocker.Blocked) return;
+        if (InputBlocker.Blocked) return; // Me and Howe both worked on implementing input blocking. nothing wrong with keeping both implementations.
+        if (narrativeUI != null && narrativeUI.narrativeBox.activeSelf) return;
         if (!Input.GetKeyDown(_keys.Swap)) return;
 
         if (_active == _girl) TryStartDeploy();
