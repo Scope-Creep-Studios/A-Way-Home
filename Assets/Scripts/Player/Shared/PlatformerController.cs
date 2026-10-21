@@ -113,12 +113,15 @@ public class PlatformerController : MonoBehaviour
 
         if (!_grounded && groundHit) // landed on this tick
         {
+            if(_velocity.y<=-10){AudioController.Instance.PlayRandom(SoundCategory.Land);}
             _grounded = true;
             _endedJumpEarly = false;
             _coyoteUsable = true;
         }
         else if (_grounded && !groundHit) // left the ground on this tick
         {
+            
+            if(_velocity.y<=1f){AudioController.Instance.Play(SoundCategory.Footsteps,1);}
             _grounded = false;
             _timeLeftGround = _time;
         }

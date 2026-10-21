@@ -37,4 +37,8 @@ public class SoundGroup : MonoBehaviour
         source.clip=clips[Random.Range(0,clips.Length)];
         source.Play();
     }
+    public void FStop()
+    {
+        source.Stop();
+    }
 }
