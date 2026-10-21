@@ -21,6 +21,8 @@ public class CharacterSwap : MonoBehaviour
     [SerializeField] private GameObject _girlUI;
     [SerializeField] private GameObject _ghostUI;
 
+    [SerializeField] private NarrativeUI narrativeUI;
+
 
 
     private Character _active;
@@ -62,6 +64,7 @@ public class CharacterSwap : MonoBehaviour
             return;
         }
 
+        if (narrativeUI != null && narrativeUI.narrativeBox.activeSelf) return;
         if (!Input.GetKeyDown(_keys.Swap)) return;
 
         if (_active == _girl) TryStartDeploy();
