@@ -19,6 +19,7 @@ public class PlatformAbility : MonoBehaviour
     {
         if (_character.State == CharState.Controlled)
         {
+            if (InputBlocker.Blocked) return;
             bool pressed = Input.GetKeyDown(_keys.BecomePlatform);
             if (pressed && !SomethingInTheWay())
             {
