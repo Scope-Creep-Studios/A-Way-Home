@@ -1,0 +1,157 @@
+Speaker,DisplayName,Dialogue,Background,GirlState,DadState
+Narration,,"In the darkness beneath the river, an old tie sinks slowly through the water.",BLACK,Hidden,Hidden
+Narration,,"A shaft of light from somewhere above breaks through the surface, catching the faded diagonal stripes in the fabric.",,Hidden,Hidden
+Narration,,Then the current begins to reverse.,,Hidden,Hidden
+Narration,,"The water draws back the way it came. The soaked cloth slowly dries, and the silt clinging to it disappears with it.",,Hidden,Hidden
+Narration,,"By the time the sound of running water has faded completely, the tie is neatly folded in the bottom drawer of a wardrobe.",,Hidden,Hidden
+Narration,,"No sunlight ever reaches this far in. There are only a few shirts that rarely get worn, and the dry, stale smell of clothes left untouched for too long.",,Hidden,Hidden
+Narration,,From somewhere beyond the drawer comes the ticking of a clock.,,Hidden,Hidden
+Narration,,One second.,,Hidden,Hidden
+Narration,,Then another.,,Hidden,Hidden
+Narration,,The Old House on the Hill. Living Room.,BG01,Dim,Dim
+Narration,,"The rain has not started yet. Heavy clouds hang beyond the windows, pressing the distant woods into layer after layer of gray.",,Dim,Dim
+Narration,,8:41 AM.,,Dim,Dim
+Narration,,"A man in a gray sweater is crouched by the entryway, checking through the girl's backpack. His sleeves are casually pushed up to his elbows.",,Dim,Dim
+Narration,,"His canvas sneakers are already waiting by the door, the laces loosely tied. They look as though all they need is someone to step into them and leave.",,Dim,Dim
+Narration,,"The girl has had her coat on for some time. She sits on the shoe cabinet with an amusement park map in her arms, its folds worn soft from being opened and closed so many times.",,Dim,Dim
+Girl,Girl,"Dad, can you quit taking forever?",,Bright,Dim
+Girl,Girl,"If you keep messing around, we're gonna be late!",,Bright,Dim
+Dad,???,Then maybe stop bringing so much stuff.,,Dim,Bright
+Dad,???,Anything in that backpack that has nothing to do with the amusement park stays here.,,Dim,Bright
+Dad,???,"Remember the last time we went to the park? You brought three books, a broken flashlight, and a rock you picked up from who-knows-where.",,Dim,Bright
+Girl,Girl,It wasn't just some rock!,,Bright,Dim
+Girl,Girl,How does that not look like a rabbit?,,Bright,Dim
+Girl,Girl,And I fixed the flashlight. We might need it today.,,Bright,Dim
+Girl,Girl,What if the Ferris wheel stops when we're all the way at the top? At least we won't be stuck up there in the dark.,,Bright,Dim
+Narration,,The man takes the flashlight out of the bag and clicks the switch.,,Dim,Dim
+Narration,,"A weak beam flickers twice, then dies.",,Dim,Dim
+Narration,,"The girl immediately snatches it back and shoves it deep into her backpack, moving with the kind of speed that suggests if she hides it well enough, it might still count as fixed.",,Dim,Dim
+Dad,???,All right. We'll call that fixed.,,Dim,Bright
+Dad,???,"But remember our deal. Once we get to the top, we're looking for our roof. First one to spot it wins.",,Dim,Bright
+Dad,???,And no peeking while I'm making sure the Ferris wheel is safe.,,Dim,Bright
+Girl,Girl,"You said you were ""making sure"" the cable car was safe last time.",,Bright,Dim
+Girl,Girl,You had your eyes shut the whole way.,,Bright,Dim
+Dad,???,You really had to remember that?,,Dim,Bright
+Girl,Girl,I'm not the one who backs out of a bet when I lose.,,Bright,Dim
+Narration,,The girl unfolds the map and points to the white Ferris wheel car she has circled in red.,,Dim,Dim
+Narration,,"Looking north from there, past the town and the woods, they should be able to see the hilltop clearly.",,Dim,Dim
+Narration,,"At least, that is what the man told her last night.",,Dim,Dim
+Narration,,"Just to make sure, she even cleaned their unreliable old binoculars twice.",,Dim,Dim
+Narration,,The man is about to fold the map again when the phone on the table suddenly buzzes.,,Dim,Dim
+Narration,,The keys beside it give a small rattle.,,Dim,Dim
+Narration,,He glances at the caller ID and leaves it unanswered.,,Dim,Dim
+Dad,???,Today's supposed to be my day off.,,Dim,Bright
+Narration,,It sounds as much like something he wants the girl to hear as it does a reminder meant for whoever is calling.,,Dim,Dim
+Narration,,"The buzzing stops, and the living room falls quiet again.",,Dim,Dim
+Narration,,"A few seconds later, the same name lights up the screen.",,Dim,Dim
+Narration,,He still does not reach for it.,,Dim,Dim
+Narration,,It is only when the third call comes that he finally picks up the phone under the girl's watchful gaze.,,Dim,Dim
+Dad,???,Hello...,,Dim,Bright
+Dad,???,This morning? But I already took the day off.,,Dim,Bright
+Dad,???,Bruce is still in the hospital?,,Dim,Bright
+Dad,???,"Yeah. I've got the backup for the proposal, but wasn't that meeting supposed to be next week?",,Dim,Bright
+Dad,???,...,,Dim,Bright
+Dad,???,All right. Tell them to give me a little time.,,Dim,Bright
+Dad,???,I'll be there in half an hour.,,Dim,Bright
+Narration,,"When the call ends, he keeps the darkened phone in his hand and stares toward the entryway.",,Dim,Dim
+Narration,,Two pairs of shoes sit side by side.,,Dim,Dim
+Narration,,One large.,,Dim,Dim
+Narration,,One small.,,Dim,Dim
+Narration,,"Their toes are pointed toward the door, still looking as though they are about to leave.",,Dim,Dim
+Narration,,The girl does not rush him or ask what happened.,,Dim,Dim
+Narration,,She only lowers her head and slowly folds the amusement park map along its old creases.,,Dim,Dim
+Dad,???,Something came up at work. The guy who was supposed to cover for me is still in the hospital.,,Dim,Bright
+Dad,???,"It shouldn't take too long. I'll be back before noon, and we can go this afternoon instead.",,Dim,Bright
+Girl,Girl,The forecast says it's supposed to start raining at noon.,,Bright,Dim
+Girl,Girl,And the sign at the park says they shut down the Ferris wheel if the wind gets too strong.,,Bright,Dim
+Girl,Girl,"You made me read that sign myself, remember?",,Bright,Dim
+Girl,Girl,"You said once I'd read the rules, you weren't allowed to change your mind when we got there.",,Bright,Dim
+Narration,,The man looks toward the window.,,Dim,Dim
+Narration,,"The rain has yet to fall, but there is already so little daylight left that the glass can barely hold a reflection.",,Dim,Dim
+Narration,,One excuse after another comes to him.,,Dim,Dim
+Narration,,He swallows each of them before it can leave his mouth.,,Dim,Dim
+Dad,???,Then... tomorrow?,,Dim,Bright
+Dad,???,No. You've got school tomorrow.,,Dim,Bright
+Dad,???,"Next Sunday, then. We'll leave early. Eight-thirty.",,Dim,Bright
+Dad,???,"That way even if I check everything twice, we'll still make it on time.",,Dim,Bright
+Girl,Girl,You said that last Sunday too...,,Bright,Dim
+Narration,,The girl folds the map once more.,,Dim,Dim
+Narration,,"The new crease cuts straight through the Ferris wheel printed across the middle of the page, and the white car circled in red disappears into the fold.",,Dim,Dim
+Narration,,The clock on the wall reaches 8:44.,,Dim,Dim
+Narration,,The hour they were supposed to leave is almost here.,,Dim,Dim
+Narration,,There is no point waiting for it now.,,Dim,Dim
+Dad,???,...I'm sorry.,,Dim,Bright
+Dad,???,I know you've been waiting a long time.,,Dim,Bright
+Dad,???,"I'm the one breaking the promise this time. It isn't the weather, and it isn't work, and it isn't the fault of the poor guy who happened to end up in the hospital today.",,Dim,Bright
+Dad,???,"Don't stay mad at me, all right?",,Dim,Bright
+Dad,???,Let me get back first. I'll figure out some way to make it up to you.,,Dim,Bright
+Dad,???,"Right now, though, I need to find that tie I haven't worn in about three hundred years.",,Dim,Bright
+Narration,,The Old House on the Hill. Bedroom.,BG02,Dim,Dim
+Narration,,The half-open wardrobe cuts off part of the dim daylight coming through the room.,,Dim,Dim
+Narration,,The gray sweater meant for their day out has been laid back on the bed. In its place is a freshly ironed white shirt.,,Dim,Dim
+Narration,,The man digs the tie out from the bottom of the wardrobe.,,Dim,Dim
+Narration,,"Its color has dulled with age, and the pattern looks as though it belongs to another time. It has been folded away for so long that a stubborn crease runs across the middle of the fabric.",,Dim,Dim
+Narration,,He loops it around his collar and tries to remember how to tie the knot he only ever needs on formal occasions.,,Dim,Dim
+Narration,,"The first time, he gets the wide and narrow ends the wrong way around.",,Dim,Dim
+Narration,,The second knot is so loose it barely holds its shape.,,Dim,Dim
+Narration,,"By the time he pulls it apart for the third time, the girl is standing in the doorway with the folded map in her arms.",,Dim,Dim
+Narration,,She has been watching him for a while.,,Dim,Dim
+Girl,Girl,Wide end goes on top. Then you bring it around the back.,,Bright,Dim
+Girl,Girl,Mom's shown you how to do this a million times.,,Bright,Dim
+Dad,???,She has.,,Dim,Bright
+Dad,???,I'm just terrible at remembering it.,,Dim,Bright
+Girl,Girl,You never forget stuff for work.,,Bright,Dim
+Narration,,"The man opens his mouth, ready to defend himself.",,Dim,Dim
+Narration,,"But no matter how he tries to phrase it, every answer he can think of only makes the girl sound more right.",,Dim,Dim
+Narration,,"In the end, he bends down and places both ends of the tie in her hands.",,Dim,Dim
+Dad,???,Then I guess I'm going to need your help.,,Dim,Bright
+Narration,,The girl does not answer.,,Dim,Dim
+Narration,,"Her hands are still too small to manage the tie easily. She grips the wide end first, then uses her other hand to draw the fabric through a little at a time.",,Dim,Dim
+Narration,,She gets it wrong halfway through.,,Dim,Dim
+Narration,,"Frowning, she pulls the knot apart and starts again, following the order she remembers.",,Dim,Dim
+Narration,,"The man keeps his head lowered and says nothing, with the solemnity of someone accepting a punishment he knows he has earned.",,Dim,Dim
+Narration,,"When she finally slides the knot up to his throat, she pulls a little harder than she means to.",,Dim,Dim
+Narration,,He coughs.,,Dim,Dim
+Narration,,"For once, he does not seize the opportunity to make one of his terrible jokes.",,Dim,Dim
+Girl,Girl,There.,,Bright,Dim
+Girl,Girl,"It's still a little crooked, though.",,Bright,Dim
+Girl,Girl,Don't move. I'll do it again.,,Bright,Dim
+Dad,???,No. We're out of time.,,Dim,Bright
+Dad,???,You can barely tell.,,Dim,Bright
+Girl,Girl,I can tell.,,Bright,Dim
+Narration,,The man looks into the mirror.,,Dim,Dim
+Narration,,"The silver backing has peeled away in patches with age, and one of them happens to obscure his expression, leaving only the tie knot below, tilted slightly to the left.",,Dim,Dim
+Narration,,He lifts a hand as though to straighten it.,,Dim,Dim
+Narration,,"In the end, he leaves it untouched.",,Dim,Dim
+Dad,???,Let's leave it.,,Dim,Bright
+Dad,???,"At least every time I see it, I'll remember I still owe you that Ferris wheel ride.",,Dim,Bright
+Narration,,The Old House on the Hill. Entryway.,BG03,Dim,Dim
+Narration,,Rain has begun to fall outside.,,Dim,Dim
+Narration,,The man changes into a pair of black dress shoes he rarely wears and picks up his briefcase.,,Dim,Dim
+Narration,,"Before leaving, he checks the windows as he always does, then moves the umbrella the girl left by the door back into the stand.",,Dim,Dim
+Dad,???,Don't go out by yourself today.,,Dim,Bright
+Dad,???,"If the rain gets bad, go upstairs and stay with Mom. And don't go anywhere near the river.",,Dim,Bright
+Dad,???,"I know you've heard all this before, and I know you hate it when I treat you like a little kid.",,Dim,Bright
+Dad,???,"But no matter how tall you get, I'm probably going to keep saying it.",,Dim,Bright
+Girl,Girl,That's the fourth time you've said it.,,Bright,Dim
+Dad,???,All right. Message received.,,Dim,Bright
+Dad,???,I'll try to be back before noon.,,Dim,Bright
+Dad,???,"If the rain lets up, maybe we can still make it before they shut the Ferris wheel down.",,Dim,Bright
+Narration,,The girl looks down at the map in her arms and says nothing.,,Dim,Dim
+Narration,,"The man reaches out to ruffle her hair, but his hand stops halfway.",,Dim,Dim
+Narration,,"Instead, he smooths down the strap of her backpack where it has folded over.",,Dim,Dim
+Narration,,Only then does he open the door.,,Dim,Dim
+Narration,,"Damp wind spills into the entryway, lifting one corner of the map.",,Dim,Dim
+Dad,???,Wait for me.,,Dim,Bright
+Narration,,The man turns and walks out into the rain.,,Dim,Dim
+Narration,,"Just as the door is about to close, the narrow end of his tie slips free from behind the knot.",,Dim,Dim
+Narration,,The knot was crooked to begin with.,,Dim,Dim
+Narration,,Now it sits a little farther off-center.,,Dim,Dim
+Narration,,The girl notices.,,Dim,Dim
+Narration,,She could call him back.,,Dim,Dim
+Narration,,"All she has to do is tell him his tie is crooked again, and he would come back for a few more seconds.",,Dim,Dim
+Narration,,But she is still angry.,,Dim,Dim
+Narration,,"For a moment, the words linger at the edge of her tongue.",,Dim,Dim
+Narration,,Then they disappear with the narrowing gap of the door.,,Dim,Dim
+Narration,,"At nine o'clock, the minute hand reaches the top of the clock.",,Dim,Dim
+Narration,,"By the door, only the sneakers meant to leave with him are still waiting.",,Dim,Dim
