@@ -7,6 +7,8 @@ public enum SoundCategory
     Falling,
     Land,
     Ghost,
-    Music
+    Music,
+
+    GhostSteps
 
 }

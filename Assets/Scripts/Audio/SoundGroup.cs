@@ -41,4 +41,16 @@ public class SoundGroup : MonoBehaviour
     {
         source.Stop();
     }
+    public void InvokeStop(float delay)
+    {
+        Invoke(nameof(FStop),delay);
+    }
+    public void MuteSelf()
+    {
+        source.mute = true;
+    }
+    public void UnmuteSelf()
+    {
+        source.mute = false;
+    }
 }

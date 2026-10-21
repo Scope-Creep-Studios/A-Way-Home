@@ -46,5 +46,17 @@ public class AudioController : MonoBehaviour
         {
          groups[category].FStop();
         }
+        public void StopAfter(SoundCategory category, float delay)
+        {
+         groups[category].InvokeStop(delay);
+        }
+        public void Mute(SoundCategory category)
+        {
+        groups[category].MuteSelf();
+        }
+        public void Unmute(SoundCategory category)
+        {
+        groups[category].UnmuteSelf();
+        }
     }
 

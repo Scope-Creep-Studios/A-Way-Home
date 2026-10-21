@@ -50,6 +50,7 @@ public class GirlAnimator : AnimatedEntity
         else
         {
             SetCycle(AirborneCycle, AirborneFps); 
+            AudioController.Instance.Play(SoundCategory.Falling,0);
         }
         wasGrounded = grounded;
 
