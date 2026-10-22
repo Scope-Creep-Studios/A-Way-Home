@@ -36,6 +36,15 @@ public class PlatformerController : MonoBehaviour
         public float X;
     }
 
+    public void Teleport(Vector2 position)
+    {
+        transform.position = position;
+        _rb.position = position;
+        _rb.velocity = Vector2.zero;
+        _velocity = Vector2.zero;
+        _grounded = false; // need to re-detect the ground or weird shit happens.
+    }
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -61,7 +70,7 @@ public class PlatformerController : MonoBehaviour
 
     private void ReadInput()
     {
-        if (!HasControl)
+        if (!HasControl || InputBlocker.Blocked)
         {
             _input = default;
             _jumpToConsume = false;
@@ -185,4 +194,5 @@ public class PlatformerController : MonoBehaviour
     }
 
     private void ApplyMovement() => _rb.velocity = _velocity;
+
 }

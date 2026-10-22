@@ -21,6 +21,9 @@ public class CharacterSwap : MonoBehaviour
     [SerializeField] private GameObject _girlUI;
     [SerializeField] private GameObject _ghostUI;
 
+    [SerializeField] private Respawn _girlRespawn;
+    [SerializeField] private NarrativeUI narrativeUI;
+
 
 
     private Character _active;
@@ -33,8 +36,26 @@ public class CharacterSwap : MonoBehaviour
     
     private float _cooldownLeft; // counmt down after the platform expires.
 
-    private void OnEnable() => _ghost.StateChanged += OnGhostStateChanged;
-    private void OnDisable() => _ghost.StateChanged -= OnGhostStateChanged;
+        public void RecallGhost()
+    {
+        _deploying = false;
+        if (_ghost.State != CharState.Following) _ghost.Enter(CharState.Following);
+        _ghostFollow.Snap();
+        if (_active != _girl) GiveControlTo(_girl);
+    }
+
+    private void OnEnable()
+    {
+        _ghost.StateChanged += OnGhostStateChanged;
+        _girlRespawn.Respawned += RecallGhost;
+    }
+
+    private void OnDisable()
+    {
+        _ghost.StateChanged -= OnGhostStateChanged;
+        _girlRespawn.Respawned -= RecallGhost;
+    }
+
 
     private void Start()
     {
@@ -62,6 +83,8 @@ public class CharacterSwap : MonoBehaviour
             return;
         }
 
+        if (InputBlocker.Blocked) return; // Me and Howe both worked on implementing input blocking. nothing wrong with keeping both implementations.
+        if (narrativeUI != null && narrativeUI.narrativeBox.activeSelf) return;
         if (!Input.GetKeyDown(_keys.Swap)) return;
 
         if (_active == _girl) TryStartDeploy();

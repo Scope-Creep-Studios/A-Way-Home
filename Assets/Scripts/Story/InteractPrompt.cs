@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class InteractPrompt : MonoBehaviour
 {
     public TMP_Text text;
+    public float flashSpeed = 1.5f;
+    public float minAlpha = 0.45f;
+    public float maxAlpha = 1f;
 
     void Update()
     {
-        float t = (Mathf.Sin(Time.time * 2f) + 1f) / 2f;
+        if (text == null) return;
 
-        text.alpha = Mathf.Lerp(0.5f, 1f, t);
-
-        float scale = Mathf.Lerp(0.9f, 1.05f, t);
-        transform.localScale = new Vector3(scale, scale, 1f);
+        float t = Mathf.PingPong(Time.time * flashSpeed, 1f);
+        text.alpha = Mathf.Lerp(minAlpha, maxAlpha, t);
     }
 }

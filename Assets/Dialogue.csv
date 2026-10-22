@@ -13,8 +13,8 @@ Item,Collectible1,Intro,Girl,Since when do cats know how to tie a tie?!
 Item,Collectible1,Intro,Ghost,I don't.
 Item,Collectible1,Intro,Ghost,I just do.
 Item,Collectible1,Intro,Girl,...Weirdo.
-
-
+Item,Collectible1,Intro,Ghost,Wait... what's...
+,,,,
 Item,Collectible2,Level1,Girl,Do you remember this?
 Item,Collectible2,Level1,Ghost,Yes
 Door,Door1,MissingKey,Girl,I must've missed something.
