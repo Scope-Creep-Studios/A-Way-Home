@@ -23,6 +23,7 @@ public class PlatformAbility : MonoBehaviour
             bool pressed = Input.GetKeyDown(_keys.BecomePlatform);
             if (pressed && !SomethingInTheWay())
             {
+                AudioController.Instance.ForcePlay(SoundCategory.Ghost,2);
                 _timeLeft = _lifetime;
                 _character.Enter(CharState.Platform);
             }
@@ -30,6 +31,11 @@ public class PlatformAbility : MonoBehaviour
         else if (_character.State == CharState.Platform)
         {
             _timeLeft -= Time.deltaTime;
+            if(_timeLeft >= 1.19f && _timeLeft <=1.2f )
+            {
+                AudioController.Instance.ForcePlay(SoundCategory.Ghost,3);
+            }
+            
             if (_timeLeft <= 0f) _character.Enter(CharState.Following);
         }
     }

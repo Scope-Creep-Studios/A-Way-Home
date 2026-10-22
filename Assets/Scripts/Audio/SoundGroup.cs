@@ -12,7 +12,6 @@ public class SoundGroup : MonoBehaviour
     public bool TryPlayRandom()
     {
         int index = Random.Range(0,clips.Length);
-        Debug.Log(clips.Length + " " + index);
         if (source.isPlaying){return false;}
         source.clip=clips[index];
         source.Play();
@@ -20,7 +19,10 @@ public class SoundGroup : MonoBehaviour
     }
     public bool TryPlay(int index)
     {
-        
+        if (index == 2)
+        {
+            Debug.Log("success!");
+        }
         if (source.isPlaying){return false;}
         source.clip=clips[index];
         source.Play();

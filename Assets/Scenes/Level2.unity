@@ -251,7 +251,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
   source: {fileID: 46648087}
   category: 5
   clips:
-  - {fileID: 8300000, guid: 542f6a43f3abc6745a9f6a7420f3c8be, type: 3}
+  - {fileID: 8300000, guid: 954520e7cd95a3b40af658e097ddfc2d, type: 3}
 --- !u!1 &76009779
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,6 +898,7 @@ MonoBehaviour:
   nextSceneName: Level1
   dialogueSystem: {fileID: 509936878}
   narrativeUI: {fileID: 1636167364}
+  interactText: {fileID: 0}
 --- !u!61 &143638346
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1677,6 +1678,8 @@ MonoBehaviour:
   _swapCooldown: 1
   _girlUI: {fileID: 528492649}
   _ghostUI: {fileID: 797096707}
+  _girlRespawn: {fileID: 0}
+  narrativeUI: {fileID: 0}
 --- !u!4 &403616698
 Transform:
   m_ObjectHideFlags: 0
@@ -2979,6 +2982,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 0dad1e82d7b1e574bb43856d97fecbaf, type: 3}
   - {fileID: 8300000, guid: 311b993218b68c649a26243b140e0116, type: 3}
+  - {fileID: 8300000, guid: a6ecc836435bfa845b37f973fdfcf912, type: 3}
 --- !u!82 &713769459
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4898,6 +4902,8 @@ MonoBehaviour:
   girlDialogueBox: {fileID: 367688110}
   spiritDialogueBox: {fileID: 1532458993}
   dialogueText: {fileID: 172676265}
+  girl: {fileID: 0}
+  ghost: {fileID: 0}
   GirlFont: {fileID: 11400000, guid: 087e5888cf8ffc9408cb9e0169d39015, type: 2}
   GhostFont: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
 --- !u!114 &1636167365
@@ -5774,6 +5780,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1844475431}
+  flashSpeed: 1.5
+  minAlpha: 0.45
+  maxAlpha: 1
 --- !u!114 &1844475431
 MonoBehaviour:
   m_ObjectHideFlags: 0
