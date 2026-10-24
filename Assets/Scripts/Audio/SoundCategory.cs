@@ -4,6 +4,11 @@ public enum SoundCategory
 {
     Footsteps,
     Jump,
-    Ghost
+    Falling,
+    Land,
+    Ghost,
+    Music,
+
+    GhostSteps
 
 }
