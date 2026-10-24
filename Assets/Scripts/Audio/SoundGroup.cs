@@ -12,7 +12,6 @@ public class SoundGroup : MonoBehaviour
     public bool TryPlayRandom()
     {
         int index = Random.Range(0,clips.Length);
-        Debug.Log(clips.Length + " " + index);
         if (source.isPlaying){return false;}
         source.clip=clips[index];
         source.Play();
@@ -20,7 +19,10 @@ public class SoundGroup : MonoBehaviour
     }
     public bool TryPlay(int index)
     {
-        
+        if (index == 2)
+        {
+            Debug.Log("success!");
+        }
         if (source.isPlaying){return false;}
         source.clip=clips[index];
         source.Play();
@@ -36,5 +38,21 @@ public class SoundGroup : MonoBehaviour
     {
         source.clip=clips[Random.Range(0,clips.Length)];
         source.Play();
+    }
+    public void FStop()
+    {
+        source.Stop();
+    }
+    public void InvokeStop(float delay)
+    {
+        Invoke(nameof(FStop),delay);
+    }
+    public void MuteSelf()
+    {
+        source.mute = true;
+    }
+    public void UnmuteSelf()
+    {
+        source.mute = false;
     }
 }

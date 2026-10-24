@@ -19,9 +19,16 @@ public class GhostAnimator : AnimatedEntity
     {
         bool controlled = character.State == CharState.Controlled;
 
-        if (controlled) SetCycle(ActiveCycle, ActiveFps);
-        else SetCycle(ShoulderCycle, ShoulderFps);
-
+        if (controlled)
+        {
+         SetCycle(ActiveCycle, ActiveFps);
+                if (index == 0 || index == 4)
+                {
+                    AudioController.Instance.PlayRandom(SoundCategory.GhostSteps);
+                }
+        }
+        else{SetCycle(ShoulderCycle, ShoulderFps);
+        }
         int facing = controlled ? controller.Facing : girlController.Facing;
         SetFlip(artFacesLeft ? facing > 0 : facing < 0);
 

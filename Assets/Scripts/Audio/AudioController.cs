@@ -20,7 +20,13 @@ public class AudioController : MonoBehaviour
             groups.Add(group.Category,group);
         }
     }
-        public bool Play(SoundCategory category,int index)
+
+    void Update()
+    {
+        
+        Play(SoundCategory.Music,0);
+    }
+    public bool Play(SoundCategory category,int index)
         {
          return groups[category].TryPlay(index);
         }
@@ -35,6 +41,22 @@ public class AudioController : MonoBehaviour
         public void ForcePlayRandom(SoundCategory category)
         {
          groups[category].FPlayRandom();
+        }
+        public void Stop(SoundCategory category)
+        {
+         groups[category].FStop();
+        }
+        public void StopAfter(SoundCategory category, float delay)
+        {
+         groups[category].InvokeStop(delay);
+        }
+        public void Mute(SoundCategory category)
+        {
+        groups[category].MuteSelf();
+        }
+        public void Unmute(SoundCategory category)
+        {
+        groups[category].UnmuteSelf();
         }
     }
 

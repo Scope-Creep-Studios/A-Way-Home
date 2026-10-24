@@ -30,6 +30,8 @@ public class GirlAnimator : AnimatedEntity
 
         if (wasGrounded && !grounded && controller.Velocity.y > 0f)
         {
+            AudioController.Instance.PlayRandom(SoundCategory.Jump);
+            
             SetCycle(AirborneCycle, AirborneFps);
             if (JumpyJump != null && JumpyJump.Count > 0) Interrupt(JumpyJump);
         }
@@ -48,6 +50,7 @@ public class GirlAnimator : AnimatedEntity
         else
         {
             SetCycle(AirborneCycle, AirborneFps); 
+            AudioController.Instance.Play(SoundCategory.Falling,0);
         }
         wasGrounded = grounded;
 
