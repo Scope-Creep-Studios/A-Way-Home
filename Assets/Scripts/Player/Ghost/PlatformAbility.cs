@@ -9,6 +9,7 @@ public class PlatformAbility : MonoBehaviour
     [SerializeField] private float _lifetime = 3f;
     [Tooltip("Add the girl's layer here so she cant be trapped inside the platform.")]
     [SerializeField] private LayerMask _blockedby;
+    [SerializeField] private GameObject _spiritPlatformUI;
 
     private Character _character;
     private float _timeLeft;
@@ -29,8 +30,14 @@ public class PlatformAbility : MonoBehaviour
         }
         else if (_character.State == CharState.Platform)
         {
+            _spiritPlatformUI.transform.localScale = new Vector3(_timeLeft * 2,0.3f,1f);
+            _spiritPlatformUI.transform.localPosition = new Vector3(_timeLeft - 6.42f, 7.4f, 10f);
             _timeLeft -= Time.deltaTime;
-            if (_timeLeft <= 0f) _character.Enter(CharState.Following);
+            if (_timeLeft <= 0f) {
+                _character.Enter(CharState.Following);
+                _spiritPlatformUI.transform.localScale = new Vector3(_lifetime * 2,0.3f,1f);
+                _spiritPlatformUI.transform.localPosition = new Vector3(_timeLeft - 3.42f, 7.4f, 10f);
+            }
         }
     }
 
