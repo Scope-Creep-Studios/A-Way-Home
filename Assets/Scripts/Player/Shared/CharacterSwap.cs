@@ -18,13 +18,16 @@ public class CharacterSwap : MonoBehaviour
     [SerializeField] private float _swapCooldown = 1f;
 
     [Header("UI Objects")]
-    [SerializeField] private GameObject _girlUI;
-    [SerializeField] private GameObject _ghostUI;
+    [SerializeField] private GameObject _girlUIActive;
+    [SerializeField] private GameObject _ghostUIActive;
+    [SerializeField] private GameObject _girlUIPassive;
+    [SerializeField] private GameObject _ghostUIPassive;
+
 
     [SerializeField] private Respawn _girlRespawn;
     [SerializeField] private NarrativeUI narrativeUI;
 
-
+    private SpriteRenderer _ghostUIPassiveSpriteRenderer;
 
     private Character _active;
     private CharState _ghostPrev = CharState.Following;
@@ -61,20 +64,31 @@ public class CharacterSwap : MonoBehaviour
     {
         _ghost.Enter(CharState.Following);
         GiveControlTo(_girl);
-        _ghostUI.SetActive(false);
+        _ghostUIPassiveSpriteRenderer = _ghostUIPassive.GetComponent<SpriteRenderer>();
+
     }
 
     private void Update()
     {
         if (_active == _girl) {
-            _girlUI.SetActive(true);
-            _ghostUI.SetActive(false);
+            _girlUIActive.SetActive(true);
+            _ghostUIActive.SetActive(false);
+            _girlUIPassive.SetActive(false);
+            _ghostUIPassive.SetActive(true);
         }
         else {
-            _girlUI.SetActive(false);
-            _ghostUI.SetActive(true);
+            _girlUIActive.SetActive(false);
+            _ghostUIActive.SetActive(true);
+            _girlUIPassive.SetActive(true);
+            _ghostUIPassive.SetActive(false);
         }
-        
+        if(_cooldownLeft > 0f || _ghost.State == CharState.Platform) {
+            _ghostUIPassiveSpriteRenderer.color = new Color(0.2f,0.2f,0.2f,0.6f);
+        }
+        else{
+            _ghostUIPassiveSpriteRenderer.color = new Color(0.8f,0.8f,0.8f,0.8f);
+        }
+
         if (_cooldownLeft > 0f) _cooldownLeft -= Time.deltaTime;
 
         if (_deploying)
