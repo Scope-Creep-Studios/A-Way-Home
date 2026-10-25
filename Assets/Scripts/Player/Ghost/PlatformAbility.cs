@@ -10,11 +10,17 @@ public class PlatformAbility : MonoBehaviour
     [Tooltip("Add the girl's layer here so she cant be trapped inside the platform.")]
     [SerializeField] private LayerMask _blockedby;
     [SerializeField] private GameObject _spiritPlatformUI;
+    [SerializeField] private float _nudgeStep = 0.05f;
 
     private Character _character;
+    private PlatformerController _controller;
     private float _timeLeft;
 
-    private void Awake() => _character = GetComponent<Character>();
+    private void Awake()
+    {
+        _character = GetComponent<Character>();
+        _controller = GetComponent<PlatformerController>();
+    }
 
     private void Update()
     {
@@ -22,8 +28,9 @@ public class PlatformAbility : MonoBehaviour
         {
             if (InputBlocker.Blocked) return;
             bool pressed = Input.GetKeyDown(_keys.BecomePlatform);
-            if (pressed && !SomethingInTheWay())
+            if (pressed && TryFindRoom(out Vector2 spot))
             {
+                if (spot != (Vector2)transform.position) _controller.Teleport(spot);
                 _timeLeft = _lifetime;
                 _character.Enter(CharState.Platform);
             }
@@ -41,10 +48,56 @@ public class PlatformAbility : MonoBehaviour
         }
     }
 
-    private bool SomethingInTheWay()
+    private bool TryFindRoom(out Vector2 spot)
     {
         BoxCollider2D box = _character.PlatformCollider;
-        Vector2 centre = (Vector2)transform.position + box.offset;
-        return Physics2D.OverlapBox(centre, box.size, 0f, _blockedby) != null;
+        Vector2 size = Vector2.Scale(box.size, transform.lossyScale);
+        Vector2 offset = Vector2.Scale(box.offset, transform.lossyScale);
+        Vector2 origin = transform.position;
+        float maxNudge = size.x * 0.5f;
+        float step = Mathf.Max(_nudgeStep, 0.01f);
+
+        for (float d = 0f; d <= maxNudge; d += step)
+        {
+            if (Fits(origin + Vector2.right * d, offset, size))
+            {
+                spot = origin + Vector2.right * d;
+                return true;
+            }
+            if (d > 0f && Fits(origin + Vector2.left * d, offset, size))
+            {
+                spot = origin + Vector2.left * d;
+                return true;
+            }
+        }
+
+        spot = origin;
+        return false;
+    }
+
+    private bool Fits(Vector2 position, Vector2 offset, Vector2 size)
+    {
+        return Physics2D.OverlapBox(position + offset, size, 0f, _blockedby) == null;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (_character == null) _character = GetComponent<Character>();
+        BoxCollider2D box = _character.PlatformCollider;
+        if (box == null) return;
+
+        Vector2 size = Vector2.Scale(box.size, transform.lossyScale);
+        Vector2 offset = Vector2.Scale(box.offset, transform.lossyScale);
+        Vector2 here = transform.position;
+
+        bool fitsHere = Fits(here, offset, size);
+        Gizmos.color = fitsHere ? Color.green : Color.red;
+        Gizmos.DrawWireCube(here + offset, size);
+
+        if (!fitsHere && TryFindRoom(out Vector2 spot))
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(spot + offset, size);
+        }
     }
 }

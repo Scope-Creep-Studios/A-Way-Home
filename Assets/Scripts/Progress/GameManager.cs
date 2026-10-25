@@ -5,4 +5,5 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool hasCollectible = false;
+    public bool isPulled = false;
 }

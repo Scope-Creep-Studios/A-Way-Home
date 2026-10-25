@@ -11,4 +11,7 @@ public class Keybinds : ScriptableObject
     [Header("Ghost")]
     public KeyCode Swap = KeyCode.Tab;
     public KeyCode BecomePlatform = KeyCode.Mouse0;
+
+    [Header("Interaction")]
+    public KeyCode Interact = KeyCode.E;
 }
