@@ -31,6 +31,7 @@ public class PlatformAbility : MonoBehaviour
             if (pressed && TryFindRoom(out Vector2 spot))
             {
                 if (spot != (Vector2)transform.position) _controller.Teleport(spot);
+                AudioController.Instance.ForcePlay(SoundCategory.Ghost,2);
                 _timeLeft = _lifetime;
                 _character.Enter(CharState.Platform);
             }
@@ -40,6 +41,10 @@ public class PlatformAbility : MonoBehaviour
             _spiritPlatformUI.transform.localScale = new Vector3(_timeLeft * 2,0.3f,1f);
             _spiritPlatformUI.transform.localPosition = new Vector3(_timeLeft - 6.42f, 7.4f, 10f);
             _timeLeft -= Time.deltaTime;
+            if(_timeLeft >= 1.19f && _timeLeft <=1.2f )
+            {
+                AudioController.Instance.ForcePlay(SoundCategory.Ghost,3);
+            }
             if (_timeLeft <= 0f) {
                 _character.Enter(CharState.Following);
                 _spiritPlatformUI.transform.localScale = new Vector3(_lifetime * 2,0.3f,1f);
