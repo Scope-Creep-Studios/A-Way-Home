@@ -16,7 +16,10 @@ public class GirlAnimator : AnimatedEntity
     public float AirborneFps = 8f;
     public List<Sprite> JumpyJump;
 
+    [SerializeField] private float airborneDelay = 0.08f;
+
     private bool wasGrounded;
+    private float _airTime;
 
     protected override void Start()
     {
@@ -28,6 +31,10 @@ public class GirlAnimator : AnimatedEntity
     {
         bool grounded = controller.Grounded;
 
+        if (grounded) _airTime = 0f;
+        else _airTime += Time.deltaTime;
+        bool looksGrounded = grounded || (_airTime < airborneDelay && controller.Velocity.y <= 0f);
+
         if (wasGrounded && !grounded && controller.Velocity.y > 0f)
         {
             AudioController.Instance.PlayRandom(SoundCategory.Jump);
@@ -35,7 +42,7 @@ public class GirlAnimator : AnimatedEntity
             SetCycle(AirborneCycle, AirborneFps);
             if (JumpyJump != null && JumpyJump.Count > 0) Interrupt(JumpyJump);
         }
-        else if (grounded)
+        else if (looksGrounded)
         {
             if (controller.MoveX != 0f)
             { 

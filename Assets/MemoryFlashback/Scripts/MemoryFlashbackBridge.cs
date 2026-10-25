@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MemoryFlashbackBridge : MonoBehaviour
 {
-    private const string Level2SceneName = "Level2-Visuals";
+    private const string Level2SceneName = "VerticalSlice";
     private const string FinalDialogueText = "Wait... what's...";
     private const string PrefabResourcePath = "MemoryFlashback/MemoryFlashbackRoot";
 

@@ -18,17 +18,18 @@ public class GhostAnimator : AnimatedEntity
     protected override void Update()
     {
         bool controlled = character.State == CharState.Controlled;
+        bool moving = controlled && controller.MoveX != 0f;
 
-        if (controlled)
+        if (moving)
         {
-         SetCycle(ActiveCycle, ActiveFps);
-                if (index == 0 || index == 4)
-                {
-                    AudioController.Instance.PlayRandom(SoundCategory.GhostSteps);
-                }
+            SetCycle(ActiveCycle, ActiveFps);
+            if (index == 0 || index == 4)
+            {
+                AudioController.Instance.PlayRandom(SoundCategory.GhostSteps);
+            }
         }
-        else{SetCycle(ShoulderCycle, ShoulderFps);
-        }
+        else SetCycle(ShoulderCycle, ShoulderFps);
+
         int facing = controlled ? controller.Facing : girlController.Facing;
         SetFlip(artFacesLeft ? facing > 0 : facing < 0);
 

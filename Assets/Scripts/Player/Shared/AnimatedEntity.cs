@@ -63,7 +63,7 @@ public class AnimatedEntity : MonoBehaviour
 
         if (animationTimer > animationTimerMax)
         {
-            animationTimer = 0;
+            animationTimer -= animationTimerMax;
             index++;
 
             if (!interruptFlag)
