@@ -13,6 +13,9 @@ public class Door : MonoBehaviour
     public NarrativeUI narrativeUI;
 
     public GameObject interactText;
+    public GameObject DoorPassive;
+
+    private GameManager gameManager;
 
     private bool playerNearby = false;
 
@@ -22,6 +25,8 @@ public class Door : MonoBehaviour
         {
             interactText.SetActive(false);
         }
+        DoorPassive.SetActive(true);
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -52,6 +57,10 @@ public class Door : MonoBehaviour
 
     private void Update()
     {
+        
+        if(gameManager.hasCollectible){
+            DoorPassive.SetActive(false);
+        }
         if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
             if (narrativeUI != null &&
@@ -60,8 +69,6 @@ public class Door : MonoBehaviour
                 return;
             }
 
-            GameManager gameManager =
-                FindFirstObjectByType<GameManager>();
 
             if (gameManager != null && gameManager.hasCollectible)
             {
