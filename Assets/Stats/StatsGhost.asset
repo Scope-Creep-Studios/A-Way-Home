@@ -15,16 +15,16 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 64
-  MaxSpeed: 8
-  Acceleration: 70
+  MaxSpeed: 9
+  Acceleration: 80
   GroundDeceleration: 60
   AirDeceleration: 50
   GroundingForce: -1.5
   GroundColDistance: 0.05
-  JumpPower: 8.5
-  MaxFallSpeed: 6
+  JumpPower: 10.5
+  MaxFallSpeed: 7
   FallAcceleration: 20
   EndJumpEarlyGravityModifier: 3
-  FallGravityMultiplier: 0.8
-  CoyoteTime: 0.15
+  FallGravityMultiplier: 1
+  CoyoteTime: 0.1
   JumpBuffer: 0.2

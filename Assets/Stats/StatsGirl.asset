@@ -26,5 +26,5 @@ MonoBehaviour:
   FallAcceleration: 80
   EndJumpEarlyGravityModifier: 3
   FallGravityMultiplier: 1.3
-  CoyoteTime: 0.15
+  CoyoteTime: 0.1
   JumpBuffer: 0.2
