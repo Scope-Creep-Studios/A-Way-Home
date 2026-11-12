@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum CharState {Controlled, Idle, Following, Platform, Deploying}
+public enum CharState {Controlled, Idle, Following, Platform, Travelling}
 
 [RequireComponent(typeof(PlatformerController))]
 
@@ -39,6 +39,7 @@ public class Character : MonoBehaviour
         State = s;
 
         bool isPlatform = s == CharState.Platform;
+        bool travelling = s == CharState.Travelling;
         bool runsMotor = s == CharState.Controlled || s == CharState.Idle;
         bool inWorld = runsMotor || isPlatform;
 
@@ -53,7 +54,7 @@ public class Character : MonoBehaviour
         if (_platformCollider != null) _platformCollider.enabled = isPlatform;
 
         // shown visual
-        if (_bodyVisual != null) _bodyVisual.SetActive(!isPlatform);
+        if (_bodyVisual != null) _bodyVisual.SetActive(!isPlatform && !travelling);
         if (_platformVisual != null) _platformVisual.SetActive(isPlatform);
 
         // movement
