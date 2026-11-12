@@ -8,7 +8,7 @@ public enum SoundCategory
     Land,
     Ghost,
     Music,
-
-    GhostSteps
-
+    GhostSteps,
+    Ui,
+    Checkpoint
 }

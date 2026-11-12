@@ -117,8 +117,8 @@ public class CharacterSwap : MonoBehaviour
         //PLAY SFX 
         AudioController.Instance.ForcePlay(SoundCategory.Ghost,0);
         
-        AudioController.Instance.Mute(SoundCategory.Footsteps);
-        AudioController.Instance.Mute(SoundCategory.Land);
+        //AudioController.Instance.Mute(SoundCategory.Footsteps);
+        //AudioController.Instance.Mute(SoundCategory.Land);
         _deployFrom = _ghost.transform.position;
         Vector2 offset = _deployOffset;
         offset.x *= _girlController.Facing;
