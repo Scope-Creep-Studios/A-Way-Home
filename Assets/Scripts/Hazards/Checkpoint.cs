@@ -28,6 +28,7 @@ public class Checkpoint : MonoBehaviour
     {
         ShowLit(true);
         Activated.Invoke();
+        AudioController.Instance.Play(SoundCategory.Checkpoint,0);
     }
 
     public void Deactivate() => ShowLit(false);

@@ -143,12 +143,9 @@ public class CharacterSwap : MonoBehaviour
         _girl.Enter(CharState.Idle);
         _ghost.Enter(CharState.Travelling);
 
-        //PLAY SFX 
+        //PLAY SFX
         AudioController.Instance.ForcePlay(SoundCategory.Ghost,0);
         
-        AudioController.Instance.Mute(SoundCategory.Footsteps);
-        AudioController.Instance.Mute(SoundCategory.Land);
-
         _inTransit = true;
         if (_cam != null && _orb != null) _cam.SetTarget(_orb.transform);
         Fly(from, () => deployTo, _deployTime, () => ArriveDeployed(deployTo));
