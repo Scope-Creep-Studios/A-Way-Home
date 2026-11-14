@@ -14,5 +14,6 @@ public class OneShotSwitch : Interactable
     {
         Used = true;
         if (_sprite != null && _usedSprite != null) _sprite.sprite = _usedSprite;
+        AudioController.Instance.Play(SoundCategory.Interactable,1);
     }
 }
