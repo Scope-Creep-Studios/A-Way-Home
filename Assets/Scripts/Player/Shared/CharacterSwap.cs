@@ -36,6 +36,7 @@ public class CharacterSwap : MonoBehaviour
     private PlatformAbility _ghostPlatform;
     private CapsuleCollider2D _ghostBody;
     private PlatformerController _ghostController;
+    private GhostAnimator _ghostAnimator;
     private CapsuleCollider2D _girlBody;
     private readonly RaycastHit2D[] _deployHits = new RaycastHit2D[8];
     private readonly Collider2D[] _deployOverlaps = new Collider2D[8];
@@ -69,6 +70,7 @@ public class CharacterSwap : MonoBehaviour
         _ghostBody = _ghost.GetComponent<CapsuleCollider2D>();
         _ghostController = _ghost.GetComponent<PlatformerController>();
         _girlBody = _girl.GetComponent<CapsuleCollider2D>();
+        _ghostAnimator = _ghost.GetComponent<GhostAnimator>();
     }
 
     private void OnEnable()
@@ -141,17 +143,24 @@ public class CharacterSwap : MonoBehaviour
 
         Vector2 from = _ghost.transform.position;
         _girl.Enter(CharState.Idle);
-        _ghost.Enter(CharState.Travelling);
 
-        //PLAY SFX 
-        AudioController.Instance.ForcePlay(SoundCategory.Ghost,0);
-        
+        // PLAY SFX
+        AudioController.Instance.ForcePlay(SoundCategory.Ghost, 0);
+
         AudioController.Instance.Mute(SoundCategory.Footsteps);
         AudioController.Instance.Mute(SoundCategory.Land);
 
         _inTransit = true;
-        if (_cam != null && _orb != null) _cam.SetTarget(_orb.transform);
-        Fly(from, () => deployTo, _deployTime, () => ArriveDeployed(deployTo));
+
+        _ghostAnimator.PlayDeploy(() =>
+        {
+            _ghost.Enter(CharState.Travelling);
+
+            if (_cam != null && _orb != null)
+                _cam.SetTarget(_orb.transform);
+
+            Fly(from, () => deployTo, _deployTime, () => ArriveDeployed(deployTo));
+        });
     }
 
     private void ArriveDeployed(Vector2 at)
@@ -165,14 +174,21 @@ public class CharacterSwap : MonoBehaviour
     {
         _ghost.Enter(CharState.Travelling);
         _inTransit = true;
+
         Fly(from, () => _ghostFollow.ShoulderPosition, _returnTime, ArriveHome);
     }
 
     private void ArriveHome()
     {
-        _inTransit = false;
-        _ghost.Enter(CharState.Following);
         _ghostFollow.Snap();
+        _ghost.Enter(CharState.Deploying);
+
+        _ghostAnimator.PlayReturn(() =>
+        {
+            _ghost.Enter(CharState.Following);
+            _ghostFollow.Snap();
+            _inTransit = false;
+        });
     }
 
     private void Fly(Vector2 from, Func<Vector2> to, float time, Action onArrive)
