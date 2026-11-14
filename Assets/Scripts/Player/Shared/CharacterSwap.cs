@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterSwap : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class CharacterSwap : MonoBehaviour
     [Header("Spirit orb")]
     [SerializeField] private SpiritOrb _orb;
     [SerializeField] private float _returnTime = 0.25f;
+
+    [Header("Ghost unlock")]
+    [SerializeField] private bool _startsWithGhost = true;
+    public UnityEvent GhostJoined;
 
     [Header("Cooldown after platform expiry")]
     [SerializeField] private float _swapCooldown = 1f;
@@ -44,11 +49,29 @@ public class CharacterSwap : MonoBehaviour
 
     private Character _active;
     private bool _inTransit;
+    private bool _hasGhost;
+    private bool _joining;
+
+    public bool HasGhost => _hasGhost;
     
     private float _cooldownLeft; // counmt down after the platform expires.
 
+    public void UnlockGhost(Transform from)
+    {
+        if (_hasGhost) return;
+        _hasGhost = true;
+        _joining = true;
+
+        Vector2 start = from != null ? (Vector2)from.position : _ghostFollow.ShoulderPosition;
+        _ghost.gameObject.SetActive(true);
+        _ghost.transform.position = start;
+        ReturnGhostToGirl(start);
+    }
+
     public void RecallGhost()
     {
+        if (!_hasGhost) return;
+
         bool orbWasFlying = _orb != null && _orb.IsFlying;
         Vector2 from = orbWasFlying ? (Vector2)_orb.transform.position : (Vector2)_ghost.transform.position;
         if (_orb != null) _orb.Cancel();
@@ -94,10 +117,21 @@ public class CharacterSwap : MonoBehaviour
         GiveControlTo(_girl);
         _ghostUIPassiveSpriteRenderer = _ghostUIPassive.GetComponent<SpriteRenderer>();
 
+        _hasGhost = _startsWithGhost;
+        if (!_hasGhost) _ghost.gameObject.SetActive(false);
     }
 
     private void Update()
     {
+        if (!_hasGhost)
+        {
+            _girlUIActive.SetActive(true);
+            _ghostUIActive.SetActive(false);
+            _girlUIPassive.SetActive(false);
+            _ghostUIPassive.SetActive(false);
+            return;
+        }
+
         if (_active == _girl) {
             _girlUIActive.SetActive(true);
             _ghostUIActive.SetActive(false);
@@ -188,6 +222,12 @@ public class CharacterSwap : MonoBehaviour
             _ghost.Enter(CharState.Following);
             _ghostFollow.Snap();
             _inTransit = false;
+
+            if (_joining)
+            {
+                _joining = false;
+                GhostJoined?.Invoke();
+            }
         });
     }
 
