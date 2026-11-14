@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum CharState {Controlled, Idle, Following, Platform, Travelling}
+public enum CharState {Controlled, Idle, Following, Platform, Travelling,Deploying}
 
 [RequireComponent(typeof(PlatformerController))]
 
