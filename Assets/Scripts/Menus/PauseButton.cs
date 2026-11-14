@@ -12,6 +12,8 @@ public class PauseButton : MonoBehaviour
     [SerializeField]
     private GameObject settingsMenu;
 
+    [SerializeField]
+    private MusicMuffler pauseMuffle;
     void Start(){
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
@@ -33,6 +35,10 @@ public class PauseButton : MonoBehaviour
     public void PauseGame(){
         pauseMenu.SetActive(true);
         pauseButton.SetActive(false);
+
+        pauseMuffle.SetMuffle(true);
+        AudioController.Instance.ForcePlayRandom(SoundCategory.Ui);
+
         paused = true;
         Time.timeScale = 0f;
     }
@@ -41,6 +47,10 @@ public class PauseButton : MonoBehaviour
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
         settingsMenu.SetActive(false);
+
+        
+        pauseMuffle.SetMuffle(false);
+        AudioController.Instance.ForcePlayRandom(SoundCategory.Ui);
         paused = false;
         Time.timeScale = 1f;
     }
@@ -48,10 +58,14 @@ public class PauseButton : MonoBehaviour
     public void OpenSettings(){
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(true);
+        
+        AudioController.Instance.ForcePlayRandom(SoundCategory.Ui);
     }
 
     public void CloseSettings(){
         pauseMenu.SetActive(true);
         settingsMenu.SetActive(false);
+        
+        AudioController.Instance.ForcePlayRandom(SoundCategory.Ui);
     }
 }
