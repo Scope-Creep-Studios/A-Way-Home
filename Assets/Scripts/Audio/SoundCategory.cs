@@ -10,5 +10,6 @@ public enum SoundCategory
     Music,
     GhostSteps,
     Ui,
-    Checkpoint
+    Checkpoint,
+    Interactable
 }
