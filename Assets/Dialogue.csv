@@ -19,3 +19,7 @@ Item,Collectible2,Level1,Girl,Do you remember this?
 Item,Collectible2,Level1,Ghost,Yes
 Door,Door1,MissingKey,Girl,I must've missed something.
 Door,Door1,MissingKey,Girl,Maybe I should look around again.
+
+
+Narrative,DarknessArea,FirstEntry,Girl,I can't see anything...
+Narrative,DarknessArea,FirstEntry,Ghost,Maybe I can see things that you can't.

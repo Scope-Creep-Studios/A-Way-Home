@@ -9,7 +9,34 @@ public class DarknessArea : MonoBehaviour
     public SpriteRenderer darknessRenderer;
     public float fadeDuration = 1.5f;
 
+    [Header("Dialogue Settings")]
+    public NarrativeUI narrativeUI;
+    public DialogueSystem dialogueSystem;
+
+    public string dialogueType = "Narrative";
+    public string dialogueName = "DarknessArea";
+    public string dialogueState = "FirstEntry";
+
     private bool isLit = false;
+    private bool hasTriggeredDialogue = false;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (hasTriggeredDialogue)
+            return;
+
+        if (other.CompareTag("Player"))
+        {
+            DialogueSystem.DialogueEntry[] dialogue =
+                dialogueSystem.GetDialogue(dialogueType, dialogueName, dialogueState);
+
+            if (dialogue.Length > 0)
+            {
+                hasTriggeredDialogue = true;
+                narrativeUI.ShowNarrative(dialogue);
+            }
+        }
+    }
 
     public void LightUp()
     {
