@@ -5,11 +5,8 @@ public class MusicMuffler : MonoBehaviour
 {
     [SerializeField] private AudioLowPassFilter targetFilter;
 
-    public void SetMuffle(bool isMuffled)
-    {
-        if (targetFilter != null)
-        {
-            targetFilter.enabled = isMuffled;
-        }
-    }
+    public float open = 20000f;
+    public float smoothTime = 0.3f;
+
+    targetFilter.setcut
 }

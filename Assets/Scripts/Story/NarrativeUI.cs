@@ -30,6 +30,8 @@ public class NarrativeUI : MonoBehaviour
     [SerializeField]
     private TMP_FontAsset GhostFont;
 
+    public MusicMuffler dialogueMuffler;
+
     void Start()
     {
         narrativeBox.SetActive(false);
@@ -70,6 +72,7 @@ public class NarrativeUI : MonoBehaviour
             ghostController.HasControl = false;
         }
 
+        dialogueMuffler.SetMuffle(true);
         narrativeBox.SetActive(true);
         ShowCurrentLine();
         waitForKeyRelease = true;
@@ -130,6 +133,8 @@ public class NarrativeUI : MonoBehaviour
 
             if (currentLine >= lines.Length)
             {
+                
+                dialogueMuffler.SetMuffle(false);
                 // Close dialogue
                 narrativeBox.SetActive(false);
                 girlDialogueBox.SetActive(false);
