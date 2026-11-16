@@ -12,6 +12,8 @@ public class PlatformAbility : MonoBehaviour
     [SerializeField] private GameObject _spiritPlatformUI;
     [SerializeField] private float _nudgeStep = 0.05f;
 
+    public event Action Ended;
+
     private Character _character;
     private PlatformerController _controller;
     private float _timeLeft;
@@ -27,8 +29,9 @@ public class PlatformAbility : MonoBehaviour
         if (_character.State == CharState.Controlled)
         {
             if (InputBlocker.Blocked) return;
-            bool pressed = Input.GetKeyDown(_keys.BecomePlatform);
-            if (pressed && TryFindRoom(out Vector2 spot))
+            bool clicked = Input.GetKeyDown(_keys.BecomePlatform);
+            bool secondJump = Input.GetKeyDown(_keys.Jump) && !_controller.CanJumpNow;
+            if ((clicked || secondJump) && TryFindRoom(out Vector2 spot))
             {
                 if (spot != (Vector2)transform.position) _controller.Teleport(spot);
                 AudioController.Instance.ForcePlay(SoundCategory.Ghost,2);
@@ -45,12 +48,18 @@ public class PlatformAbility : MonoBehaviour
             {
                 AudioController.Instance.ForcePlay(SoundCategory.Ghost,3);
             }
-            if (_timeLeft <= 0f) {
-                _character.Enter(CharState.Following);
-                _spiritPlatformUI.transform.localScale = new Vector3(_lifetime * 2,0.3f,1f);
-                _spiritPlatformUI.transform.localPosition = new Vector3(_timeLeft - 3.42f, 7.4f, 9f);
-            }
+            if (_timeLeft <= 0f) EndPlatform();
         }
+    }
+
+    public void EndPlatform()
+    {
+        if (_character.State != CharState.Platform) return;
+        _spiritPlatformUI.transform.localScale = new Vector3(_lifetime * 2,0.3f,1f);
+        _spiritPlatformUI.transform.localPosition = new Vector3(_lifetime - 6.42f, 7.4f, 9f);
+
+        if (Ended != null) Ended.Invoke();
+        else _character.Enter(CharState.Following);
     }
 
     private bool TryFindRoom(out Vector2 spot)

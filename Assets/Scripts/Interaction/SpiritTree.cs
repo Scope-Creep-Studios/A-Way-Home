@@ -37,6 +37,7 @@ public class SpiritTree : Interactable
     {
         _phase = Phase.Fading;
         _timeLeft = _fadeTime;
+        AudioController.Instance.Play(SoundCategory.Interactable,0);
     }
 
     private void Update()

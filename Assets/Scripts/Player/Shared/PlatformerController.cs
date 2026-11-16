@@ -12,6 +12,7 @@ public class PlatformerController : MonoBehaviour
     public Vector2 Velocity => _velocity;
     public bool Grounded => _grounded;
     public float MoveX => _input.X;
+    public bool CanJumpNow => _grounded || CanUseCoyote;
     public int Facing {get; private set;} = 1; // 1 means we are facing right, -1 means facing left.
     
     private Rigidbody2D _rb;
@@ -27,6 +28,8 @@ public class PlatformerController : MonoBehaviour
     private bool _jumpToConsume;
     private bool _endedJumpEarly;
     private bool _coyoteUsable;
+    private bool _hadControl;
+    private bool _jumpLocked;
 
     // A bundle for all of the inputs taken this frame.
     private struct FrameInput
@@ -60,6 +63,7 @@ public class PlatformerController : MonoBehaviour
         _coyoteUsable = false;
         _jumpToConsume = false;
         _endedJumpEarly = false;
+        _hadControl = false;
     }
 
     private void Update()
@@ -70,12 +74,19 @@ public class PlatformerController : MonoBehaviour
 
     private void ReadInput()
     {
-        if (!HasControl || InputBlocker.Blocked)
+        bool canRead = HasControl && !InputBlocker.Blocked;
+        if (canRead && !_hadControl) _jumpLocked = Input.GetKey(_keys.Jump);
+        _hadControl = canRead;
+
+        if (!canRead)
         {
             _input = default;
             _jumpToConsume = false;
             return;
         }
+
+        bool jumpKey = Input.GetKey(_keys.Jump);
+        if (_jumpLocked && !jumpKey) _jumpLocked = false;
 
         float x = 0f;
         if (Input.GetKey(_keys.MoveRight)) x += 1f;
@@ -83,8 +94,8 @@ public class PlatformerController : MonoBehaviour
 
         _input = new FrameInput
         {
-          JumpDown = Input.GetKeyDown(_keys.Jump),
-          JumpHeld = Input.GetKey(_keys.Jump),
+          JumpDown = !_jumpLocked && Input.GetKeyDown(_keys.Jump),
+          JumpHeld = !_jumpLocked && jumpKey,
           X = x
         };
 
@@ -188,6 +199,10 @@ public class PlatformerController : MonoBehaviour
             if (_endedJumpEarly && _velocity.y > 0f)
             {
                 gravity *= _stats.EndJumpEarlyGravityModifier;
+            }
+            else if (_velocity.y < 0f)
+            {
+                gravity *= _stats.FallGravityMultiplier;
             }
             _velocity.y = Mathf.MoveTowards(_velocity.y, -(_stats.MaxFallSpeed), gravity * Time.fixedDeltaTime);
         }

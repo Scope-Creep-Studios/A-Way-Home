@@ -40,6 +40,8 @@ public class MovementStats : ScriptableObject
     public float FallAcceleration = 110f;
     [Tooltip("Gravity is multiplied by this while rising after letting go of jump")]
     public float EndJumpEarlyGravityModifier = 3f;
+    [Tooltip("Gravity is multiplied by this while falling. Above 1 makes jumps come down faster than they go up")]
+    public float FallGravityMultiplier = 1f;
     [Tooltip("How long after walking off a ledge a jump still works")]
     public float CoyoteTime = 0.15f;
     [Tooltip("How long before landing a jump press is remembered")]
