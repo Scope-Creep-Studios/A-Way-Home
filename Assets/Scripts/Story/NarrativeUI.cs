@@ -59,6 +59,7 @@ public class NarrativeUI : MonoBehaviour
         lines = newLines;
         currentLine = 0;
 
+        dialogueMuffler.SetFilter(true,1000);
         // Disable player control during dialogue
         if (girlController != null)
         {
@@ -72,7 +73,6 @@ public class NarrativeUI : MonoBehaviour
             ghostController.HasControl = false;
         }
 
-        dialogueMuffler.SetMuffle(true);
         narrativeBox.SetActive(true);
         ShowCurrentLine();
         waitForKeyRelease = true;
@@ -134,7 +134,7 @@ public class NarrativeUI : MonoBehaviour
             if (currentLine >= lines.Length)
             {
                 
-                dialogueMuffler.SetMuffle(false);
+                dialogueMuffler.SetFilter(false,1000);
                 // Close dialogue
                 narrativeBox.SetActive(false);
                 girlDialogueBox.SetActive(false);

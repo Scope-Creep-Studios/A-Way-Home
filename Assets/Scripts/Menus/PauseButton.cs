@@ -36,7 +36,7 @@ public class PauseButton : MonoBehaviour
         pauseMenu.SetActive(true);
         pauseButton.SetActive(false);
 
-        pauseMuffle.SetMuffle(true);
+        pauseMuffle.SetFilter(true,600);
         AudioController.Instance.ForcePlayRandom(SoundCategory.Ui);
 
         paused = true;
@@ -49,7 +49,7 @@ public class PauseButton : MonoBehaviour
         settingsMenu.SetActive(false);
 
         
-        pauseMuffle.SetMuffle(false);
+        pauseMuffle.SetFilter(false,600);
         AudioController.Instance.ForcePlayRandom(SoundCategory.Ui);
         paused = false;
         Time.timeScale = 1f;

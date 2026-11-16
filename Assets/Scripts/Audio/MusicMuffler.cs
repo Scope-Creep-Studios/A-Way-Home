@@ -1,12 +1,28 @@
+using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
+using Unity.Mathematics;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioLowPassFilter))]
 public class MusicMuffler : MonoBehaviour
 {
-    [SerializeField] private AudioLowPassFilter targetFilter;
+    public float openFreq = 22000f;
+    public float smoothTime = 0.3f; // seconds
 
-    public float open = 20000f;
-    public float smoothTime = 0.3f;
+    AudioLowPassFilter lpf;
+    float target, velocity;
 
-    targetFilter.setcut
+    void Awake()
+    {
+        lpf = GetComponent<AudioLowPassFilter>();
+        lpf.cutoffFrequency = target = openFreq;
+    }
+
+    public void SetFilter(bool on, float closedFreq) => target = on ? closedFreq : openFreq;
+
+    void Update()
+    {
+        lpf.cutoffFrequency = Mathf.SmoothDamp(lpf.cutoffFrequency, target, ref velocity, smoothTime, Mathf.Infinity,Time.unscaledDeltaTime);
+    }
 }
