@@ -10,8 +10,6 @@ public class CatVision : MonoBehaviour
 
     [Header("Hidden Platforms")]
     public float revealRadius = 3f;
-    
-    public Transform hiddenPlatformsRoot;
     private HiddenPlatform[] platforms;
 
     [Header("Darkness Overlay")]
@@ -39,14 +37,9 @@ public class CatVision : MonoBehaviour
 
     void Start()
     {
-        if (hiddenPlatformsRoot != null)
-        {
-            platforms = hiddenPlatformsRoot.GetComponentsInChildren<HiddenPlatform>(true);
-        }
-        else
-        {
-            platforms = new HiddenPlatform[0];
-        }
+        platforms = FindObjectsByType<HiddenPlatform>(
+            FindObjectsSortMode.None
+        );
 
         propertyBlock = new MaterialPropertyBlock();
 
