@@ -72,6 +72,7 @@ public class Door : MonoBehaviour
 
             if (gameManager != null && gameManager.hasCollectible)
             {
+                AudioController.Instance.Play(SoundCategory.Interactable,0);
                 SceneManager.LoadScene(nextSceneName);
             }
             else

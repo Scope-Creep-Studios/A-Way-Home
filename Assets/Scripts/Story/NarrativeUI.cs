@@ -84,6 +84,7 @@ public class NarrativeUI : MonoBehaviour
 
         if (lines[currentLine].Speaker == "Girl")
         {
+            AudioController.Instance.ForcePlayRandom(SoundCategory.GirlDialogue);
             girlDialogueBox.SetActive(true);
             dialogueText.font = GirlFont;
         }
