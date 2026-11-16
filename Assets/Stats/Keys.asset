@@ -17,3 +17,4 @@ MonoBehaviour:
   Jump: 32
   Swap: 9
   BecomePlatform: 303
+  Interact: 101
