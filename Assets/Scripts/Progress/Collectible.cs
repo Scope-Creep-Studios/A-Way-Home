@@ -49,7 +49,9 @@ public class Collectible : MonoBehaviour
         narrativeUI.ShowNarrative(dialogue);
 
         GameManager gameManager = FindFirstObjectByType<GameManager>();
-        gameManager.hasCollectible = true;
+        if(itemName == "Collectible1" || itemName =="Collectible3") {
+            gameManager.hasCollectible = true;
+        }
 
         Destroy(gameObject);
     }

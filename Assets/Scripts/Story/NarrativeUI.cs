@@ -10,6 +10,7 @@ public class NarrativeUI : MonoBehaviour
     public GameObject spiritDialogueBox;
 
     public TMP_Text dialogueText;
+    public TMP_Text dialogueTextGhost;
 
     private DialogueSystem.DialogueEntry[] lines;
     private int currentLine;
@@ -83,18 +84,22 @@ public class NarrativeUI : MonoBehaviour
         girlDialogueBox.SetActive(false);
         spiritDialogueBox.SetActive(false);
 
-        dialogueText.text = lines[currentLine].Dialogue;
-
         if (lines[currentLine].Speaker == "Girl")
         {
+            dialogueText.text = lines[currentLine].Dialogue;
+            dialogueTextGhost.enabled = false;
+            dialogueText.enabled = true;
             AudioController.Instance.ForcePlayRandom(SoundCategory.GirlDialogue);
             girlDialogueBox.SetActive(true);
             dialogueText.font = GirlFont;
         }
         else if (lines[currentLine].Speaker == "Ghost")
         {
+            dialogueTextGhost.enabled = true;
+            dialogueText.enabled = false;
+            dialogueTextGhost.text = lines[currentLine].Dialogue;
             spiritDialogueBox.SetActive(true);
-            dialogueText.font = GhostFont;
+            dialogueTextGhost.font = GhostFont;
         }
     }
 
