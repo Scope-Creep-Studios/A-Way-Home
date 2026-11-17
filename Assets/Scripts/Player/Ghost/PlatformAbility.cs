@@ -42,7 +42,7 @@ public class PlatformAbility : MonoBehaviour
         else if (_character.State == CharState.Platform)
         {
             _spiritPlatformUI.transform.localScale = new Vector3(_timeLeft * 2,0.3f,1f);
-            _spiritPlatformUI.transform.localPosition = new Vector3(_timeLeft - 6.42f, 7.4f, 9f);
+            _spiritPlatformUI.transform.localPosition = new Vector3(_timeLeft - 6.42f, 7.4f, 2.5f);
             _timeLeft -= Time.deltaTime;
             if(_timeLeft >= 1.19f && _timeLeft <=1.2f )
             {
@@ -56,7 +56,7 @@ public class PlatformAbility : MonoBehaviour
     {
         if (_character.State != CharState.Platform) return;
         _spiritPlatformUI.transform.localScale = new Vector3(_lifetime * 2,0.3f,1f);
-        _spiritPlatformUI.transform.localPosition = new Vector3(_lifetime - 6.42f, 7.4f, 9f);
+        _spiritPlatformUI.transform.localPosition = new Vector3(_lifetime - 6.42f, 7.4f, 2.5f);
 
         if (Ended != null) Ended.Invoke();
         else _character.Enter(CharState.Following);

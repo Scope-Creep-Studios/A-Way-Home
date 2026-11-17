@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IntroOutroCamera : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class IntroOutroCamera : MonoBehaviour
     private float scrollSpeed = -0.2f;
     [SerializeField]
     private float yEnd = 2f;
+    [SerializeField]
+    private string NextSceneName = "Credits";
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,7 @@ public class IntroOutroCamera : MonoBehaviour
     void Update()
     {
         if (transform.position.y < yEnd) {
-            //enter new scene
+            SceneManager.LoadScene(NextSceneName);
         }
         else {
             transform.position = new Vector3 (0, yPos, -10f);
