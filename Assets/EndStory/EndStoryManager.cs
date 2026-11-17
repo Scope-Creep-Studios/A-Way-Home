@@ -31,8 +31,10 @@ public class EndStoryManager : MonoBehaviour
     private bool isTransitioning = false;
     private bool storyFinished = false;
 
+    public MusicMuffler cutsceneMuffle;
     void Start()
     {
+       AudioController.Instance.Play(SoundCategory.Music,0);
         if (rightPageText == null ||
             pageContentGroup == null ||
             storyPages == null ||
