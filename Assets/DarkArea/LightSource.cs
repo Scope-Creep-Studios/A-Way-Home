@@ -5,6 +5,8 @@ public class LightSource : MonoBehaviour
 {
     [Header("Interaction")]
     public GameObject interactionPrompt;
+    public GameObject interactionBorder;
+    
     public float interactionRange = 1.5f;
     public Transform ghost;
 
@@ -12,12 +14,17 @@ public class LightSource : MonoBehaviour
     public DarknessArea darknessArea;
     public HiddenPlatform[] platformsToActivate;
 
+    [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private Sprite _usedSprite;
+
     private bool isActivated = false;
 
     void Start()
     {
         if (interactionPrompt != null)
             interactionPrompt.SetActive(false);
+        if (interactionBorder != null)
+            interactionBorder.SetActive(false);
     }
 
     void Update()
@@ -32,8 +39,10 @@ public class LightSource : MonoBehaviour
 
         bool inRange = distance <= interactionRange;
 
-        if (interactionPrompt != null)
+        if (interactionPrompt != null) 
             interactionPrompt.SetActive(inRange);
+        if (interactionBorder != null)
+            interactionBorder.SetActive(inRange);
 
         if (inRange && Input.GetKeyDown(KeyCode.E))
         {
@@ -45,8 +54,13 @@ public class LightSource : MonoBehaviour
     {
         isActivated = true;
 
+        if (_sprite != null && _usedSprite != null) _sprite.sprite = _usedSprite;
+        AudioController.Instance.Play(SoundCategory.Interactable,1);
+
         if (interactionPrompt != null)
             interactionPrompt.SetActive(false);
+        if (interactionBorder != null)
+            interactionBorder.SetActive(false);
 
         if (darknessArea != null)
             darknessArea.LightUp();
