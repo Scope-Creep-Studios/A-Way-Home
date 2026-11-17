@@ -23,6 +23,7 @@ public class CharacterSwap : MonoBehaviour
     [Header("Ghost unlock")]
     [SerializeField] private bool _startsWithGhost = true;
     public UnityEvent GhostJoined;
+    public UnityEvent GhostRemoved;
 
     [Header("Cooldown after platform expiry")]
     [SerializeField] private float _swapCooldown = 1f;
@@ -66,6 +67,25 @@ public class CharacterSwap : MonoBehaviour
         _ghost.gameObject.SetActive(true);
         _ghost.transform.position = start;
         ReturnGhostToGirl(start);
+    }
+
+    public void RemoveGhost()
+    {
+        if (!_hasGhost) return;
+
+        if (_ghost.State == CharState.Platform) _ghostPlatform.EndPlatform();
+        if (_orb != null) _orb.Cancel();
+        GiveControlTo(_girl);
+
+        _hasGhost = false;
+        _inTransit = false;
+        _joining = false;
+        _cooldownLeft = 0f;
+
+        _ghost.Enter(CharState.Following);
+        _ghost.gameObject.SetActive(false);
+
+        GhostRemoved?.Invoke();
     }
 
     public void RecallGhost()
