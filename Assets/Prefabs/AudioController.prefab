@@ -1416,10 +1416,10 @@ MonoBehaviour:
   source: {fileID: 2906234059986265774}
   category: 10
   clips:
-  - {fileID: 8300000, guid: d60345500e7bafc45a05a51011746bb3, type: 3}
-  - {fileID: 8300000, guid: 04d1a49c7f2277440ae6147c845e6c60, type: 3}
-  - {fileID: 8300000, guid: 39d62f26e1467c6479d0093b32d0390b, type: 3}
-  - {fileID: 8300000, guid: b1c4260954065154c9fcfb30aed6e8c7, type: 3}
+  - {fileID: 8300000, guid: f54855b1a05887749a71ca17614a2f28, type: 3}
+  - {fileID: 8300000, guid: d4a5911a8fab3474ab54d1eba1d0f8de, type: 3}
+  - {fileID: 8300000, guid: 471c0131e2d876f49834307f9d7489e3, type: 3}
+  - {fileID: 8300000, guid: 7f316c8b57205a743b6ad43955677a9a, type: 3}
 --- !u!82 &2906234059986265774
 AudioSource:
   m_ObjectHideFlags: 0

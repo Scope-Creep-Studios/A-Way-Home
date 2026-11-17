@@ -18,7 +18,7 @@ public class Door : MonoBehaviour
     private GameManager gameManager;
 
     private bool playerNearby = false;
-
+    public MusicMuffler doorMuffler;
     private void Start()
     {
         if (interactText != null)
@@ -72,7 +72,9 @@ public class Door : MonoBehaviour
 
             if (gameManager != null && gameManager.hasCollectible)
             {
+                doorMuffler.SetFilter(true, 20);
                 AudioController.Instance.Play(SoundCategory.Interactable,0);
+                
                 SceneManager.LoadScene(nextSceneName);
             }
             else
