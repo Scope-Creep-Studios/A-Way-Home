@@ -654,48 +654,100 @@ MonoBehaviour:
   rightPageText: {fileID: 599584034}
   pageIllustration: {fileID: 1581665490}
   pageImages:
-  - {fileID: 21300000, guid: 9929a77d67b9147ffa190a20373fc658, type: 3}
-  - {fileID: 21300000, guid: 5248a0b6f142241b8b081311f985c4e2, type: 3}
   - {fileID: 21300000, guid: 888595280b8774a8d9c64cfd41ea02ff, type: 3}
+  - {fileID: 21300000, guid: 888595280b8774a8d9c64cfd41ea02ff, type: 3}
+  - {fileID: 21300000, guid: 9929a77d67b9147ffa190a20373fc658, type: 3}
+  - {fileID: 21300000, guid: 9929a77d67b9147ffa190a20373fc658, type: 3}
   pageContentGroup: {fileID: 2118384998}
   storyPages:
-  - "It is a truth universally acknowledged, that a single man in possession of a
-    good fortune, must be in want of a wife.\n\nHowever little known the feelings
-    or views of such a man may be on his first entering a neighbourhood, this truth
-    is so well fixed in the minds of the surrounding families, that he is considered
-    the rightful property of some one or other of their daughters.\n\n\u201CMy dear
-    Mr. Bennet,\u201D said his lady to him one day, \u201Chave you heard that Netherfield
-    Park is let at last?\u201D\n\nMr. Bennet replied that he had not.\n\u201CBut
-    it is,\u201D returned she; \u201Cfor Mrs. Long has just been here, and she told
-    me all about it.\u201D\n\nMr. Bennet made no answer.\n\n\u201CDo you not want
-    to know who has taken it?\u201D cried his wife impatiently.\n\n\u201CYou want
-    to tell me, and I have no objection to hearing it.\u201D\n\nThis was invitation
-    enough.\n\n\n"
-  - "\u201CWhy, my dear, you must know, Mrs. Long says that Netherfield is taken
-    by a young man of large fortune from the north of England; that he came down
-    on Monday in a chaise and four to see the place, and was so much delighted with
-    it, that he agreed with Mr. Morris immediately; that he is to take possession
-    before Michaelmas, and some of his servants are to be in the house by the end
-    of next week.\u201D\n\n\u201CWhat is his name?\u201D\n\n\u201CBingley.\u201D\n\n\u201CIs
-    he married or single?\u201D\n\n\u201COh! Single, my dear, to be sure! A single
-    man of large fortune; four or five thousand a year. What a fine thing for our
-    girls!\u201D\n\n\u201CHow so? How can it affect them?\u201D\n\n\u201CMy dear
-    Mr. Bennet,\u201D replied his wife, \u201Chow can you be so tiresome! You must
-    know that I am thinking of his marrying one of them.\u201D\n\n\u201CIs that his
-    design in settling here?\u201D"
-  - "\u201CI see no occasion for that. You and the girls may go, or you may send
-    them by themselves, which perhaps will be still better, for as you are as handsome
-    as any of them, Mr. Bingley may like you the best of the party.\u201D\n\n\u201CMy
-    dear, you flatter me. I certainly have had my share of beauty, but I do not pretend
-    to be anything extraordinary now. When a woman has five grown-up daughters, she
-    ought to give over thinking of her own beauty.\u201D\n\n\u201CIn such cases,
-    a woman has not often much beauty to think of.\u201D\n\n\u201CBut, my dear, you
-    must indeed go and see Mr. Bingley when he comes into the neighbourhood.\u201D\n\n\u201CIt
-    is more than I engage for, I assure you.\u201D\n\n\u201CBut consider your daughters.
-    Only think what an establishment it would be for one of them. Sir William and
-    Lady Lucas are determined to go, merely on that account, for in general, you
-    know, they visit no newcomers. Indeed you must go, for it will be impossible
-    for us to visit him if you do not.\u201D"
+  - 'A family of three lived in an old house at the top of a hill. On the refrigerator
+    door hung a calendar that never stayed the same for long.
+
+
+    The girl''s father
+    was often gone before she woke, and her mother was often busy until well after
+    dark. Getting all three of them around the same table, or out of the house together,
+    it always took planning. They had to choose a day in advance and circle the date
+    in bright red.
+
+
+    But those circles rarely survived until the day itself.
+    Work came up. Plans changed. Sooner or later, the date would be crossed out and
+    the promise carried over to the following week in a different color of ink.'
+  - 'The girl had argued with her parents about it more times than she could count.
+    At first, she only asked why. Later, the questions became arguments. After enough
+    broken plans, she stopped looking at the date altogether. And yet, whenever a
+    new promise appeared on the calendar, she still packed her backpack early and
+    waited by the door.
+
+
+    That day, she waited from morning until dusk.
+
+
+    Again.
+
+
+    Her
+    father had promised to be home before noon. By evening, the soup on the table
+    had already been reheated twice. Her mother came home through the rain with groceries,
+    set a rain-soaked paper bag down in the kitchen, and made her a cup of hot cocoa.
+
+
+    No
+    one mentioned the red circle on the calendar.'
+  - 'Before hurrying upstairs to deal with the rainwater seeping in around the windows,
+    her mother told her to finish her cocoa, wash the cup, and head back to her room
+    early. The girl stared at the ring of undissolved brown powder at the bottom
+    of the cup. She could already see tomorrow morning, everyone leaving as usual,
+    the red circle crossed out and moved to the next empty square.
+
+
+    She did
+    not wash the cup.
+
+
+    She shouldered the backpack she had packed that morning
+    and slipped out through the kitchen''s back door and into the rain. She never
+    meant to be gone long. She would hide at the old lookout in the woods behind
+    the house. It was close to home, and on clear days, she could see their own roof
+    from the railing.
+
+
+    When her mother found her room empty, when her father
+    finally came home, they would follow the mountain road and come looking for her.
+
+
+    She
+    only wanted to know that they would.'
+  - 'But the mountain road had changed since morning. Muddy water washed over the
+    soles of her shoes. Stone steps faded in and out behind a pale gray curtain of
+    rain. The roadside ditches had overflowed, sweeping dead leaves downhill.
+
+
+    The
+    girl began to regret leaving, but still could not make herself turn back. Not
+    yet.
+
+
+    Just a little farther. She would stop when she reached the lookout.
+
+
+    That
+    was what she told herself.
+
+
+    Then she heard the sound of rushing water farther
+    up the road.
+
+
+    But there had never been a river up there.
+
+
+    A torrent
+    choked with stones and broken branches tore through the trees and swallowed the
+    road in an instant. Icy water forced its way into her mouth and nose. The sky
+    and the dark shapes of the trees traded places again and again. Before she could
+    even loosen her grip on the backpack strap, everything went black.'
   typingSpeed: 0.04
   fadeDuration: 0.6
 --- !u!4 &2037779542

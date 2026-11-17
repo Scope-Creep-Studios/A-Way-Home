@@ -50,12 +50,12 @@ MonoBehaviour:
   girlPortrait: {fileID: 5139600256530249515}
   dadPortrait: {fileID: 2806259110894996287}
   backgroundImage: {fileID: 6105086228573449078}
-  bg01LivingRoom: {fileID: 21300000, guid: 8e05e826c2cb30c4a9f3b7ea06e1b99e, type: 3}
+  bg01LivingRoom: {fileID: 21300000, guid: dddd009a6bc0437408bf9091e71bf715, type: 3}
   bg02Bedroom: {fileID: 21300000, guid: 32cf13366c1b83c4a9bb93c6587101f9, type: 3}
-  bg03EntranceHall: {fileID: 21300000, guid: 5cbf55c9d04a9604694830cb712f628e, type: 3}
-  girlFont: {fileID: 11400000, guid: 087e5888cf8ffc9408cb9e0169d39015, type: 2}
-  dadFont: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  narrationFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  bg03EntranceHall: {fileID: 21300000, guid: 93ca5b0ce14662c4b9eb4d7a4e66006b, type: 3}
+  girlFont: {fileID: 11400000, guid: f5c87774ca21338499c5bcab4f98b5a8, type: 2}
+  dadFont: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  narrationFont: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
 --- !u!1 &744658375465164471
 GameObject:
   m_ObjectHideFlags: 0
