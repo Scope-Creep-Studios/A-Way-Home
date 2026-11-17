@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class SoftlockShield : MonoBehaviour
 {
     private GameManager gameManager;
+    
+    [SerializeField]
+    private GameObject girl;
 
     [SerializeField]
     private BoxCollider2D boxCollider;
@@ -21,7 +24,7 @@ public class SoftlockShield : MonoBehaviour
 
     private void Update()
     {
-        if(gameManager.hasCollectible) {
+        if(gameManager.hasCollectible || girl.transform.position.x > 113f) {
             boxCollider.enabled = true;
         }
     }

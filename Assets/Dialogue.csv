@@ -18,7 +18,7 @@ Item,Collectible1,Level1,Ghost,Wait... what's...
 Item,Collectible1,Level1,Ghost,AAAAAAAH!!!
 Item,Collectible1,Level1,Girl,Hey! Calm down! Did you see something?
 Item,Collectible1,Level1,Girl,You were staring off into space for ages. I kept calling you, but you wouldn't answer.
-Item,Collectible1,Level1,Ghost,Yes
+Item,Collectible1,Level1,Ghost,Mm... It was nothing. I can't make much sense of it myself. For now, we need to keep moving. Let's go.
 Door,Door1,MissingKey,Girl,I must've missed something.
 Door,Door1,MissingKey,Girl,Maybe I should look around again.
 
@@ -66,7 +66,8 @@ Item,Collectible3,Level2,Ghost,Ha... Fate really does have a cruel sense of humo
 Item,Collectible3,Level2,Ghost,We came all this way, and now—of all times—I remember.
 Item,Collectible3,Level2,Ghost,Looks like this is as far as I can go with you.
 Item,Collectible3,Level2,Girl,What are you talking about?
-Item,Collectible3,Level2,Girl,We promised we'd go home together. You were going to come visit. Mom was going to make you something good... I even figured out how I'd introduce you to her.
+Item,Collectible3,Level2,Girl,We promised we'd go home together. You were going to come visit. Mom was going to make you something good... 
+Item,Collectible3,Level2,Girl,I even figured out how I'd introduce you to her.
 Item,Collectible3,Level2,Ghost,That really is a shame.
 Item,Collectible3,Level2,Ghost,But getting this far has burned through too much of what was keeping me here. You've seen it yourself. My tail is already starting to fade.
 Item,Collectible3,Level2,Girl,Did we go too fast?
@@ -106,8 +107,7 @@ Item,Collectible3,Level2,Girl,Tell me what you mean! You still haven't told me w
 Item,Collectible3,Level2,Ghost,Put it on. Don't lose it.
 Item,Collectible3,Level2,Ghost,Let it guide you the rest of the way.
 Item,Collectible3,Level2,Ghost,Go home, little one.
-Item,Collectible3,Level2,Ghost,
-Your mother has been waiting a long time.
+Item,Collectible3,Level2,Ghost,Your mother has been waiting a long time.
 Item,Collectible3,Level2,Girl,No...
 Item,Collectible3,Level2,Girl,Come back.
 Item,Collectible3,Level2,Girl,I haven't even said goodbye yet...

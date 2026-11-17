@@ -371,7 +371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -736, y: 882}
+  m_AnchoredPosition: {x: -540, y: 443}
   m_SizeDelta: {x: 571.9304, y: 240.37201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879104809
@@ -421,8 +421,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 225
-  m_fontSizeBase: 225
+  m_fontSize: 175
+  m_fontSizeBase: 175
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -575,7 +575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1031, y: -494}
+  m_AnchoredPosition: {x: 416, y: -341}
   m_SizeDelta: {x: 600, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &986211334
@@ -672,6 +672,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986211332}
   m_CullTransparentMesh: 1
+--- !u!114 &1452410652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6295976528818532304, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+  m_PrefabInstance: {fileID: 1658997743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acaff365423ffa94c8e7751e646b0d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1658997743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -767,7 +778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 582, y: -394}
+  m_AnchoredPosition: {x: 72, y: -275}
   m_SizeDelta: {x: 499.597, y: 254.917}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1759186485
@@ -976,7 +987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1494, y: -394}
+  m_AnchoredPosition: {x: 722, y: -275}
   m_SizeDelta: {x: 499.597, y: 254.917}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814087462
@@ -1066,12 +1077,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 0.5
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1086,7 +1097,7 @@ Canvas:
   m_GameObject: {fileID: 1864875202}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1133,7 +1144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2f32a1af7241c47943592c8f6f7654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Opening Sequence
+  nextSceneName: OpeningStory
+  cutsceneMuffle: {fileID: 1452410652}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

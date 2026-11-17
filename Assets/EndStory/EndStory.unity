@@ -179,18 +179,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "It is a truth universally acknowledged, that a single man in possession
-    of a good fortune, must be in want of a wife.\n\nHowever little known the feelings
-    or views of such a man may be on his first entering a neighbourhood, this truth
-    is so well fixed in the minds of the surrounding families, that he is considered
-    the rightful property of some one or other of their daughters.\n\n\u201CMy dear
-    Mr. Bennet,\u201D said his lady to him one day, \u201Chave you heard that Netherfield
-    Park is let at last?\u201D\n\nMr. Bennet replied that he had not.\n\u201CBut
-    it is,\u201D returned she; \u201Cfor Mrs. Long has just been here, and she told
-    me all about it.\u201D\n\nMr. Bennet made no answer.\n\n\u201CDo you not want
-    to know who has taken it?\u201D cried his wife impatiently.\n\n\u201CYou want
-    to tell me, and I have no objection to hearing it.\u201D\n\nThis was invitation
-    enough."
+  m_text: "However little known the feelings or views of such a man may be on his
+    first entering a neighbourhood\n\n\u201CMy dear Mr. Bennet,\u201D said his wife
+    to him one day, \u201Chave you heard that Netherfield Park is let at last?\u201D\n\nMr.
+    Bennet replied that he had not.\n\u201CBut it is,\u201D returned she; \u201Cfor
+    Mrs. Long has just been here, and she told me all about it.\u201D\n\nMr. Bennet
+    made no answer.\n\n\u201CDo you not want to know who has taken it?\u201D cried
+    his wife impatiently.\n\n\u201CYou want to tell me, and I have no objection to
+    hearing it.\u201D\n\nThis was invitation enough."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5c87774ca21338499c5bcab4f98b5a8, type: 2}
   m_sharedMaterial: {fileID: -3350355341010591426, guid: f5c87774ca21338499c5bcab4f98b5a8, type: 2}
@@ -199,8 +195,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -846,12 +842,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

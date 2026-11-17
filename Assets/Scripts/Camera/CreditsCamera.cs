@@ -16,7 +16,7 @@ public class CreditsCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x >= 300) {
+        if(transform.position.x >= 265) {
             transform.position = new Vector3 (400, 0, -10);
         }
         else {
