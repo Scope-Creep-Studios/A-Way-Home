@@ -33,6 +33,7 @@ public class EndStoryManager : MonoBehaviour
 
     void Start()
     {
+       AudioController.Instance.Play(SoundCategory.Music,0);
         if (rightPageText == null ||
             pageContentGroup == null ||
             storyPages == null ||
