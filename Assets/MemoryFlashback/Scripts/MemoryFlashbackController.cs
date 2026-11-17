@@ -46,6 +46,7 @@ public class MemoryFlashbackController : MonoBehaviour
         public string DadState;
     }
 
+    public MusicMuffler cutsceneMuffle;
     private void Start()
     {
         LoadCSV();
@@ -168,7 +169,7 @@ public class MemoryFlashbackController : MonoBehaviour
                 //sfx listener go here
                 if (AudioController.Instance != null)
                 {
-                    AudioController.Instance.ForcePlayRandom(SoundCategory.GirlDialogue);
+                AudioController.Instance.ForcePlayRandom(SoundCategory.GirlDialogue);
                 }
 
                 if (girlFont != null)
@@ -185,12 +186,12 @@ public class MemoryFlashbackController : MonoBehaviour
                 break;
 
             case "Dad":
-
+            
                 //sfx listener go here
-
+                
                 if (AudioController.Instance != null)
                 {
-                    AudioController.Instance.ForcePlayRandom(SoundCategory.DadDialogue);
+                AudioController.Instance.ForcePlayRandom(SoundCategory.DadDialogue);
                 }
 
                 if (dadFont != null)

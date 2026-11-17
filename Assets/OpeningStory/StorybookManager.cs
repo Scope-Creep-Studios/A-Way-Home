@@ -30,6 +30,7 @@ public class StorybookManager : MonoBehaviour
     private bool isTransitioning = false;
     private bool storyFinished = false;
 
+    public MusicMuffler cutsceneMuffle;
     void Start()
     {
         if (rightPageText == null ||
