@@ -23,3 +23,28 @@ Door,Door1,MissingKey,Girl,Maybe I should look around again.
 
 Narrative,DarknessArea,FirstEntry,Girl,I can't see anything...
 Narrative,DarknessArea,FirstEntry,Ghost,Maybe I can see things that you can't.
+
+Item,Collectible2,Level2,Ghost,Wait. There's a flyer here.
+Item,Collectible2,Level2,Ghost,This girl in the picture... That's you,isn't it?
+Item,Collectible2,Level2,Girl,No way. Give me that—
+Item,Collectible2,Level2,Girl,Missing child. Age nine...
+Item,Collectible2,Level2,Girl,...That really is me?!
+Item,Collectible2,Level2,Ghost,They picked a good photo. You look a lot quieter in it than you do in person.
+Item,Collectible2,Level2,Girl,Mom's the only one who has this picture. She took it when I got frosting on my face. I didn't even know she was taking it.
+Item,Collectible2,Level2,Girl,Hmm... Dad's number is down here,too. And this line...
+Item,Collectible2,Level2,Girl,Afraid of thunderstorms. Please do not leave her alone.
+Item,Collectible2,Level2,Girl,Who told them they could put that on here?
+Item,Collectible2,Level2,Ghost,Don't try to act all grown-up with me. I'm willing to bet I was a lot older than you when I was alive. Maybe even old enough to be your guardian.
+Item,Collectible2,Level2,Girl,They're looking for me...
+Item,Collectible2,Level2,Girl,But they never tried this hard to keep their promises to me. So why now...?
+Item,Collectible2,Level2,Ghost,That's parents for you. No matter how grown-up you pretend to be,you're still their little girl.
+Item,Collectible2,Level2,Ghost,...Ease up. You're going to pinch your cheeks raw.
+Item,Collectible2,Level2,Girl,I'm not...
+Item,Collectible2,Level2,Girl,Wait... why have you been staring at the lower-right corner this whole time?
+Item,Collectible2,Level2,Ghost,This date... Something's wrong.
+Item,Collectible2,Level2,Ghost,The ink... it's flowing backward? This is-
+
+Item,Collectible3,Level2,Girl,What's Dad's wedding ring doing here?! Oh no... What if something happened to him?
+Item,Collectible3,Level2,Ghost,Can I see it?
+Item,Collectible3,Level2,Girl,Here.
+Item,Collectible3,Level2,Ghost,This... I knew it...
