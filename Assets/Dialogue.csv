@@ -1,24 +1,30 @@
 Type,Name,State,Speaker,Dialogue
-Item,Collectible1,Intro,Girl,A tie? It's completely soaked!
-Item,Collectible1,Intro,Girl,Dad had one like this...I think.
-Item,Collectible1,Intro,Ghost,......
-Item,Collectible1,Intro,Ghost,That knot's wrong.
-Item,Collectible1,Intro,Girl,What?
-Item,Collectible1,Intro,Ghost,The knot.
-Item,Collectible1,Intro,Ghost,This part should go underneath.
-Item,Collectible1,Intro,Girl,Wait...You know how to tie one?
-Item,Collectible1,Intro,Ghost,Apparently.
-Item,Collectible1,Intro,Girl,Huh?
-Item,Collectible1,Intro,Girl,Since when do cats know how to tie a tie?!
-Item,Collectible1,Intro,Ghost,I don't.
-Item,Collectible1,Intro,Ghost,I just do.
-Item,Collectible1,Intro,Girl,...Weirdo.
-Item,Collectible1,Intro,Ghost,Wait... what's...
+Item,Collectible1,Level1,Girl,A tie? It's completely soaked!
+Item,Collectible1,Level1,Girl,Dad had one like this...I think.
+Item,Collectible1,Level1,Ghost,......
+Item,Collectible1,Level1,Ghost,That knot's wrong.
+Item,Collectible1,Level1,Girl,What?
+Item,Collectible1,Level1,Ghost,The knot.
+Item,Collectible1,Level1,Ghost,This part should go underneath.
+Item,Collectible1,Level1,Girl,Wait...You know how to tie one?
+Item,Collectible1,Level1,Ghost,Apparently.
+Item,Collectible1,Level1,Girl,Huh?
+Item,Collectible1,Level1,Girl,Since when do cats know how to tie a tie?!
+Item,Collectible1,Level1,Ghost,I don't.
+Item,Collectible1,Level1,Ghost,I just do.
+Item,Collectible1,Level1,Girl,...Weirdo.
+Item,Collectible1,Level1,Ghost,Wait... what's...
 ,,,,
-Item,Collectible2,Level1,Girl,Do you remember this?
-Item,Collectible2,Level1,Ghost,Yes
+Item,Collectible1,Level1,Ghost,AAAAAAAH!!!
+Item,Collectible1,Level1,Girl,Hey! Calm down! Did you see something?
+Item,Collectible1,Level1,Girl,You were staring off into space for ages. I kept calling you, but you wouldn't answer.
+Item,Collectible1,Level1,Ghost,Yes
 Door,Door1,MissingKey,Girl,I must've missed something.
 Door,Door1,MissingKey,Girl,Maybe I should look around again.
+
+Door,Door2,MissingRing,Girl,Hey what's that ring?
+
+Door,Door3,Softlock,Girl,There's nothing left for me back there.
 
 
 Narrative,DarknessArea,FirstEntry,Girl,I can't see anything...
@@ -44,7 +50,84 @@ Item,Collectible2,Level2,Girl,Wait... why have you been staring at the lower-rig
 Item,Collectible2,Level2,Ghost,This date... Something's wrong.
 Item,Collectible2,Level2,Ghost,The ink... it's flowing backward? This is-
 
+Item,Collectible2,Level2,Girl,Are you okay? You've been acting kind of strange lately. I can't really explain it... I just feel like something's wrong.
+Item,Collectible2,Level2,Ghost,I'm fine. Don't worry about me. I've finally figured out what I need to do.
+Item,Collectible2,Level2,Girl,What is it?
+Item,Collectible2,Level2,Ghost,Get you home.
+Item,Collectible2,Level2,Girl,You scared me! I thought we were going to have to say bye!
+Item,Collectible2,Level2,Ghost,......
+
 Item,Collectible3,Level2,Girl,What's Dad's wedding ring doing here?! Oh no... What if something happened to him?
 Item,Collectible3,Level2,Ghost,Can I see it?
 Item,Collectible3,Level2,Girl,Here.
 Item,Collectible3,Level2,Ghost,This... I knew it...
+
+Item,Collectible3,Level2,Ghost,Ha... Fate really does have a cruel sense of humor.
+Item,Collectible3,Level2,Ghost,We came all this way, and now—of all times—I remember.
+Item,Collectible3,Level2,Ghost,Looks like this is as far as I can go with you.
+Item,Collectible3,Level2,Girl,What are you talking about?
+Item,Collectible3,Level2,Girl,We promised we'd go home together. You were going to come visit. Mom was going to make you something good... I even figured out how I'd introduce you to her.
+Item,Collectible3,Level2,Ghost,That really is a shame.
+Item,Collectible3,Level2,Ghost,But getting this far has burned through too much of what was keeping me here. You've seen it yourself. My tail is already starting to fade.
+Item,Collectible3,Level2,Girl,Did we go too fast?
+Item,Collectible3,Level2,Girl,If you can't go any farther, we'll stop. We can take our time getting home...
+Item,Collectible3,Level2,Ghost,Don't blame yourself.
+Item,Collectible3,Level2,Ghost,Ghosts can't stay here forever. Every moment I hold this form uses up what little of me remains.
+Item,Collectible3,Level2,Ghost,Sooner or later, I would have had to leave you.
+Item,Collectible3,Level2,Girl,Then keep some for yourself. Just a little.
+Item,Collectible3,Level2,Ghost,What's left of me is enough for one last thing.
+Item,Collectible3,Level2,Ghost,I'll put all of it into this ring. Wear it, and it will know the way home. It will guide you until you're out of the forest.
+Item,Collectible3,Level2,Girl,I don't want it.
+Item,Collectible3,Level2,Girl,So what if I take a few wrong turns? I'm not scared.
+Item,Collectible3,Level2,Ghost,That won't get you home, and it won't keep me here.
+Item,Collectible3,Level2,Ghost,Don't start bargaining with me now. You won't win this one.
+Item,Collectible3,Level2,Girl,Then I'm not going home!
+Item,Collectible3,Level2,Girl,I don't want some stupid ring. I want you to come home with me!
+Item,Collectible3,Level2,Girl,Why are you all like this...? You make all these promises, and then, at the very end, you leave me all alone!
+Item,Collectible3,Level2,Girl,Dad did it too... And now you...
+Item,Collectible3,Level2,Ghost,...I know.
+Item,Collectible3,Level2,Ghost,About your father, little one... I just remembered something important.
+Item,Collectible3,Level2,Ghost,I met your father once.
+Item,Collectible3,Level2,Girl,You met Dad?
+Item,Collectible3,Level2,Girl,Where? When? Where is he now?!
+Item,Collectible3,Level2,Ghost,Somewhere very far away.
+Item,Collectible3,Level2,Ghost,He said something had come up at work, and he had to leave on a long trip. The road there is a difficult one. He may not be able to come back for a long time.
+Item,Collectible3,Level2,Ghost,He asked me to give you a message—
+Item,Collectible3,Level2,Ghost,"Tell her that big liar who never keeps his promises is sorry. This time... I'm afraid he's going to let her down again."
+Item,Collectible3,Level2,Girl,Dad said that?
+Item,Collectible3,Level2,Girl,But how did you...
+Item,Collectible3,Level2,Ghost,Looks like he and I are two of a kind. I'm sorry.
+Item,Collectible3,Level2,Girl,Wait...
+Item,Collectible3,Level2,Girl,Where exactly did you meet him?
+Item,Collectible3,Level2,Ghost,When you get home, give this to your mother.
+Item,Collectible3,Level2,Ghost,The moment she sees the ring, she'll understand.
+Item,Collectible3,Level2,Girl,What?
+Item,Collectible3,Level2,Girl,Tell me what you mean! You still haven't told me where Dad is—
+Item,Collectible3,Level2,Ghost,Put it on. Don't lose it.
+Item,Collectible3,Level2,Ghost,Let it guide you the rest of the way.
+Item,Collectible3,Level2,Ghost,Go home, little one.
+Item,Collectible3,Level2,Ghost,
+Your mother has been waiting a long time.
+Item,Collectible3,Level2,Girl,No...
+Item,Collectible3,Level2,Girl,Come back.
+Item,Collectible3,Level2,Girl,I haven't even said goodbye yet...
+Item,Collectible3,Level2,Girl,...
+Item,Collectible3,Level2,Girl,Liar.
+Item,Collectible3,Level2,Girl,You and Dad... you're both liars.
+
+Item,CollectibleCat,Level1,Girl,Hey, little guy. You okay? You look like you're about to fall asleep.
+Item,CollectibleCat,Level1,Ghost,Do I? How odd. I'm already dead. You'd think being tired would be a problem reserved for the living.
+Item,CollectibleCat,Level1,Girl,...You can talk?
+Item,CollectibleCat,Level1,Ghost,I just told you I'm dead, and somehow the talking cat is what surprises you?
+Item,CollectibleCat,Level1,Girl,I've never met a ghost before, either. But a talking cat has to be rarer, right?
+Item,CollectibleCat,Level1,Ghost,Most humans your size would have run the moment they saw me. Aren't you afraid?
+Item,CollectibleCat,Level1,Girl,You can barely keep your eyes open. What could you possibly do to me? Besides, I've always wanted a cat. Mom and Dad would love one as smart as you.
+Item,CollectibleCat,Level1,Ghost,...Wait. When did you start deciding where I'm going to live?
+Item,CollectibleCat,Level1,Girl,My home is at the top of the hill, and there's plenty of room. My mom's a great cook, too. 
+Item,CollectibleCat,Level1,Girl,Come home with me. You can stay wherever you want. We'll take good care of you.
+Item,CollectibleCat,Level1,Ghost,Unfortunately, the dead don't need to eat. And I have no intention of becoming your little pet. But a friend? That I might consider.
+Item,CollectibleCat,Level1,Girl,Then it's settled! Friends help friends get home, right? I was swept all the way down here, so if we follow the river upstream, it should lead me home.
+Item,CollectibleCat,Level1,Ghost,"Should"?
+Item,CollectibleCat,Level1,Girl,Probably? I guess.
+Item,CollectibleCat,Level1,Ghost,Eh... Never mind. If I leave you to wander these woods alone, I doubt you'd even make it to the next fork. I suppose I'd better go with you...at least for a while.
+

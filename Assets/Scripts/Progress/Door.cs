@@ -14,6 +14,7 @@ public class Door : MonoBehaviour
 
     public GameObject interactText;
     public GameObject DoorPassive;
+    public GameObject DoorActive;
 
     private GameManager gameManager;
 
@@ -26,6 +27,7 @@ public class Door : MonoBehaviour
             interactText.SetActive(false);
         }
         DoorPassive.SetActive(true);
+        DoorActive.SetActive(false);
         gameManager = FindFirstObjectByType<GameManager>();
     }
 
@@ -60,6 +62,7 @@ public class Door : MonoBehaviour
         
         if(gameManager.hasCollectible){
             DoorPassive.SetActive(false);
+            DoorActive.SetActive(true);
         }
         if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
