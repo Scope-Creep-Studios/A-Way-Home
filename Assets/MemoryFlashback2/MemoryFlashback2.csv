@@ -1,0 +1,42 @@
+Speaker,DisplayName,Dialogue,Background,MomState,DadState
+Narration,,"The ink flows backward across the corner of the page, reassembling itself into a date.",BLACK,Hidden,Hidden
+Narration,,The numbers are quickly swallowed by the crackle of static on a phone line.,,Hidden,Hidden
+Narration,,The Old House on the Hill — Living Room.,BG01,Hidden,Dim
+Narration,,"Maps and missing-person flyers cover the coffee table. A few overdue bills lie buried at the bottom of the pile. Outside, the rain has been falling for three days. The sky has never truly grown light.",,Hidden,Dim
+Narration,,"The man grips his phone, his eyes bloodshot from a night without sleep.",,Hidden,Dim
+Investigator,Investigator (Phone),"Sir, we've sent your case file to the search team.",,Hidden,Dim
+Investigator,Investigator (Phone),"Most missing-person cases that cross jurisdictions in this state eventually end up with us. We can send people to search the river downstream, the logging camps, and every temporary shelter in the area. Every lead will be independently checked. You don't need to worry about any of that.",,Hidden,Dim
+Investigator,Investigator (Phone),But a search area this large won't be cheap.,,Hidden,Dim
+Dad,Dad,I've seen the estimate.,,Hidden,Bright
+Investigator,Investigator (Phone),"If paying in full is difficult, one of our partner lenders can arrange financing for up to ten years. A mortgage on your home is also an option.",,Hidden,Dim
+Investigator,Investigator (Phone),"Given your current income, however, you could be paying this off for years. Please think it over carefully.",,Hidden,Dim
+Dad,Dad,I don't need to think about it. Send me the contract. Take the first payment from my account and finance the rest. List everything I can put up as collateral.,,Hidden,Bright
+Dad,Dad,Nothing matters more than my daughter. She's everything to me!,,Hidden,Bright
+Dad,Dad,Send everyone you can. I don't care how far they have to go or what warnings are in effect. Just don't let a single lead go unchecked.,,Hidden,Bright
+Dad,Dad,Start now.,,Hidden,Bright
+Narration,,"After the call ends, the man keeps the darkened phone clutched in his hand.",,Hidden,Dim
+Narration,,"His wife sits curled beside the dining table, both hands wrapped around a cup that has long since been washed clean. The rabbit printed on its side has been rubbed so often that half of one ear has worn away.",,Dim,Dim
+Mom,Mom,I was the one who insisted she wash it that day. What difference would a few more minutes have made? Why did I have to rush her right then...?,,Bright,Dim
+Mom,Mom,"If I hadn't said that, would she have stayed?",,Bright,Dim
+Dad,Dad,No. It wasn't your fault.,,Dim,Bright
+Narration,,The man has given her the same answer many times already.,,Dim,Dim
+Narration,,"Every time, his wife nods. A little while later, she looks down at the cup and asks the question all over again.",,Dim,Dim
+Narration,,"He reaches for the cup, meaning to take it from her. She suddenly hugs it tighter to her chest.",,Dim,Dim
+Narration,,A shrill emergency tone blares from the television.,,Dim,Dim
+Narration,,The red alert remains in effect. River levels continue to rise. Multiple landslides have been reported nearby. All residents are advised to remain indoors.,,Dim,Dim
+Narration,,"The man picks up his raincoat, a flashlight, and the remaining missing-person flyers from the table.",,Dim,Dim
+Mom,Mom,You're going back out?,,Bright,Dim
+Mom,Mom,The roads by the levee are already closed. Even the search-and-rescue teams are pulling back. Wait until the rain eases up... please.,,Bright,Dim
+Dad,Dad,A lead came in from the shelter downriver last night. Someone saw a child walking alone. About her age.,,Dim,Bright
+Mom,Mom,But no one's verified it yet.,,Bright,Dim
+Dad,Dad,That's why I have to go see for myself.,,Dim,Bright
+Dad,Dad,I can't be late again.,,Dim,Bright
+Narration,,"His wife grabs his sleeve. The man lays his palm over her icy hand. After a moment, he gently eases her fingers away, one by one.",,Dim,Dim
+Dad,Dad,Stay here and wait by the phone. Leave the door unlocked.,,Dim,Bright
+Dad,Dad,"If she comes home before I do, I want her to be able to walk straight in.",,Dim,Bright
+Narration,,"The man folds the missing-person flyers and slips them inside his raincoat, then pushes open the door.",,Dim,Dim
+Narration,,Wind and rain surge into the house all at once.,,Dim,Dim
+Narration,,"When the door closes again, the red alert continues its crawl across the bottom of the screen, washing the cup in red with every pass, the cup no one will ever use for hot cocoa again.",,Dim,Dim
+SpecialNarration,,Do it.,BLACK,Hidden,Hidden
+SpecialNarration,,Use the last of your...,BLACK,Hidden,Hidden
+SpecialNarration,,It's the only thing you can still do for her.,BLACK,Hidden,Hidden

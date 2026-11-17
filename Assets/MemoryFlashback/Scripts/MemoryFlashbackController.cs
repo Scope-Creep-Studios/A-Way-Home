@@ -166,7 +166,11 @@ public class MemoryFlashbackController : MonoBehaviour
         {
             case "Girl":
                 //sfx listener go here
-                AudioController.Instance.ForcePlayRandom(SoundCategory.GirlDialogue);
+                if (AudioController.Instance != null)
+                {
+                    AudioController.Instance.ForcePlayRandom(SoundCategory.GirlDialogue);
+                }
+
                 if (girlFont != null)
                 {
                     dialogueText.font = girlFont;
@@ -174,15 +178,21 @@ public class MemoryFlashbackController : MonoBehaviour
                 }
 
                 dialogueText.fontSize = 31f;
+                dialogueText.fontStyle = FontStyles.Normal;
                 dialogueText.color = new Color32(255, 209, 246, 255);
+                nameText.fontStyle = FontStyles.Normal;
                 nameText.color = Color.white;
                 break;
 
             case "Dad":
-            
+
                 //sfx listener go here
-                
-                AudioController.Instance.ForcePlayRandom(SoundCategory.DadDialogue);
+
+                if (AudioController.Instance != null)
+                {
+                    AudioController.Instance.ForcePlayRandom(SoundCategory.DadDialogue);
+                }
+
                 if (dadFont != null)
                 {
                     dialogueText.font = dadFont;
@@ -190,7 +200,9 @@ public class MemoryFlashbackController : MonoBehaviour
                 }
 
                 dialogueText.fontSize = 31f;
-                dialogueText.color = new Color32(176, 240, 192, 255);
+                dialogueText.fontStyle = FontStyles.Normal;
+                dialogueText.color = new Color32(136, 176, 192, 255);
+                nameText.fontStyle = FontStyles.Normal;
                 nameText.color = Color.white;
                 break;
 
@@ -201,7 +213,19 @@ public class MemoryFlashbackController : MonoBehaviour
                 }
 
                 dialogueText.fontSize = 31f;
+                dialogueText.fontStyle = FontStyles.Normal;
                 dialogueText.color = Color.white;
+                break;
+
+            case "SpecialNarration":
+                if (narrationFont != null)
+                {
+                    dialogueText.font = narrationFont;
+                }
+
+                dialogueText.fontSize = 31f;
+                dialogueText.fontStyle = FontStyles.Normal;
+                dialogueText.color = new Color32(255, 70, 70, 255);
                 break;
 
             default:

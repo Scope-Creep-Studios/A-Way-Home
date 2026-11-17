@@ -1,0 +1,62 @@
+﻿Speaker,DisplayName,Dialogue,Background,GirlState,MomState,DadState
+Narration,,The darkness has no end and no direction. Time itself has long since lost all meaning.,BLACK,Hidden,Hidden,Hidden
+Narration,,"The man can no longer feel his hands or feet. His body is weightless, sinking slowly through an endless silence.",,Hidden,Hidden,Hidden
+Narration,,"Just as his consciousness begins to flicker out, a touch of warmth reaches him before any voice does.",,Hidden,Hidden,Hidden
+Narration,,"Two small arms close around him, holding him so tightly that it seems one more squeeze might keep even death from pulling them apart.",,Hidden,Hidden,Hidden
+Girl,Girl,Dad!! Don't go!,,Bright,Hidden,Hidden
+Narration,,The man lowers his head.,,Dim,Hidden,Hidden
+Narration,,"The girl's face is buried against his chest, her shoulders trembling without pause. It is the face that never came to him through the sleepless nights, no matter how tightly he closed his eyes.",,Dim,Hidden,Hidden
+Narration,,Then another voice rises from deeper in the darkness.,,Dim,Hidden,Hidden
+Mom,Mom,I know everyone has to say goodbye someday.,,Dim,Bright,Hidden
+Mom,Mom,But it shouldn't be today... Not yet.,,Dim,Bright,Hidden
+Mom,Mom,So please. Don't go so far away on your own.,,Dim,Bright,Hidden
+Narration,,He knows that voice.,,Dim,Dim,Hidden
+Narration,,"His wife stands behind the girl with one hand outstretched. She looks as she once did, before all those weary days and sleepless nights settled behind her eyes.",,Dim,Dim,Hidden
+Narration,,They are so close.,,Dim,Dim,Hidden
+Narration,,"The man forces his stiffened arms upward, trying to gather them both against him.",,Dim,Dim,Hidden
+Narration,,The instant his fingertips are about to touch them—,,Dim,Dim,Hidden
+Narration,,Icy water rushes into his mouth and nose.,,Hidden,Hidden,Hidden
+Narration,,The dream shatters.,,Hidden,Hidden,Dim
+Narration,,"His lungs convulse from lack of air, his chest heaving uselessly. The man opens his eyes. Muddy water roars past, carrying broken branches and silt as it drags him ever deeper.",,Hidden,Hidden,Dim
+Narration,,"Far above, the surface has dwindled to a small, blurred patch of gray-white light.",,Hidden,Hidden,Dim
+Narration,,The warmth is gone.,,Hidden,Hidden,Dim
+Dad,Dad,...So it was a dream.,,Hidden,Hidden,Bright
+Dad,Dad,...What a joke...,,Hidden,Hidden,Bright
+Dad,Dad,I saw them both just a moment ago...,,Hidden,Hidden,Bright
+Dad,Dad,But that's all it can ever be now. A dream that will never come true.,,Hidden,Hidden,Bright
+Narration,,His body continues to sink.,,Hidden,Hidden,Dim
+Dad,Dad,After coming this far... after everything I've been through... is this really how it ends?,,Hidden,Hidden,Bright
+Dad,Dad,I can't accept that.,,Hidden,Hidden,Bright
+Dad,Dad,I don't want to die...,,Hidden,Hidden,Bright
+Dad,Dad,"I still haven't found her. What if she's somewhere out there, waiting for me...?",,Hidden,Hidden,Bright
+Dad,Dad,At least...,,Hidden,Hidden,Bright
+Narration,,"For the last time, the man raises one hand.",,Hidden,Hidden,Dim
+Narration,,"His numb fingers slide inside his raincoat and find the folded missing-person flyer. The river has soaked the paper through, and the girl's frosting-smeared smile is slowly washing away.",,Hidden,Hidden,Dim
+Narration,,His fingers uncurl.,,Hidden,Hidden,Dim
+Narration,,"The flyer slips from his palm. The current catches it and carries it away, toward a place he will never be able to follow.",,Hidden,Hidden,Dim
+Narration,,The man keeps watching it.,,Hidden,Hidden,Dim
+Narration,,Until the last faint glimmer of daylight fades from his eyes.,,Hidden,Hidden,Dim
+SpecialNarration,,Go on...,BLACK,Hidden,Hidden,Hidden
+SpecialNarration,,Step into the unknown. Let death show you the way.,,Hidden,Hidden,Hidden
+SpecialNarration,,Buy one more tomorrow for those you still love.,,Hidden,Hidden,Hidden
+Narration,,The Old House on the Hill — Living Room.,BG01,Hidden,Hidden,Hidden
+Narration,,"The front door is still unlocked, just as the man asked before he left.",,Hidden,Hidden,Hidden
+Narration,,"The woman sits beside the phone, the receiver pressed tight to her ear. With every long ring before the call connects, her breathing quickens.",,Hidden,Dim,Hidden
+Dispatcher,Dispatcher (Phone),911. What's your emergency?,,Hidden,Dim,Hidden
+Mom,Mom,My husband hasn't come home.,,Hidden,Bright,Hidden
+Mom,Mom,"He went out last night to look for our daughter. He said he was only going to check a lead downriver. Now I can't reach him, and no one by the levee has seen him.",,Hidden,Bright,Hidden
+Mom,Mom,Please... help me find him.,,Hidden,Bright,Hidden
+Dispatcher,Dispatcher (Phone),"Ma'am, please try to stay calm. How many people are you reporting missing?",,Hidden,Dim,Hidden
+Mom,Mom,Two.,,Hidden,Bright,Hidden
+Mom,Mom,No... there was only one at first.,,Hidden,Bright,Hidden
+Mom,Mom,My husband went to find her. So now... there are two.,,Hidden,Bright,Hidden
+Mom,Mom,"My daughter, and her father.",,Hidden,Bright,Hidden
+Narration,,"The dispatcher begins asking for their names, what they were wearing, when they left, and everywhere they might have gone.",,Hidden,Dim,Hidden
+Narration,,The woman answers each question.,,Hidden,Dim,Hidden
+Narration,,She remembers everything about them with perfect clarity.,,Hidden,Dim,Hidden
+Narration,,"After the call, she returns to the entryway and places two pairs of slippers side by side.",,Hidden,Dim,Hidden
+Narration,,One large.,,Hidden,Dim,Hidden
+Narration,,One small.,,Hidden,Dim,Hidden
+Narration,,"Their toes point inward, as though their owners might open the door at any moment and come home from the long night of rain.",,Hidden,Dim,Hidden
+Narration,,The entryway light burns all night.,,Hidden,Dim,Hidden
+Narration,,"Beneath it, only her shadow remains.",,Hidden,Dim,Hidden
