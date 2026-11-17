@@ -917,6 +917,7 @@ MonoBehaviour:
   cat: {fileID: 0}
   visionCircle: {fileID: 0}
   revealRadius: 6
+  hiddenPlatformsRoot: {fileID: 8695285619375415812}
   darknessRenderer: {fileID: 6696371463526688325}
   holeRadius: 3.5
   edgeSoftness: 0.5
