@@ -165,6 +165,8 @@ public class MemoryFlashbackController : MonoBehaviour
         switch (line.Speaker)
         {
             case "Girl":
+                //sfx listener go here
+                AudioController.Instance.ForcePlayRandom(SoundCategory.GirlDialogue);
                 if (girlFont != null)
                 {
                     dialogueText.font = girlFont;
@@ -177,6 +179,10 @@ public class MemoryFlashbackController : MonoBehaviour
                 break;
 
             case "Dad":
+            
+                //sfx listener go here
+                
+                AudioController.Instance.ForcePlayRandom(SoundCategory.DadDialogue);
                 if (dadFont != null)
                 {
                     dialogueText.font = dadFont;

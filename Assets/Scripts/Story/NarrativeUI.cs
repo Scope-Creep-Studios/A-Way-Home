@@ -30,6 +30,8 @@ public class NarrativeUI : MonoBehaviour
     [SerializeField]
     private TMP_FontAsset GhostFont;
 
+    public MusicMuffler dialogueMuffler;
+
     void Start()
     {
         narrativeBox.SetActive(false);
@@ -57,6 +59,7 @@ public class NarrativeUI : MonoBehaviour
         lines = newLines;
         currentLine = 0;
 
+        dialogueMuffler.SetFilter(true,1000);
         // Disable player control during dialogue
         if (girlController != null)
         {
@@ -84,6 +87,7 @@ public class NarrativeUI : MonoBehaviour
 
         if (lines[currentLine].Speaker == "Girl")
         {
+            AudioController.Instance.ForcePlayRandom(SoundCategory.GirlDialogue);
             girlDialogueBox.SetActive(true);
             dialogueText.font = GirlFont;
         }
@@ -129,6 +133,8 @@ public class NarrativeUI : MonoBehaviour
 
             if (currentLine >= lines.Length)
             {
+                
+                dialogueMuffler.SetFilter(false,1000);
                 // Close dialogue
                 narrativeBox.SetActive(false);
                 girlDialogueBox.SetActive(false);

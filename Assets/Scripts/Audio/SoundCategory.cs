@@ -11,5 +11,7 @@ public enum SoundCategory
     GhostSteps,
     Ui,
     Checkpoint,
-    Interactable
+    Interactable,
+    GirlDialogue,
+    DadDialogue
 }
