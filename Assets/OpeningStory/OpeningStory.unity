@@ -192,8 +192,8 @@ MonoBehaviour:
     to tell me, and I have no objection to hearing it.\u201D\n\nThis was invitation
     enough."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f5c87774ca21338499c5bcab4f98b5a8, type: 2}
+  m_sharedMaterial: {fileID: -3350355341010591426, guid: f5c87774ca21338499c5bcab4f98b5a8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
