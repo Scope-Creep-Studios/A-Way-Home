@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EndStoryManager : MonoBehaviour
 {
@@ -147,8 +148,10 @@ public class EndStoryManager : MonoBehaviour
             return;
 
         storyFinished = true;
+        cutsceneMuffle.SetFilter(true,20);
         Debug.Log("End story finished");
         Finished?.Invoke();
+        SceneManager.LoadScene("Credits");
     }
 
     IEnumerator Fade(float startAlpha, float targetAlpha)

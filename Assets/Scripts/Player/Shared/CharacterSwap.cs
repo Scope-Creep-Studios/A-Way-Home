@@ -33,6 +33,8 @@ public class CharacterSwap : MonoBehaviour
     [SerializeField] private GameObject _ghostUIActive;
     [SerializeField] private GameObject _girlUIPassive;
     [SerializeField] private GameObject _ghostUIPassive;
+    [SerializeField] private GameObject spiritTimer1;
+    [SerializeField] private GameObject spiritTimer2;
 
 
     [SerializeField] private Respawn _girlRespawn;
@@ -65,6 +67,8 @@ public class CharacterSwap : MonoBehaviour
 
         Vector2 start = from != null ? (Vector2)from.position : _ghostFollow.ShoulderPosition;
         _ghost.gameObject.SetActive(true);
+        spiritTimer1.gameObject.SetActive(true);
+        spiritTimer2.gameObject.SetActive(true);
         _ghost.transform.position = start;
         ReturnGhostToGirl(start);
     }

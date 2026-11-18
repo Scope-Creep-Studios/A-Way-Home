@@ -29,7 +29,8 @@ public class DoorEnding : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerNearby = true;
-
+            DialogueSystem.DialogueEntry[] dialogue = dialogueSystem.GetDialogue("Door", doorName, gameState);
+            narrativeUI.ShowNarrative(dialogue);
         }
     }
 
@@ -46,27 +47,7 @@ public class DoorEnding : MonoBehaviour
         if(gameManager.hasCollectible) {
             boxCollider.enabled = false;
         }
-        if (playerNearby)
-        {
-            if (narrativeUI != null &&
-                narrativeUI.narrativeBox.activeSelf)
-            {
-                return;
-            }
 
-
-            if (gameManager != null && gameManager.hasCollectible)
-            {
-                
-            }
-            else
-            {
-                DialogueSystem.DialogueEntry[] dialogue =
-                    dialogueSystem.GetDialogue(
-                        "Door", doorName, gameState);
-
-                narrativeUI.ShowNarrative(dialogue);
-            }
-        }
+        
     }
 }

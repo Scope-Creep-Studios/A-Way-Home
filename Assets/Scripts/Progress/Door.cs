@@ -14,6 +14,7 @@ public class Door : MonoBehaviour
 
     public GameObject interactText;
     public GameObject DoorPassive;
+    public GameObject DoorActive;
 
     private GameManager gameManager;
 
@@ -55,9 +56,8 @@ public class Door : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
-        
         if(gameManager.hasCollectible){
             DoorPassive.SetActive(false);
         }

@@ -6,9 +6,12 @@ using UnityEngine.UI;
 
 public class MemoryFlashbackBridge : MonoBehaviour
 {
-    private const string Level2SceneName = "VerticalSlice";
-    private const string FinalDialogueText = "Wait... what's...";
-    private const string PrefabResourcePath = "MemoryFlashback/MemoryFlashbackRoot";
+    [SerializeField]
+    private string Level2SceneName = "Level1Beta";
+    [SerializeField]
+    private string FinalDialogueText;
+    [SerializeField]
+    private string PrefabResourcePath = "MemoryFlashback/MemoryFlashbackRoot";
 
     private const float FadeDuration = 0.55f;
 
@@ -26,6 +29,9 @@ public class MemoryFlashbackBridge : MonoBehaviour
 
     private GameObject flashbackRoot;
     private MemoryFlashbackController flashbackController;
+    private MemoryFlashback2Controller flashback2Controller;
+    private MemoryFlashback3Controller flashback3Controller;
+    public float flashbackNum = 1;
     private bool flashbackFinished = false;
 
     private GameObject fadeCanvasObject;
@@ -128,42 +134,34 @@ public class MemoryFlashbackBridge : MonoBehaviour
                 return;
         }
 
-        if (narrativeUI.narrativeBox == null ||
-            narrativeUI.dialogueText == null)
+        if (narrativeUI.narrativeBox == null)
         {
             return;
         }
 
-        if (narrativeUI.narrativeBox.activeSelf)
+        if (narrativeUI.dialogueTextGhost.enabled)
+        {
+            string currentText =
+                narrativeUI.dialogueTextGhost.text.Trim();
+
+            if (currentText == FinalDialogueText)
+            {
+                sawFinalLine = true;
+            }
+        }
+        if (narrativeUI.dialogueText.enabled)
         {
             string currentText =
                 narrativeUI.dialogueText.text.Trim();
 
-            bool ghostIsSpeaking =
-                narrativeUI.spiritDialogueBox == null ||
-                narrativeUI.spiritDialogueBox.activeSelf;
-
-            if (currentText == FinalDialogueText &&
-                ghostIsSpeaking)
+            if (currentText == FinalDialogueText)
             {
                 sawFinalLine = true;
             }
-
-            return;
         }
 
         if (!sawFinalLine)
             return;
-
-        GameManager gameManager =
-            UnityEngine.Object.FindFirstObjectByType<GameManager>();
-
-        if (gameManager != null &&
-            !gameManager.hasCollectible)
-        {
-            sawFinalLine = false;
-            return;
-        }
 
         GameObject prefab =
             Resources.Load<GameObject>(PrefabResourcePath);
@@ -179,7 +177,7 @@ public class MemoryFlashbackBridge : MonoBehaviour
             return;
         }
 
-        if (prefab.GetComponentInChildren<MemoryFlashbackController>(true) == null)
+        if (prefab.GetComponentInChildren<MemoryFlashbackController>(true) == null && prefab.GetComponentInChildren<MemoryFlashback2Controller>(true) == null && prefab.GetComponentInChildren<MemoryFlashback3Controller>(true) == null)
         {
             Debug.LogError(
                 "[MemoryFlashbackBridge] MemoryFlashbackRoot prefab " +
@@ -209,10 +207,23 @@ public class MemoryFlashbackBridge : MonoBehaviour
 
         flashbackRoot = Instantiate(prefab);
 
-        flashbackController =
-            flashbackRoot.GetComponentInChildren<MemoryFlashbackController>(true);
+        if(flashbackNum == 1)
+        {
+            flashbackController =
+                flashbackRoot.GetComponentInChildren<MemoryFlashbackController>(true);   
+        }
+        else if(flashbackNum == 2)
+        {
+            flashback2Controller =
+                flashbackRoot.GetComponentInChildren<MemoryFlashback2Controller>(true); 
+        }
+        else if(flashbackNum == 3)
+        {
+            flashback3Controller =
+                flashbackRoot.GetComponentInChildren<MemoryFlashback3Controller>(true); 
+        }
 
-        if (flashbackController == null)
+        if (flashbackController == null && flashback2Controller == null && flashback3Controller == null)
         {
             Debug.LogError(
                 "[MemoryFlashbackBridge] Instantiated prefab has no " +
@@ -232,6 +243,8 @@ public class MemoryFlashbackBridge : MonoBehaviour
 
         flashbackFinished = false;
 
+        if(flashbackNum == 1)
+        {
         flashbackController.SetInputEnabled(false);
         flashbackController.Finished += OnFlashbackFinished;
 
@@ -259,6 +272,67 @@ public class MemoryFlashbackBridge : MonoBehaviour
 
         flashbackRoot = null;
         flashbackController = null;
+        }
+        else if(flashbackNum == 2)
+        {
+        flashback2Controller.SetInputEnabled(false);
+        flashback2Controller.Finished += OnFlashbackFinished;
+
+        // Give MemoryFlashbackController.Start() one frame to initialize.
+        yield return null;
+
+        // Black -> visual novel
+        yield return FadeTo(0f, FadeDuration);
+
+        flashback2Controller.SetInputEnabled(true);
+
+        while (!flashbackFinished)
+        {
+            yield return null;
+        }
+
+        flashback2Controller.SetInputEnabled(false);
+
+        // Visual novel -> black
+        yield return FadeTo(1f, FadeDuration);
+
+        flashback2Controller.Finished -= OnFlashbackFinished;
+
+        Destroy(flashbackRoot);
+
+        flashbackRoot = null;
+        flashback2Controller = null;
+        }
+        else if(flashbackNum == 3)
+        {
+        flashback3Controller.SetInputEnabled(false);
+        flashback3Controller.Finished += OnFlashbackFinished;
+
+        // Give MemoryFlashbackController.Start() one frame to initialize.
+        yield return null;
+
+        // Black -> visual novel
+        yield return FadeTo(0f, FadeDuration);
+
+        flashback3Controller.SetInputEnabled(true);
+
+        while (!flashbackFinished)
+        {
+            yield return null;
+        }
+
+        flashback3Controller.SetInputEnabled(false);
+
+        // Visual novel -> black
+        yield return FadeTo(1f, FadeDuration);
+
+        flashback3Controller.Finished -= OnFlashbackFinished;
+
+        Destroy(flashbackRoot);
+
+        flashbackRoot = null;
+        flashback3Controller = null;
+        }
 
         // Let Destroy finish while the screen is still completely black.
         yield return null;
