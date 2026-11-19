@@ -7,6 +7,7 @@ public class EndingTrigger : MonoBehaviour
 {
     [SerializeField]
     private string NextSceneName = "Credits";
+    public MusicMuffler cutsceneMuffle;
 
     void Awake() {
 
@@ -18,6 +19,7 @@ public class EndingTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) {
             {
+                cutsceneMuffle.SetFilter(true,20);
                 SceneManager.LoadScene(NextSceneName);
             }
         }

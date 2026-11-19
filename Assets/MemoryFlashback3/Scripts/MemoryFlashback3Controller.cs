@@ -49,6 +49,7 @@ public class MemoryFlashback3Controller : MonoBehaviour
         public string DadState;
     }
 
+    public MusicMuffler cutsceneMuffle;
     private void Start()
     {
         LoadCSV();

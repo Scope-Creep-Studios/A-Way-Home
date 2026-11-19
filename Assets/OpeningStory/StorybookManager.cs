@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StorybookManager : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class StorybookManager : MonoBehaviour
     private bool isTransitioning = false;
     private bool storyFinished = false;
 
+    public MusicMuffler cutsceneMuffle;
     void Start()
     {
         if (rightPageText == null ||
@@ -84,6 +86,8 @@ public class StorybookManager : MonoBehaviour
         {
             storyFinished = true;
             Debug.Log("Storybook finished");
+            cutsceneMuffle.SetFilter(true,20);
+            SceneManager.LoadScene("Level1Beta");
             return;
         }
 
@@ -137,6 +141,8 @@ public class StorybookManager : MonoBehaviour
         {
             storyFinished = true;
             Debug.Log("Storybook finished");
+            cutsceneMuffle.SetFilter(true,20);
+            SceneManager.LoadScene("Level1Beta");
             yield break;
         }
 

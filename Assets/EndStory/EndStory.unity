@@ -179,28 +179,24 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "It is a truth universally acknowledged, that a single man in possession
-    of a good fortune, must be in want of a wife.\n\nHowever little known the feelings
-    or views of such a man may be on his first entering a neighbourhood, this truth
-    is so well fixed in the minds of the surrounding families, that he is considered
-    the rightful property of some one or other of their daughters.\n\n\u201CMy dear
-    Mr. Bennet,\u201D said his lady to him one day, \u201Chave you heard that Netherfield
-    Park is let at last?\u201D\n\nMr. Bennet replied that he had not.\n\u201CBut
-    it is,\u201D returned she; \u201Cfor Mrs. Long has just been here, and she told
-    me all about it.\u201D\n\nMr. Bennet made no answer.\n\n\u201CDo you not want
-    to know who has taken it?\u201D cried his wife impatiently.\n\n\u201CYou want
-    to tell me, and I have no objection to hearing it.\u201D\n\nThis was invitation
-    enough."
+  m_text: "However little known the feelings or views of such a man may be on his
+    first entering a neighbourhood\n\n\u201CMy dear Mr. Bennet,\u201D said his wife
+    to him one day, \u201Chave you heard that Netherfield Park is let at last?\u201D\n\nMr.
+    Bennet replied that he had not.\n\u201CBut it is,\u201D returned she; \u201Cfor
+    Mrs. Long has just been here, and she told me all about it.\u201D\n\nMr. Bennet
+    made no answer.\n\n\u201CDo you not want to know who has taken it?\u201D cried
+    his wife impatiently.\n\n\u201CYou want to tell me, and I have no objection to
+    hearing it.\u201D\n\nThis was invitation enough."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f5c87774ca21338499c5bcab4f98b5a8, type: 2}
+  m_sharedMaterial: {fileID: -3350355341010591426, guid: f5c87774ca21338499c5bcab4f98b5a8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -267,6 +263,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599584032}
   m_CullTransparentMesh: 1
+--- !u!1001 &898176405
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 273037622861747836, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 273037622861747836, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 64ebb80105a74cc459d8c39e32dea1a5, type: 3}
+    - target: {fileID: 273037622861747836, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 893d786502363d944901956af919ed75, type: 3}
+    - target: {fileID: 273037622861747836, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 893d786502363d944901956af919ed75, type: 3}
+    - target: {fileID: 2519635715156031120, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519635715156031120, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 64ebb80105a74cc459d8c39e32dea1a5, type: 3}
+    - target: {fileID: 2519635715156031120, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052928728297398897, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052928728297398897, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052928728297398897, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052928728297398897, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052928728297398897, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052928728297398897, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052928728297398897, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052928728297398897, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052928728297398897, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052928728297398897, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438090608414909058, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+      propertyPath: m_Name
+      value: AudioController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+--- !u!114 &898176406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6295976528818532304, guid: 535559ffc81ea7749b130032bcaba43f, type: 3}
+  m_PrefabInstance: {fileID: 898176405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acaff365423ffa94c8e7751e646b0d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1552291378
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +778,7 @@ MonoBehaviour:
     the windowsill, they basked in it side by side.'
   typingSpeed: 0.04
   fadeDuration: 0.6
+  cutsceneMuffle: {fileID: 898176406}
 --- !u!4 &2037779542
 Transform:
   m_ObjectHideFlags: 0
@@ -749,12 +842,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -862,3 +955,4 @@ SceneRoots:
   - {fileID: 2041376298}
   - {fileID: 1552291381}
   - {fileID: 2037779542}
+  - {fileID: 898176405}

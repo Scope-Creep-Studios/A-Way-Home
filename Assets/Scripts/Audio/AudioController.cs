@@ -1,30 +1,35 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioController : MonoBehaviour
 {
         private static AudioController _instance;
     public static AudioController Instance {get{return _instance;}}
+    private AudioSource audioSource;
 
     [SerializeField] private SoundGroup[] soundGroups;
     private Dictionary<SoundCategory, SoundGroup> groups =new();
-
     private void Awake()
     {
         _instance=this;
         DontDestroyOnLoad(gameObject);
-
         foreach(SoundGroup group in soundGroups)
         {
             groups.Add(group.Category,group);
-        }
-    }
+        }  
 
+    }
+    void OnDestroy()
+    {
+        audioSource.Stop();
+    }
     void Update()
     {
         
         Play(SoundCategory.Music,0);
+        audioSource = GetComponent<AudioSource>();
     }
     public bool Play(SoundCategory category,int index)
         {
