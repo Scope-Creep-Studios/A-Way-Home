@@ -21,6 +21,12 @@ public class GhostAnimator : AnimatedEntity
     public float ReturnFps = 15f;
     public List<Sprite> JumpCycle;
     public float JumpFps = 8f;
+    public List<Sprite> SpinCycle;
+    public float SpinFps = 15f;
+
+    private bool _spinning;
+
+    public void SetSpinning(bool spinning) => _spinning = spinning;
 
     private CharState previousState;
     private bool wasGrounded;
@@ -66,7 +72,11 @@ public class GhostAnimator : AnimatedEntity
 
         if (!IsInterrupting)
         {
-            if (moving)
+            if (_spinning)
+            {
+                SetCycle(SpinCycle, SpinFps);
+            }
+            else if (moving)
             {
                 SetCycle(ActiveCycle, ActiveFps);
                 if (index == 0 || index == 4)
