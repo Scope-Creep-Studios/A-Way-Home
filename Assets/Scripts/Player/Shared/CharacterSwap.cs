@@ -73,6 +73,7 @@ public class CharacterSwap : MonoBehaviour
     private Vector2 _tossTo;
     private float _tossDuration;
     private float _tossLeft;
+    private int _tossFacing;
 
     public float TossRange => _tossRange;
     public Vector2 GirlPosition => _girl.transform.position;
@@ -111,8 +112,12 @@ public class CharacterSwap : MonoBehaviour
         _tossDuration = Mathf.Max(_tossTime, 0.0001f);
         _tossLeft = _tossDuration;
 
+        float dx = _tossTo.x - _tossFrom.x;
+        int direction = Mathf.Abs(dx) > 0.05f ? (int)Mathf.Sign(dx) : 0;
+        _tossFacing = direction != 0 ? direction : _girlController.Facing;
+
         _ghost.Enter(CharState.Deploying);
-        _ghostAnimator.SetSpinning(true);
+        _ghostAnimator.SetSpinning(true, _tossFacing);
         _inTransit = true;
         _tossing = true;
         return true;
@@ -131,7 +136,7 @@ public class CharacterSwap : MonoBehaviour
 
         StopToss();
         _inTransit = false;
-        _ghostPlatform.BecomePlatformAt(_tossTo);
+        _ghostPlatform.BecomePlatformAt(_tossTo, _tossFacing);
     }
 
     private void StopToss()

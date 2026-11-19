@@ -62,8 +62,9 @@ public class PlatformAbility : MonoBehaviour
         else _character.Enter(CharState.Following);
     }
 
-    public void BecomePlatformAt(Vector2 spot)
+    public void BecomePlatformAt(Vector2 spot, int facing = 0)
     {
+        _character.SetPlatformFacing(facing != 0 ? facing : _controller.Facing);
         if (spot != (Vector2)transform.position) _controller.Teleport(spot);
         AudioController.Instance.ForcePlay(SoundCategory.Ghost,2);
         _timeLeft = _lifetime;

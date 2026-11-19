@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Serialization;
 
 public class GhostAnimator : AnimatedEntity
 {
@@ -21,12 +22,36 @@ public class GhostAnimator : AnimatedEntity
     public float ReturnFps = 15f;
     public List<Sprite> JumpCycle;
     public float JumpFps = 8f;
-    public List<Sprite> SpinCycle;
+    [Tooltip("Played when tossed to the left. Shown exactly as drawn")]
+    public List<Sprite> SpinLeftCycle;
+    [Tooltip("Played when tossed to the right. Shown exactly as drawn")]
+    [FormerlySerializedAs("SpinCycle")]
+    public List<Sprite> SpinRightCycle;
     public float SpinFps = 15f;
 
     private bool _spinning;
+    private List<Sprite> _spinCycle;
+    private bool _spinFlip;
 
-    public void SetSpinning(bool spinning) => _spinning = spinning;
+    public void SetSpinning(bool spinning, int direction = 0)
+    {
+        _spinning = spinning;
+        if (!spinning) return;
+
+        List<Sprite> own = direction < 0 ? SpinLeftCycle : SpinRightCycle;
+        List<Sprite> other = direction < 0 ? SpinRightCycle : SpinLeftCycle;
+
+        if (own != null && own.Count > 0)
+        {
+            _spinCycle = own;
+            _spinFlip = false;
+        }
+        else
+        {
+            _spinCycle = other;
+            _spinFlip = true;
+        }
+    }
 
     private CharState previousState;
     private bool wasGrounded;
@@ -74,7 +99,7 @@ public class GhostAnimator : AnimatedEntity
         {
             if (_spinning)
             {
-                SetCycle(SpinCycle, SpinFps);
+                SetCycle(_spinCycle, SpinFps);
             }
             else if (moving)
             {
@@ -87,7 +112,8 @@ public class GhostAnimator : AnimatedEntity
             else SetCycle(ShoulderCycle, ShoulderFps);
         }
         int facing = controlled ? controller.Facing : girlController.Facing;
-        SetFlip(artFacesLeft ? facing > 0 : facing < 0);
+        if (_spinning) SetFlip(_spinFlip);
+        else SetFlip(artFacesLeft ? facing > 0 : facing < 0);
 
         AnimationUpdate();
     }
