@@ -25,6 +25,6 @@ MonoBehaviour:
   MaxFallSpeed: 25
   FallAcceleration: 80
   EndJumpEarlyGravityModifier: 3
-  FallGravityMultiplier: 1.3
+  FallGravityMultiplier: 0.7
   CoyoteTime: 0.1
   JumpBuffer: 0.2
