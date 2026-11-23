@@ -80,6 +80,26 @@ public class CharacterSwap : MonoBehaviour
     public Vector2 GhostPosition => _ghost.transform.position;
     public Vector2 PlatformSize => _ghostPlatform.PlatformSize;
     public Vector2 PlatformOffset => _ghostPlatform.PlatformOffset;
+    public SpriteRenderer GhostPlatformArt => _ghost.PlatformArt;
+
+    public event Action<Vector2> TossLanded;
+
+    public bool PlatformFlipFor(int facing)
+    {
+        return _ghost.PlatformFlipFor(facing);
+    }
+
+    public int TossFacingFor(Vector2 spot)
+    {
+        float dx = spot.x - GhostPosition.x;
+        if (Mathf.Abs(dx) > 0.05f) return dx > 0f ? 1 : -1;
+        return _girlController.Facing;
+    }
+
+    public Vector2 TossPathPoint(Vector2 from, Vector2 to, float progress)
+    {
+        return Vector2.Lerp(from, to, progress) + Vector2.up * (_tossArc * 4f * progress * (1f - progress));
+    }
 
     public bool CanToss =>
         _hasGhost && !_inTransit && _active == _girl &&
@@ -112,10 +132,9 @@ public class CharacterSwap : MonoBehaviour
         _tossDuration = Mathf.Max(_tossTime, 0.0001f);
         _tossLeft = _tossDuration;
 
-        float dx = _tossTo.x - _tossFrom.x;
-        int direction = Mathf.Abs(dx) > 0.05f ? (int)Mathf.Sign(dx) : 0;
-        _tossFacing = direction != 0 ? direction : _girlController.Facing;
+        _tossFacing = TossFacingFor(_tossTo);
 
+        AudioController.Instance.ForcePlay(SoundCategory.Ghost, 0);
         _ghost.Enter(CharState.Deploying);
         _ghostAnimator.SetSpinning(true, _tossFacing);
         _inTransit = true;
@@ -128,8 +147,7 @@ public class CharacterSwap : MonoBehaviour
         _tossLeft -= Time.deltaTime;
         float t = 1f - Mathf.Clamp01(_tossLeft / _tossDuration);
         float eased = t * t * (3f - 2f * t);
-        Vector2 p = Vector2.Lerp(_tossFrom, _tossTo, eased);
-        p += Vector2.up * (_tossArc * 4f * eased * (1f - eased));
+        Vector2 p = TossPathPoint(_tossFrom, _tossTo, eased);
         _ghost.transform.position = new Vector3(p.x, p.y, _ghost.transform.position.z);
 
         if (_tossLeft > 0f) return;
@@ -137,6 +155,7 @@ public class CharacterSwap : MonoBehaviour
         StopToss();
         _inTransit = false;
         _ghostPlatform.BecomePlatformAt(_tossTo, _tossFacing);
+        TossLanded?.Invoke(_tossTo);
     }
 
     private void StopToss()

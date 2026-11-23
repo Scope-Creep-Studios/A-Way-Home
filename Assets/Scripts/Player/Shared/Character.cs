@@ -19,13 +19,20 @@ public class Character : MonoBehaviour
     public CharState State {get; private set;}
     public BoxCollider2D PlatformCollider => _platformCollider;
 
+    public SpriteRenderer PlatformArt =>
+        _platformVisual != null ? _platformVisual.GetComponentInChildren<SpriteRenderer>(true) : null;
+
+    public bool PlatformFlipFor(int direction)
+    {
+        return _platformArtFacesLeft ? direction > 0 : direction < 0;
+    }
+
     public void SetPlatformFacing(int direction)
     {
-        if (direction == 0 || _platformVisual == null) return;
-        SpriteRenderer art = _platformVisual.GetComponentInChildren<SpriteRenderer>(true);
+        if (direction == 0) return;
+        SpriteRenderer art = PlatformArt;
         if (art == null) return;
-        bool facingRight = direction > 0;
-        art.flipX = _platformArtFacesLeft ? facingRight : !facingRight;
+        art.flipX = PlatformFlipFor(direction);
     }
     public event Action<Character, CharState> StateChanged;
 
