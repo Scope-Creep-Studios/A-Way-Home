@@ -42,27 +42,3 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 1297465387
-    locked: 0
-  - name: InteriorWalls
-    uniqueID: 3023899291
-    locked: 0
-  - name: Ground
-    uniqueID: 3588273497
-    locked: 0
-  - name: PropsInteractables
-    uniqueID: 712926569
-    locked: 0
-  - name: Characters
-    uniqueID: 2102997609
-    locked: 0
-  - name: Foreground
-    uniqueID: 3863084331
-    locked: 0
-  - name: WorldText
-    uniqueID: 3817941989
-    locked: 0
-  - name: HUD
-    uniqueID: 1259658597
-    locked: 0

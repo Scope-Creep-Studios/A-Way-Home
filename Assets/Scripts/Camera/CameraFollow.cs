@@ -6,15 +6,6 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector3 _offset = new Vector3(0f, 1f, -10f);
     [SerializeField] private float _smoothTime = 0.15f;
 
-    [Header("Look ahead")]
-    [SerializeField] private float _lookAhead = 1.5f;
-    [SerializeField] private float _lookAheadSmooth = 0.35f;
-
-    [Header("Vertical dead zone")]
-    [SerializeField] private float _deadZoneUp = 1.5f;
-    [SerializeField] private float _deadZoneDown = 2.5f;
-    [SerializeField] private float _groundRecenterSpeed = 10f;
-
     [Header("Vertical limits")]
     [SerializeField] private Transform _artRoot;
     [SerializeField] private float _margin = 0.5f;
@@ -25,60 +16,18 @@ public class CameraFollow : MonoBehaviour
     private float _bottom;
     private float _top;
 
-    private PlatformerController _targetBody;
-    private float _lookOffset;
-    private float _lookVelocity;
-    private float _lookDir = 1f;
-    private float _focusY;
-    private bool _hasFocus;
-
     private void Awake() => _cam = GetComponent<Camera>();
 
-    private void Start()
-    {
-        _hasLimits = TryMeasureArt(out _bottom, out _top);
-        SetTarget(_target);
-    }
+    private void Start() => _hasLimits = TryMeasureArt(out _bottom, out _top);
 
-    public void SetTarget(Transform target)
-    {
-        _target = target;
-        _targetBody = target != null ? target.GetComponent<PlatformerController>() : null;
-    }
+    public void SetTarget(Transform target) => _target = target;
 
     private void LateUpdate()
     {
         if (_target == null) return;
-        Vector3 raw = _target.position + _offset;
-
-        float lookTarget = 0f;
-        if (_targetBody != null && _lookAhead > 0f)
-        {
-            if (Mathf.Abs(_targetBody.Velocity.x) > 0.5f) _lookDir = Mathf.Sign(_targetBody.Velocity.x);
-            lookTarget = _lookDir * _lookAhead;
-        }
-        _lookOffset = Mathf.SmoothDamp(_lookOffset, lookTarget, ref _lookVelocity, _lookAheadSmooth);
-
-        Vector3 goal = new Vector3(raw.x + _lookOffset, FocusY(raw.y), raw.z);
+        Vector3 goal = _target.position + _offset;
         if (_hasLimits) goal.y = ClampY(goal.y);
         transform.position = Vector3.SmoothDamp(transform.position, goal, ref _velocity, _smoothTime);
-    }
-
-    private float FocusY(float targetY)
-    {
-        if (!_hasFocus)
-        {
-            _focusY = targetY;
-            _hasFocus = true;
-        }
-
-        if (targetY > _focusY + _deadZoneUp) _focusY = targetY - _deadZoneUp;
-        else if (targetY < _focusY - _deadZoneDown) _focusY = targetY + _deadZoneDown;
-
-        if (_targetBody == null || _targetBody.Grounded)
-            _focusY = Mathf.MoveTowards(_focusY, targetY, _groundRecenterSpeed * Time.deltaTime);
-
-        return _focusY;
     }
 
     private float ClampY(float y)
