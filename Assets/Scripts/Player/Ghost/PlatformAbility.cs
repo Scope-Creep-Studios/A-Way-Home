@@ -18,6 +18,9 @@ public class PlatformAbility : MonoBehaviour
     private PlatformerController _controller;
     private float _timeLeft;
 
+    public Vector2 PlatformSize => Vector2.Scale(_character.PlatformCollider.size, transform.lossyScale);
+    public Vector2 PlatformOffset => Vector2.Scale(_character.PlatformCollider.offset, transform.lossyScale);
+
     private void Awake()
     {
         _character = GetComponent<Character>();
@@ -31,12 +34,9 @@ public class PlatformAbility : MonoBehaviour
             if (InputBlocker.Blocked) return;
             bool clicked = Input.GetKeyDown(_keys.BecomePlatform);
             bool secondJump = Input.GetKeyDown(_keys.Jump) && !_controller.CanJumpNow;
-            if ((clicked || secondJump) && TryFindRoom(out Vector2 spot))
+            if ((clicked || secondJump) && TryFindRoomAt(transform.position, out Vector2 spot))
             {
-                if (spot != (Vector2)transform.position) _controller.Teleport(spot);
-                AudioController.Instance.ForcePlay(SoundCategory.Ghost,2);
-                _timeLeft = _lifetime;
-                _character.Enter(CharState.Platform);
+                BecomePlatformAt(spot);
             }
         }
         else if (_character.State == CharState.Platform)
@@ -62,12 +62,20 @@ public class PlatformAbility : MonoBehaviour
         else _character.Enter(CharState.Following);
     }
 
-    private bool TryFindRoom(out Vector2 spot)
+    public void BecomePlatformAt(Vector2 spot, int facing = 0)
+    {
+        _character.SetPlatformFacing(facing != 0 ? facing : _controller.Facing);
+        if (spot != (Vector2)transform.position) _controller.Teleport(spot);
+        AudioController.Instance.ForcePlay(SoundCategory.Ghost,2);
+        _timeLeft = _lifetime;
+        _character.Enter(CharState.Platform);
+    }
+
+    public bool TryFindRoomAt(Vector2 origin, out Vector2 spot)
     {
         BoxCollider2D box = _character.PlatformCollider;
         Vector2 size = Vector2.Scale(box.size, transform.lossyScale);
         Vector2 offset = Vector2.Scale(box.offset, transform.lossyScale);
-        Vector2 origin = transform.position;
         float maxNudge = size.x * 0.5f;
         float step = Mathf.Max(_nudgeStep, 0.01f);
 
@@ -108,7 +116,7 @@ public class PlatformAbility : MonoBehaviour
         Gizmos.color = fitsHere ? Color.green : Color.red;
         Gizmos.DrawWireCube(here + offset, size);
 
-        if (!fitsHere && TryFindRoom(out Vector2 spot))
+        if (!fitsHere && TryFindRoomAt(here, out Vector2 spot))
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireCube(spot + offset, size);
