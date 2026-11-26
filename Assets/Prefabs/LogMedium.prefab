@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6875389380469061311}
   - component: {fileID: 8601079813391387579}
   m_Layer: 6
-  m_Name: LogPlatform
+  m_Name: LogMedium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,11 +71,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -706693799
-  m_SortingLayer: 3
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2a1acb52f487c154f8d19243edd762dc, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 7824f8dc9f8126446900516492824601, type: 3}
+  m_Color: {r: 0.32156864, g: 0.41960785, b: 0.57254905, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -121,12 +121,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.01, y: 1.16}
+    oldSize: {x: 8.01, y: 1.16}
     newSize: {x: 4.01, y: 1.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.95, y: 0.89}
+  m_Size: {x: 8, y: 0.89}
   m_EdgeRadius: 0

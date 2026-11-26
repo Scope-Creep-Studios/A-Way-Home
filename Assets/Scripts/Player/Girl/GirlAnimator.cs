@@ -18,10 +18,6 @@ public class GirlAnimator : AnimatedEntity
 
     [SerializeField] private float airborneDelay = 0.08f;
 
-    [Header("Run speed matching")]
-    [SerializeField] private bool matchRunSpeed = true;
-    [SerializeField] private float minRunAnimScale = 0.5f;
-
     private bool wasGrounded;
     private float _airTime;
 
@@ -51,7 +47,6 @@ public class GirlAnimator : AnimatedEntity
             if (controller.MoveX != 0f)
             { 
                 SetCycle(RunCycle, RunFps);
-                if (matchRunSpeed) SetFramerate(RunFps * Mathf.Clamp(controller.SpeedPercent, minRunAnimScale, 1.25f));
                 if (index == 1 || index == 4)
                 {
                     AudioController.Instance.PlayRandom(SoundCategory.Footsteps);

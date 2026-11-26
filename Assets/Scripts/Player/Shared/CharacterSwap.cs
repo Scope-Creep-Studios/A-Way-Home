@@ -20,13 +20,6 @@ public class CharacterSwap : MonoBehaviour
     [SerializeField] private SpiritOrb _orb;
     [SerializeField] private float _returnTime = 0.25f;
 
-    [Header("Toss (prototype)")]
-    [SerializeField] private float _tossRange = 3f;
-    [SerializeField] private float _tossTime = 0.35f;
-    [SerializeField] private float _tossArc = 0.6f;
-    [SerializeField] private int _maxPlatformsPerTrip = 2;
-    [SerializeField] private bool _requireInitialPlatform;
-
     [Header("Ghost unlock")]
     [SerializeField] private bool _startsWithGhost = true;
     public UnityEvent GhostJoined;
@@ -63,107 +56,6 @@ public class CharacterSwap : MonoBehaviour
     private bool _joining;
 
     public bool HasGhost => _hasGhost;
-
-    private int _controlChangedFrame = -1;
-    private int _transition;
-    private int _chainCount;
-
-    private bool _tossing;
-    private Vector2 _tossFrom;
-    private Vector2 _tossTo;
-    private float _tossDuration;
-    private float _tossLeft;
-    private int _tossFacing;
-
-    public float TossRange => _tossRange;
-    public Vector2 GirlPosition => _girl.transform.position;
-    public Vector2 GhostPosition => _ghost.transform.position;
-    public Vector2 PlatformSize => _ghostPlatform.PlatformSize;
-    public Vector2 PlatformOffset => _ghostPlatform.PlatformOffset;
-    public SpriteRenderer GhostPlatformArt => _ghost.PlatformArt;
-
-    public event Action<Vector2> TossLanded;
-
-    public bool PlatformFlipFor(int facing)
-    {
-        return _ghost.PlatformFlipFor(facing);
-    }
-
-    public int TossFacingFor(Vector2 spot)
-    {
-        float dx = spot.x - GhostPosition.x;
-        if (Mathf.Abs(dx) > 0.05f) return dx > 0f ? 1 : -1;
-        return _girlController.Facing;
-    }
-
-    public Vector2 TossPathPoint(Vector2 from, Vector2 to, float progress)
-    {
-        return Vector2.Lerp(from, to, progress) + Vector2.up * (_tossArc * 4f * progress * (1f - progress));
-    }
-
-    public bool CanToss =>
-        _hasGhost && !_inTransit && _active == _girl &&
-        Time.frameCount != _controlChangedFrame &&
-        !InputBlocker.Blocked &&
-        ((_ghost.State == CharState.Platform && _chainCount < _maxPlatformsPerTrip) ||
-         (_ghost.State == CharState.Following && _cooldownLeft <= 0f && !_requireInitialPlatform));
-
-    public Vector2 ClampToTossRange(Vector2 point)
-    {
-        Vector2 girl = GirlPosition;
-        return girl + Vector2.ClampMagnitude(point - girl, _tossRange);
-    }
-
-    public bool TryGetTossSpot(Vector2 point, out Vector2 spot)
-    {
-        return _ghostPlatform.TryFindRoomAt(ClampToTossRange(point), out spot);
-    }
-
-    public bool TryToss(Vector2 point)
-    {
-        if (!CanToss) return false;
-        if (!TryGetTossSpot(point, out Vector2 spot)) return false;
-
-        _transition++;
-        _chainCount++;
-
-        _tossFrom = _ghost.transform.position;
-        _tossTo = spot;
-        _tossDuration = Mathf.Max(_tossTime, 0.0001f);
-        _tossLeft = _tossDuration;
-
-        _tossFacing = TossFacingFor(_tossTo);
-
-        AudioController.Instance.ForcePlay(SoundCategory.Ghost, 0);
-        _ghost.Enter(CharState.Deploying);
-        _ghostAnimator.SetSpinning(true, _tossFacing);
-        _inTransit = true;
-        _tossing = true;
-        return true;
-    }
-
-    private void TickToss()
-    {
-        _tossLeft -= Time.deltaTime;
-        float t = 1f - Mathf.Clamp01(_tossLeft / _tossDuration);
-        float eased = t * t * (3f - 2f * t);
-        Vector2 p = TossPathPoint(_tossFrom, _tossTo, eased);
-        _ghost.transform.position = new Vector3(p.x, p.y, _ghost.transform.position.z);
-
-        if (_tossLeft > 0f) return;
-
-        StopToss();
-        _inTransit = false;
-        _ghostPlatform.BecomePlatformAt(_tossTo, _tossFacing);
-        TossLanded?.Invoke(_tossTo);
-    }
-
-    private void StopToss()
-    {
-        if (!_tossing) return;
-        _tossing = false;
-        _ghostAnimator.SetSpinning(false);
-    }
     
     private float _cooldownLeft; // counmt down after the platform expires.
 
@@ -185,8 +77,6 @@ public class CharacterSwap : MonoBehaviour
     {
         if (!_hasGhost) return;
 
-        _transition++;
-        StopToss();
         if (_ghost.State == CharState.Platform) _ghostPlatform.EndPlatform();
         if (_orb != null) _orb.Cancel();
         GiveControlTo(_girl);
@@ -206,8 +96,6 @@ public class CharacterSwap : MonoBehaviour
     {
         if (!_hasGhost) return;
 
-        _transition++;
-        StopToss();
         bool orbWasFlying = _orb != null && _orb.IsFlying;
         Vector2 from = orbWasFlying ? (Vector2)_orb.transform.position : (Vector2)_ghost.transform.position;
         if (_orb != null) _orb.Cancel();
@@ -289,8 +177,6 @@ public class CharacterSwap : MonoBehaviour
 
         if (_cooldownLeft > 0f) _cooldownLeft -= Time.deltaTime;
 
-        if (_tossing) TickToss();
-
         if (_inTransit) return;
 
         if (InputBlocker.Blocked) return; // Me and Howe both worked on implementing input blocking. nothing wrong with keeping both implementations.
@@ -308,50 +194,31 @@ public class CharacterSwap : MonoBehaviour
         if (_cooldownLeft > 0f) return;
         if(_ghost.State == CharState.Platform) return;
 
-        if (!TryGetDeployTarget(out _)) return;
-
-        // PLAY SFX
-        AudioController.Instance.ForcePlay(SoundCategory.Ghost, 0);
-
-        _inTransit = true;
-        int id = ++_transition;
-
-        _ghostAnimator.PlayDeploy(() =>
-        {
-            if (id != _transition) return;
-            LaunchDeploy();
-        });
-    }
-
-    private bool TryGetDeployTarget(out Vector2 deployTo)
-    {
         Vector2 offset = _deployOffset;
         offset.x *= _girlController.Facing;
-        if (!TryFindDeployTarget((Vector2)_girl.transform.position, offset, out deployTo)) return false;
+        if (!TryFindDeployTarget((Vector2)_girl.transform.position, offset, out Vector2 deployTo)) return;
         deployTo = SettleOnFloor(deployTo);
-        return true;
-    }
-
-    private void LaunchDeploy()
-    {
-        if (!TryGetDeployTarget(out Vector2 deployTo))
-        {
-            _inTransit = false;
-            return;
-        }
 
         Vector2 from = _ghost.transform.position;
         _girl.Enter(CharState.Idle);
 
+        // PLAY SFX
+        AudioController.Instance.ForcePlay(SoundCategory.Ghost, 0);
+
         AudioController.Instance.Mute(SoundCategory.Footsteps);
         AudioController.Instance.Mute(SoundCategory.Land);
 
-        _ghost.Enter(CharState.Travelling);
+        _inTransit = true;
 
-        if (_cam != null && _orb != null)
-            _cam.SetTarget(_orb.transform);
+        _ghostAnimator.PlayDeploy(() =>
+        {
+            _ghost.Enter(CharState.Travelling);
 
-        Fly(from, () => deployTo, _deployTime, () => ArriveDeployed(deployTo));
+            if (_cam != null && _orb != null)
+                _cam.SetTarget(_orb.transform);
+
+            Fly(from, () => deployTo, _deployTime, () => ArriveDeployed(deployTo));
+        });
     }
 
     private void ArriveDeployed(Vector2 at)
@@ -372,12 +239,12 @@ public class CharacterSwap : MonoBehaviour
     private void ArriveHome()
     {
         _ghostFollow.Snap();
-        _ghost.Enter(CharState.Following);
-        int id = ++_transition;
+        _ghost.Enter(CharState.Deploying);
 
         _ghostAnimator.PlayReturn(() =>
         {
-            if (id != _transition) return;
+            _ghost.Enter(CharState.Following);
+            _ghostFollow.Snap();
             _inTransit = false;
 
             if (_joining)
@@ -510,7 +377,6 @@ public class CharacterSwap : MonoBehaviour
     private void GiveControlTo(Character c)
     {
         _active = c;
-        _controlChangedFrame = Time.frameCount;
         c.Enter(CharState.Controlled);
         if (_cam != null) _cam.SetTarget(c.transform);
 
@@ -525,9 +391,6 @@ public class CharacterSwap : MonoBehaviour
     {
         // When ghost freezes, pass back to girl to control.
         if (s == CharState.Platform &&  _active == _ghost) GiveControlTo(_girl);
-
-        if (s == CharState.Following || s == CharState.Controlled) _chainCount = 0;
-        else if (s == CharState.Platform && _chainCount == 0) _chainCount = 1;
     }
 }
     

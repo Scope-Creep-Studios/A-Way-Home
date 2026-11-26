@@ -55,13 +55,6 @@ public class AnimatedEntity : MonoBehaviour
             SpriteRenderer.sprite = cycle[0];
     }
 
-    protected void SetFramerate(float fps)
-    {
-        if (fps <= 0f) return;
-        Framerate = fps;
-        animationTimerMax = 1.0f / fps;
-    }
-
     protected void SetFlip(bool flip)
     {
         SpriteRenderer.flipX = flip;
