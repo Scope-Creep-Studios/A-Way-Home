@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5013597344203103871}
   - component: {fileID: 6670456926839156948}
   - component: {fileID: 7422518731366354252}
+  - component: {fileID: -4821134403595686995}
   m_Layer: 0
   m_Name: KillZone
   m_TagString: Untagged
@@ -91,3 +92,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _swap: {fileID: 0}
+--- !u!114 &-4821134403595686995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411761026088246230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f214eb29d6cb7c47b3dfab0b0124709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _color: {r: 0.3882353, g: 0.32156864, b: 0.40784314, a: 1}
+  _height: 5
+  _solidHeight: 0
+  _fadeSharpness: 1.6
+  _extraWidth: 0.3
+  _pulseSpeed: 0.5
+  _pulseStrength: 0.2
+  _showParticles: 1
+  _particleAmount: 0.5
+  _maxParticles: 30
+  _particleSize: 0.25
+  _particleSpeedMin: 0.4
+  _particleSpeedMax: 0.9
+  _particleWobble: 0.15
+  _particleOpacity: 0.7
+  _sortingLayer: InteriorWalls
+  _sortingOrder: 0
