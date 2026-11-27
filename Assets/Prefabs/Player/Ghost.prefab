@@ -368,10 +368,11 @@ MonoBehaviour:
   ReturnFps: 15
   JumpCycle:
   - {fileID: 21300000, guid: 5d803ab2c1d086a429025ff22f9cae85, type: 3}
-  - {fileID: 21300000, guid: 8baac6289c5a57843b33941693e75935, type: 3}
-  - {fileID: 21300000, guid: 8f3b05b0740b9a4408782742798a0d25, type: 3}
-  - {fileID: 21300000, guid: 8f3b05b0740b9a4408782742798a0d25, type: 3}
   JumpFps: 5
+  RiseCycle:
+  - {fileID: 21300000, guid: 8baac6289c5a57843b33941693e75935, type: 3}
+  FallCycle:
+  - {fileID: 21300000, guid: 8f3b05b0740b9a4408782742798a0d25, type: 3}
   SpinLeftCycle:
   - {fileID: 21300000, guid: da8b8a9b31c094a99a975f17b2bd54d9, type: 3}
   - {fileID: 21300000, guid: b30939c3100914a408ed3f557acfa0bf, type: 3}

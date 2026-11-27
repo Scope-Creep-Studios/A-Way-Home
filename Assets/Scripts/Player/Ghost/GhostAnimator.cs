@@ -22,6 +22,10 @@ public class GhostAnimator : AnimatedEntity
     public float ReturnFps = 15f;
     public List<Sprite> JumpCycle;
     public float JumpFps = 8f;
+    [Tooltip("Shown while the cat is in the air and moving up")]
+    public List<Sprite> RiseCycle;
+    [Tooltip("Shown while the cat is in the air and moving down")]
+    public List<Sprite> FallCycle;
     [Tooltip("Played when tossed to the left. Shown exactly as drawn")]
     public List<Sprite> SpinLeftCycle;
     [Tooltip("Played when tossed to the right. Shown exactly as drawn")]
@@ -66,6 +70,12 @@ public class GhostAnimator : AnimatedEntity
         Interrupt(ReturnCycle, ReturnFps, onComplete);
     }
 
+    private List<Sprite> AirCycle()
+    {
+        List<Sprite> cycle = controller.Velocity.y > 0f ? RiseCycle : FallCycle;
+        return cycle != null && cycle.Count > 0 ? cycle : null;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -94,12 +104,17 @@ public class GhostAnimator : AnimatedEntity
             wasGrounded = grounded;
         }
         bool moving = controlled && controller.MoveX != 0f;
+        List<Sprite> airCycle = controlled && !grounded ? AirCycle() : null;
 
         if (!IsInterrupting)
         {
             if (_spinning)
             {
                 SetCycle(_spinCycle, SpinFps);
+            }
+            else if (airCycle != null)
+            {
+                SetCycle(airCycle, JumpFps);
             }
             else if (moving)
             {

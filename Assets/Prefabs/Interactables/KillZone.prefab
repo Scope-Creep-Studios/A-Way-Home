@@ -106,15 +106,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _color: {r: 0.3882353, g: 0.32156864, b: 0.40784314, a: 1}
   _height: 5
-  _overhang: 0.3
+  _solidHeight: 0
+  _fadeSharpness: 1.6
+  _extraWidth: 0.3
   _pulseSpeed: 0.5
-  _pulseAmount: 0.2
-  _wisps: 1
-  _wispsPerUnit: 0.5
-  _maxWisps: 30
-  _wispSize: 0.25
-  _wispSpeed: {x: 0.4, y: 0.9}
-  _wispSway: 0.15
-  _wispAlpha: 0.7
+  _pulseStrength: 0.2
+  _showParticles: 1
+  _particleAmount: 0.5
+  _maxParticles: 30
+  _particleSize: 0.25
+  _particleSpeedMin: 0.4
+  _particleSpeedMax: 0.9
+  _particleWobble: 0.15
+  _particleOpacity: 0.7
   _sortingLayer: InteriorWalls
-  _sortingOrder: 1
+  _sortingOrder: 0
