@@ -75,7 +75,10 @@ public class Door : MonoBehaviour
                 doorMuffler.SetFilter(true, 20);
                 AudioController.Instance.Play(SoundCategory.Interactable,0);
                 
-                SceneManager.LoadScene(nextSceneName);
+                if (LevelFader.Instance != null)
+                    LevelFader.Instance.Play(() => SceneManager.LoadScene(nextSceneName));
+                else
+                    SceneManager.LoadScene(nextSceneName);
             }
             else
             {

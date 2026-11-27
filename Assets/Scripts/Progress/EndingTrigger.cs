@@ -20,7 +20,11 @@ public class EndingTrigger : MonoBehaviour
         if (other.gameObject.CompareTag("Player")) {
             {
                 cutsceneMuffle.SetFilter(true,20);
-                SceneManager.LoadScene(NextSceneName);
+                if (LevelFader.Instance != null)
+                    LevelFader.Instance.Play(() => SceneManager.LoadScene(NextSceneName));
+                else
+                    SceneManager.LoadScene(NextSceneName);
+            
             }
         }
     }
