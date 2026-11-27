@@ -15,6 +15,12 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float _deadZoneDown = 2.5f;
     [SerializeField] private float _groundRecenterSpeed = 10f;
 
+    [Header("Look down while falling")]
+    [SerializeField] private float _fallLookDown = 2.5f;
+    [SerializeField] private float _fallLookStartSpeed = 4f;
+    [SerializeField] private float _fallLookFullSpeed = 15f;
+    [SerializeField] private float _fallLookSmooth = 0.25f;
+
     [Header("Vertical limits")]
     [SerializeField] private Transform _artRoot;
     [SerializeField] private float _margin = 0.5f;
@@ -30,6 +36,8 @@ public class CameraFollow : MonoBehaviour
     private float _lookVelocity;
     private float _lookDir = 1f;
     private float _focusY;
+    private float _fallOffset;
+    private float _fallVelocity;
     private bool _hasFocus;
 
     private void Awake() => _cam = GetComponent<Camera>();
@@ -59,7 +67,15 @@ public class CameraFollow : MonoBehaviour
         }
         _lookOffset = Mathf.SmoothDamp(_lookOffset, lookTarget, ref _lookVelocity, _lookAheadSmooth);
 
-        Vector3 goal = new Vector3(raw.x + _lookOffset, FocusY(raw.y), raw.z);
+        float fallTarget = 0f;
+        if (_targetBody != null && !_targetBody.Grounded && _targetBody.Velocity.y < 0f)
+        {
+            float amount = Mathf.InverseLerp(_fallLookStartSpeed, _fallLookFullSpeed, -_targetBody.Velocity.y);
+            fallTarget = -_fallLookDown * amount;
+        }
+        _fallOffset = Mathf.SmoothDamp(_fallOffset, fallTarget, ref _fallVelocity, _fallLookSmooth);
+
+        Vector3 goal = new Vector3(raw.x + _lookOffset, FocusY(raw.y) + _fallOffset, raw.z);
         if (_hasLimits) goal.y = ClampY(goal.y);
         transform.position = Vector3.SmoothDamp(transform.position, goal, ref _velocity, _smoothTime);
     }

@@ -22,9 +22,17 @@ MonoBehaviour:
   GroundingForce: -1.5
   GroundColDistance: 0.05
   JumpPower: 22
-  MaxFallSpeed: 25
+  MaxFallSpeed: 18
   FallAcceleration: 80
-  EndJumpEarlyGravityModifier: 3
-  FallGravityMultiplier: 0.7
+  EndJumpEarlyGravityModifier: 1.8
+  FallGravityMultiplier: 0.6
   CoyoteTime: 0.1
   JumpBuffer: 0.2
+  TurnAccelerationMultiplier: 1.8
+  LedgeAssist: 1
+  LedgeAssistHeight: 0.3
+  LedgeAssistMaxRiseSpeed: 4
+  CornerCorrection: 1
+  CornerCorrectionWidth: 0.3
+  GroundSnap: 1
+  GroundSnapDistance: 0.3
