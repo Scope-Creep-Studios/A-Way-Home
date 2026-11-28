@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
     public bool hasCollectible = false;
     public bool isPulled = false;
 
-     public List<string> collectedItems = new List<string>();
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -18,14 +16,13 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
-    public void AddCollectedItem(string itemName)
+    private void OnDestroy()
     {
-        if (!collectedItems.Contains(itemName))
+        if (Instance == this)
         {
-            collectedItems.Add(itemName);
+            Instance = null;
         }
     }
 }

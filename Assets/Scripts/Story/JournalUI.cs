@@ -83,7 +83,7 @@ public class JournalUI : MonoBehaviour
     {
         Debug.Log("Collected Items:");
 
-        foreach (string item in GameManager.Instance.collectedItems)
+        foreach (string item in JournalManager.Instance.collectedItems)
         {
             Debug.Log(item);
         }
@@ -114,8 +114,8 @@ public class JournalUI : MonoBehaviour
 
     private bool IsCollected(string itemName)
     {
-        return GameManager.Instance != null &&
-               GameManager.Instance.collectedItems.Contains(itemName);
+        return JournalManager.Instance != null &&
+               JournalManager.Instance.collectedItems.Contains(itemName);
     }
 
     public void ShowTie()

@@ -12,6 +12,8 @@ public class NarrativeUI : MonoBehaviour
     public TMP_Text dialogueText;
     public TMP_Text dialogueTextGhost;
 
+    public TMP_Text continueText;
+
     private DialogueSystem.DialogueEntry[] lines;
     private int currentLine;
     private bool waitForKeyRelease = false;
@@ -32,6 +34,7 @@ public class NarrativeUI : MonoBehaviour
     private TMP_FontAsset GhostFont;
 
     public MusicMuffler dialogueMuffler;
+    public DarknessArea darknessArea;
 
     void Start()
     {
@@ -77,6 +80,33 @@ public class NarrativeUI : MonoBehaviour
         narrativeBox.SetActive(true);
         ShowCurrentLine();
         waitForKeyRelease = true;
+    }
+
+    public void RestorePlayerControl()
+    {
+        if (girlController != null)
+        {
+            girlController.HasControl = girlPreviousControl;
+        }
+
+        if (ghostController != null)
+        {
+            ghostController.HasControl = ghostPreviousControl;
+        }
+    }
+
+    public void HideDialogueForCameraHint()
+    {
+        girlDialogueBox.SetActive(false);
+        spiritDialogueBox.SetActive(false);
+
+        dialogueText.text = "";
+        dialogueTextGhost.text = "";
+
+        dialogueText.enabled = false;
+        dialogueTextGhost.enabled = false;
+
+        continueText.gameObject.SetActive(false);
     }
 
     void ShowCurrentLine()
@@ -137,23 +167,22 @@ public class NarrativeUI : MonoBehaviour
             currentLine++;
 
             if (currentLine >= lines.Length)
-            {
-                
+            {                
                 dialogueMuffler.SetFilter(false,1000);
                 // Close dialogue
-                narrativeBox.SetActive(false);
-                girlDialogueBox.SetActive(false);
-                spiritDialogueBox.SetActive(false);
-
-                // Restore previous player control state
-                if (girlController != null)
+                if (darknessArea != null &&
+                    lines[0].Type == "Narrative" &&
+                    lines[0].Name == "DarknessArea")
                 {
-                    girlController.HasControl = girlPreviousControl;
+                    HideDialogueForCameraHint();
+                    darknessArea.OnDialogueFinished();
                 }
-
-                if (ghostController != null)
+                else
                 {
-                    ghostController.HasControl = ghostPreviousControl;
+                    narrativeBox.SetActive(false);
+                    girlDialogueBox.SetActive(false);
+                    spiritDialogueBox.SetActive(false);
+                    RestorePlayerControl();
                 }
             }
             else
