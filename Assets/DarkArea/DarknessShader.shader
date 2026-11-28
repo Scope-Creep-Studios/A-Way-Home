@@ -8,6 +8,8 @@ Shader "Custom/VisionHoleShader"
         _Radius ("Hole Radius", Float) = 2
         _Softness ("Edge Softness", Float) = 0.2
         _HoleActive ("Hole Active", Float) = 0
+        _EdgeFeather ("Edge Feather", Range(0.01, 0.5)) = 0.15
+        _UseEdgeFeather ("Use Edge Feather", Float) = 0
     }
 
     SubShader
@@ -28,13 +30,14 @@ Shader "Custom/VisionHoleShader"
             #pragma vertex vert
             #pragma fragment frag
             #include "UnityCG.cginc"
-
+            float _EdgeFeather;
             sampler2D _MainTex;
             fixed4 _Color;
             float4 _HoleCenter;
             float _Radius;
             float _Softness;
             float _HoleActive;
+            float _UseEdgeFeather;
 
             struct appdata
             {
@@ -71,18 +74,32 @@ Shader "Custom/VisionHoleShader"
 
                 float radius = max(_Radius, 0.001);
                 float softness = max(_Softness, 0.001);
+                float innerRadius = radius * 0.3;
 
                 float hole = smoothstep(
-                    radius - softness,
+                    innerRadius,
                     radius + softness,
                     distanceFromCenter
                 );
 
                 hole = lerp(1.0, hole, _HoleActive);
 
+                float edge = min(
+                min(i.uv.x, 1.0 - i.uv.x),
+                min(i.uv.y, 1.0 - i.uv.y)
+                );
+
+                float edgeFade = smoothstep(
+                    0.0,
+                    _EdgeFeather,
+                    edge
+                );
+
                 col.a *= hole;
+                col.a *= lerp(1.0, edgeFade, _UseEdgeFeather);
+
                 return col;
-            }
+                }
             ENDCG
         }
     }

@@ -29,6 +29,7 @@ Door,Door3,Softlock,Girl,There's nothing left for me back there.
 
 Narrative,DarknessArea,FirstEntry,Girl,I can't see anything...
 Narrative,DarknessArea,FirstEntry,Ghost,Maybe I can see things that you can't.
+Narrative,DarknessArea,FirstEntry,Ghost,Hmm... Maybe there's something around here that can get rid of the darkness. I should look around.
 
 Item,Collectible2,Level2,Ghost,Wait. There's a flyer here.
 Item,Collectible2,Level2,Ghost,This girl in the picture... That's you,isn't it?

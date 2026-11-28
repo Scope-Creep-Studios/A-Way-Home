@@ -74,13 +74,16 @@ public class Collectible : MonoBehaviour
         narrativeUI.ShowNarrative(dialogue);
 
         // Add the collected item to the Journal
-        GameManager.Instance.AddCollectedItem(journalItemName);
-        journalUI.ShowNewItemNotification();
-
         GameManager gameManager = GameManager.Instance;
         if (itemName == "Collectible1" || itemName == "Collectible3")
         {
             gameManager.hasCollectible = true;
+        }
+        
+        JournalManager.Instance.AddCollectedItem(journalItemName);
+        if (journalUI != null)
+        {
+            journalUI.ShowNewItemNotification();
         }
 
         // Disable the collider during animation
@@ -92,7 +95,14 @@ public class Collectible : MonoBehaviour
         }
 
         // Start flying animation
-        StartCoroutine(FlyToJournal());
+        if (journalUI != null)
+        {
+            StartCoroutine(FlyToJournal());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator FlyToJournal()
